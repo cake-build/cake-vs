@@ -1,20 +1,15 @@
-﻿using System.ComponentModel.Design;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using EnvDTE;
 using EnvDTE80;
-using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.Win32;
 
 namespace BrunchTaskRunner
 {
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", Constants.VERSION, IconResourceID = 400)]
+    [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
     [Guid("4da50b2f-e51e-448a-8fa7-cdb0a5013ee9")]
     public sealed class BrunchPackage : Package
     {

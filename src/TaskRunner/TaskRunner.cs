@@ -50,10 +50,10 @@ namespace BrunchTaskRunner
 
             // Build
             TaskRunnerNode build = new TaskRunnerNode("Build", false);
-            TaskRunnerNode buildDev = CreateTask(cwd, " build", "Runs 'brunch build'", "/c brunch build");
+            TaskRunnerNode buildDev = CreateTask(cwd, "build", "Runs 'brunch build'", "/c brunch build");
             build.Children.Add(buildDev);
 
-            TaskRunnerNode buildProd = CreateTask(cwd, " build production", "Runs 'brunch build --production'", "/c brunch build -P");
+            TaskRunnerNode buildProd = CreateTask(cwd, "build production", "Runs 'brunch build --production'", "/c brunch build -P");
             build.Children.Add(buildProd);
 
             root.Children.Add(build);

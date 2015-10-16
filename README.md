@@ -10,7 +10,7 @@ Download the extension at the
 or get the
 [nightly build](http://vsixgallery.com/extension/b4a4ad37-5a4b-4dfd-85fd-595cab6a26a9/)
 
-### Execute tasks
+### Task Runner Explorer
 
 Task Runner Explorer will show both _build_ and _watch_
 tasks as well as any overrides file present in the working
