@@ -1,5 +1,5 @@
 ## Brunch Task Runner extension
-<img src="src/resources/preview.png" style="float:right" />
+<img src="src/Resources/preview.png" style="float:right" />
 
 Adds support for the [Brunch](http://brunch.io/)
 build tool in Visual Studio 2015's Task Runner Explorer.
