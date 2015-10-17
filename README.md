@@ -1,8 +1,11 @@
 ## Brunch Task Runner extension
+<img src="src/resources/preview.png" style="float:right" />
+
 Adds support for the [Brunch](http://brunch.io/)
 build tool in Visual Studio 2015's Task Runner Explorer.
 
 [![Build status](https://ci.appveyor.com/api/projects/status/3x24c3gbyv2g34l8?svg=true)](https://ci.appveyor.com/project/madskristensen/brunchtaskrunner)
+
 
 Download the extension at the
 [VS Gallery](https://visualstudiogallery.msdn.microsoft.com/de706ad0-8a73-4df3-bef5-867bb9a70d51)
