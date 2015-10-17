@@ -10,7 +10,7 @@ using Microsoft.VisualStudio.TaskRunnerExplorer;
 
 namespace BrunchTaskRunner
 {
-    [TaskRunnerExport("brunch-config.js", "brunch-config.coffee")]
+    [TaskRunnerExport("brunch-config.js", "brunch-config.coffee", "config.coffee")]
     class TaskRunner : ITaskRunner
     {
         private static ImageSource _icon;
