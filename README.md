@@ -35,8 +35,13 @@ the context menu:
 ![Open Task Runner Explorer](art/open-trx.png)
 
 Task Runner Explorer will show both _build_ and _watch_
-tasks as well as any overrides file present in the working
+tasks as well as any _override files_ present in the working
 directory.
+
+In this case, there are two *override files*:
+
+1. config.overrides.**staging**
+1. config.overrides.**test**
 
 ![Task List](art/task-list.png)
 
