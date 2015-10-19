@@ -25,7 +25,7 @@ namespace BrunchTaskRunner
             }
         }
 
-        private void InitializeGruntRunnerOptions()
+        private void InitializeBrunchRunnerOptions()
         {
             _options = new List<ITaskRunnerOption>();
             _options.Add(new TaskRunnerOption("Debug", PackageIds.cmdDebug, PackageGuids.guidBrunchPackageCmdSet, false, "--debug"));
@@ -37,7 +37,7 @@ namespace BrunchTaskRunner
             {
                 if (_options == null)
                 {
-                    InitializeGruntRunnerOptions();
+                    InitializeBrunchRunnerOptions();
                 }
 
                 return _options;
