@@ -49,6 +49,15 @@ Each task can be executed by double-clicking the task.
 
 ![Console output](art/console.png)
 
+### Debugging
+By clicking the _Debug_ icon on the left menu bar, the
+**--debug** switch is being enabled for all Brunch tasks.
+
+![Debug](art/debug.png)
+
+The _Debug_ menu icon is a toggle button that can be left
+on or off for as long as needed.
+
 ### Bindings
 Task bindings make it possible to associate individual tasks
 with Visual Studio events such as _Project Open_ etc.

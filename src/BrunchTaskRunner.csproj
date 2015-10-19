@@ -52,6 +52,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="TaskRunner\TaskRunnerOption.cs" />
+    <Compile Include="VsCommandTable.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VsCommandTable.vsct</DependentUpon>
+    </Compile>
     <Compile Include="BrunchPackage.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Helpers\ProjectHelpers.cs" />
@@ -187,9 +193,15 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <VSCTCompile Include="VsCommandTable.vsct">
+      <ResourceName>Menus.ctmenu</ResourceName>
+      <Generator>VsctGenerator</Generator>
+      <LastGenOutput>VsCommandTable.cs</LastGenOutput>
+    </VSCTCompile>
     <Content Include="registry.pkgdef">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="Resources\BrunchCommand.png" />
     <Content Include="Resources\BrunchPackage.ico" />
     <Content Include="Resources\icon.png">
       <IncludeInVSIX>true</IncludeInVSIX>

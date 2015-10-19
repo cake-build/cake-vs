@@ -10,7 +10,8 @@ namespace BrunchTaskRunner
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", Constants.VERSION, IconResourceID = 400)]
     [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
-    [Guid("4da50b2f-e51e-448a-8fa7-cdb0a5013ee9")]
+    [Guid(PackageGuids.guidBrunchPackageString)]
+    [ProvideMenuResource("Menus.ctmenu", 1)]
     public sealed class BrunchPackage : Package
     {
         internal static DTE2 Dte;

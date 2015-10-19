@@ -14,6 +14,7 @@ namespace BrunchTaskRunner
     class TaskRunner : ITaskRunner
     {
         private static ImageSource _icon;
+        private List<ITaskRunnerOption> _options = null;
 
         public TaskRunner()
         {
@@ -24,9 +25,23 @@ namespace BrunchTaskRunner
             }
         }
 
+        private void InitializeGruntRunnerOptions()
+        {
+            _options = new List<ITaskRunnerOption>();
+            _options.Add(new TaskRunnerOption("Debug", PackageIds.cmdDebug, PackageGuids.guidBrunchPackageCmdSet, false, "--debug"));
+        }
+
         public List<ITaskRunnerOption> Options
         {
-            get { return null; }
+            get
+            {
+                if (_options == null)
+                {
+                    InitializeGruntRunnerOptions();
+                }
+
+                return _options;
+            }
         }
 
         public async Task<ITaskRunnerConfig> ParseConfig(ITaskRunnerCommandContext context, string configPath)

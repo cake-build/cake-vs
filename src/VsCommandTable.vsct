@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <Extern href="stdidcmd.h"/>
+    <Extern href="vsshlids.h"/>
+    <Include href="KnownImageIds.vsct"/>
+
+    <Commands package="guidBrunchPackage">
+        <Buttons>
+            <Button guid="guidBrunchPackageCmdSet" id="cmdDebug" priority="0x0400" type="Button">
+                <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
+                <Icon guid="ImageCatalogGuid" id="StartLogging" />
+                <CommandFlag>IconIsMoniker</CommandFlag>
+                <CommandFlag>DefaultInvisible</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Debug</ButtonText>
+                </Strings>
+            </Button>
+        </Buttons>
+    </Commands>
+
+    <Symbols>
+        <!-- This is the package guid. -->
+        <GuidSymbol name="guidBrunchPackage" value="{4da50b2f-e51e-448a-8fa7-cdb0a5013ee9}" />
+
+        <GuidSymbol name="guidBrunchPackageCmdSet" value="{8a146367-3169-459c-80ed-3c012ec0e380}">
+            <IDSymbol name="cmdDebug" value="0x0100" />
+        </GuidSymbol>
+
+        <GuidSymbol name="guidTaskRunnerExplorerCmdSet" value="{9E78B319-2142-4381-873C-6EC83F092915}">
+            <IDSymbol name="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" value="0x2002" />
+        </GuidSymbol>
+    </Symbols>
+</CommandTable>
