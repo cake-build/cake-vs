@@ -1,5 +1,6 @@
 packages
 node_modules.7z
+template-report.xml
 
 # User files
 *.suo

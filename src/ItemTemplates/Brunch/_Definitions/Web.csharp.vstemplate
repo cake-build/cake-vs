@@ -1,0 +1,18 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Item">
+    <TemplateData>
+        <DefaultName>brunch-config.coffee</DefaultName>
+        <Name>Brunch Configuration file (CoffeeScript)</Name>
+        <Description>Brunch Task Runner configuration file.</Description>
+        <ProjectType>Web</ProjectType>
+        <ProjectSubType>CSharp</ProjectSubType>
+        <Icon>icon.png</Icon>
+        <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+        <TemplateID>5d0d6b46-9f0f-4948-b3f5-7f3d4dcb320b</TemplateID>
+        <AppliesTo>ABC | (!ABC)</AppliesTo>
+        <SortOrder>1000</SortOrder>
+    </TemplateData>
+    <TemplateContent>
+        <References />
+        <ProjectItem ReplaceParameters="false" TargetFileName="brunch-config.coffee">brunch-config.coffee</ProjectItem>
+    </TemplateContent>
+</VSTemplate>
