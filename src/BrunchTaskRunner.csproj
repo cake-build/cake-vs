@@ -205,6 +205,7 @@
       <LastGenOutput>VsCommandTable.cs</LastGenOutput>
     </VSCTCompile>
     <Content Include="ItemTemplates\Brunch\icon.png" />
+    <Content Include="ItemTemplates\Brunch\preview.png" />
     <Content Include="ItemTemplates\Brunch\_Definitions\CSharp.vstemplate" />
     <Content Include="ItemTemplates\Brunch\_Definitions\Web.csharp.vstemplate" />
     <Content Include="ItemTemplates\Brunch\_preprocess.xml" />

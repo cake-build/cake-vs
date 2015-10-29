@@ -5,6 +5,7 @@
         <Description>Brunch Task Runner configuration file.</Description>
         <ProjectType>CSharp</ProjectType>
         <Icon>icon.png</Icon>
+        <PreviewImage>preview.png</PreviewImage>
         <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
         <TemplateID>5d0d6b46-9f0f-4948-b3f5-7f3d4dcb3200</TemplateID>
         <AppliesTo>ABC | (!ABC)</AppliesTo>

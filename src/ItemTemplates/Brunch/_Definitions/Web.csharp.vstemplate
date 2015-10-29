@@ -6,6 +6,7 @@
         <ProjectType>Web</ProjectType>
         <ProjectSubType>CSharp</ProjectSubType>
         <Icon>icon.png</Icon>
+        <PreviewImage>preview.png</PreviewImage>
         <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
         <TemplateID>5d0d6b46-9f0f-4948-b3f5-7f3d4dcb320b</TemplateID>
         <AppliesTo>ABC | (!ABC)</AppliesTo>

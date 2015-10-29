@@ -27,6 +27,14 @@ Brunch configuration files. These file names are supported:
 2. brunch-config.coffee
 3. brunch-config.js
 
+### Item Template
+You can easily add a new **brunch-config.coffee** file to
+your project from the _Add New Item_ dialog.
+
+Just search for "brunch".
+
+![Item template](art/item-template.png)
+
 ### Task Runner Explorer
 Open Task Runner Explorer by right-clicking the Brunch
 configuration file and select **Task Runner Explorer** from
