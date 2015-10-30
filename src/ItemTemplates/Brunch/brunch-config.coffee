@@ -1,4 +1,4 @@
-﻿exports.config =
+exports.config =
   # See http://brunch.io/ for documentation.
   paths:
     public: 'wwwroot'
@@ -13,3 +13,4 @@
         '/css/libs.css' : /(vendor|bower_components)/
   modules:
     wrapper: false
+    definition: false
