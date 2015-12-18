@@ -1,4 +1,4 @@
-## Brunch Task Runner extension
+# Brunch Task Runner extension
 Adds support for the [Brunch](http://brunch.io/)
 build tool in Visual Studio 2015's Task Runner Explorer.
 
@@ -9,7 +9,7 @@ Download the extension at the
 or get the
 [nightly build](http://vsixgallery.com/extension/b4a4ad37-5a4b-4dfd-85fd-595cab6a26a9/)
 
-### Install Brunch
+## Install Brunch
 In order to use this extension, you must have
 [Brunch](http://brunch.io/) installed globally or locally
 in your project.
@@ -19,7 +19,7 @@ typing the following in a command line:
 
 >npm install brunch -g
 
-### Config files
+## Config files
 The Brunch Task Runner automatically triggers when it finds
 Brunch configuration files. These file names are supported:
 
@@ -27,15 +27,15 @@ Brunch configuration files. These file names are supported:
 2. brunch-config.coffee
 3. brunch-config.js
 
-### Item Template
-You can easily add a new **brunch-config.coffee** file to
-your project from the _Add New Item_ dialog.
+Any config file will have a WebPack logo watermark at
+the bottom right corner of the editor window.
 
-Just search for "brunch".
+![Watermark](art/watermark.png)
 
-![Item template](art/item-template.png)
+You can toggle the visibility of the watermark by clicking
+on it.
 
-### Task Runner Explorer
+## Task Runner Explorer
 Open Task Runner Explorer by right-clicking the Brunch
 configuration file and select **Task Runner Explorer** from
 the context menu:
@@ -72,5 +72,13 @@ with Visual Studio events such as _Project Open_ etc.
 
 ![Bindings](art/bindings.png)
 
+## Item Template
+You can easily add a new **brunch-config.coffee** file to
+your project from the _Add New Item_ dialog.
 
+Just search for "brunch".
 
+![Item template](art/item-template.png)
+
+## License
+[Apache 2.0](LICENSE)
