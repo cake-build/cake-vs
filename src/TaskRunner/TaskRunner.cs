@@ -61,7 +61,7 @@ namespace BrunchTaskRunner
 
             Telemetry.TrackEvent(configFileName.ToLowerInvariant());
 
-            ITaskRunnerNode root = new TaskRunnerNode(Constants.TASK_CATEGORY);
+            ITaskRunnerNode root = new TaskRunnerNode("Brunch");
 
             // Build
             TaskRunnerNode build = new TaskRunnerNode("Build", false);

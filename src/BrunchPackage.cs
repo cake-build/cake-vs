@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 namespace BrunchTaskRunner
 {
     [PackageRegistration(UseManagedResourcesOnly = true)]
-    [InstalledProductRegistration("#110", "#112", Constants.VERSION, IconResourceID = 400)]
+    [InstalledProductRegistration("#110", "#112", Vsix.Version, IconResourceID = 400)]
     [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
     [Guid(PackageGuids.guidBrunchPackageString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
@@ -20,7 +20,7 @@ namespace BrunchTaskRunner
         {
             Dte = (DTE2)GetService(typeof(DTE));
 
-            Telemetry.Initialize(Dte, Constants.VERSION, "563f0ff8-e4bd-4f17-9821-464bbd5722e4");
+            Telemetry.Initialize(Dte, Vsix.Version, "563f0ff8-e4bd-4f17-9821-464bbd5722e4");
 
             base.Initialize();
         }
