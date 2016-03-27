@@ -68,7 +68,7 @@ namespace BrunchTaskRunner
             TaskRunnerNode buildDev = CreateTask(cwd, "build", "Runs 'brunch build'", "/c brunch build");
             build.Children.Add(buildDev);
 
-            TaskRunnerNode buildProd = CreateTask(cwd, "build production", "Runs 'brunch build --production'", "/c brunch build -P");
+            TaskRunnerNode buildProd = CreateTask(cwd, "build production", "Runs 'brunch build --production'", "/c brunch build -p");
             build.Children.Add(buildProd);
 
             root.Children.Add(build);
@@ -78,7 +78,7 @@ namespace BrunchTaskRunner
             TaskRunnerNode watchDev = CreateTask(cwd, "watch", "Runs 'brunch watch'", "/c brunch watch");
             watch.Children.Add(watchDev);
 
-            TaskRunnerNode watchProd = CreateTask(cwd, "watch production", "Runs 'brunch watch --production'", "/c brunch watch -P");
+            TaskRunnerNode watchProd = CreateTask(cwd, "watch production", "Runs 'brunch watch --production'", "/c brunch watch -p");
             watch.Children.Add(watchProd);
 
             root.Children.Add(watch);
