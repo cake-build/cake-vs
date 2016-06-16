@@ -19,9 +19,7 @@ namespace BrunchTaskRunner
         protected override void Initialize()
         {
             Dte = (DTE2)GetService(typeof(DTE));
-
-            Telemetry.Initialize(Dte, Vsix.Version, "563f0ff8-e4bd-4f17-9821-464bbd5722e4");
-
+            Logger.Initialize(this, Vsix.Name);
             base.Initialize();
         }
 

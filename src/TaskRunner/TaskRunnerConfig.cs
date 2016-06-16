@@ -48,7 +48,6 @@ namespace BrunchTaskRunner
         public bool SaveBindings(string configPath, string bindingsXml)
         {
             string bindingPath = configPath + ".bindings";
-            Telemetry.TrackEvent("Updated bindings");
 
             try
             {

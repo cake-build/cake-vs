@@ -41,7 +41,6 @@ namespace BrunchTaskRunner
             if (ex != null)
             {
                 Log(ex.ToString());
-                Telemetry.TrackException(ex);
             }
         }
 

@@ -59,8 +59,6 @@ namespace BrunchTaskRunner
             string configFileName = Path.GetFileName(configPath);
             string cwd = Path.GetDirectoryName(configPath);
 
-            Telemetry.TrackEvent(configFileName.ToLowerInvariant());
-
             ITaskRunnerNode root = new TaskRunnerNode("Brunch");
 
             // Build
