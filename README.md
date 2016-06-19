@@ -27,7 +27,7 @@ Brunch configuration files. These file names are supported:
 2. brunch-config.coffee
 3. brunch-config.js
 
-Any config file will have a WebPack logo watermark at
+Any config file will have a Brunch logo watermark at
 the bottom right corner of the editor window.
 
 ![Watermark](art/watermark.png)
