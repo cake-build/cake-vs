@@ -8,9 +8,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Microsoft.VisualStudio.TaskRunnerExplorer;
 
-namespace BrunchTaskRunner
+namespace CakeTaskRunner.TaskRunner
 {
-    [TaskRunnerExport("brunch-config.js", "brunch-config.coffee", "config.coffee")]
+    [TaskRunnerExport("build.cake")]
     class TaskRunner : ITaskRunner
     {
         private static ImageSource _icon;
@@ -25,10 +25,10 @@ namespace BrunchTaskRunner
             }
         }
 
-        private void InitializeBrunchRunnerOptions()
+        private void InitializeCakeRunnerOptions()
         {
             _options = new List<ITaskRunnerOption>();
-            _options.Add(new TaskRunnerOption("Debug", PackageIds.cmdDebug, PackageGuids.guidBrunchPackageCmdSet, false, "--debug"));
+            _options.Add(new TaskRunnerOption("Debug", PackageIds.cmdDebug, PackageGuids.guidCakePackageCmdSet, false, "-debug"));
         }
 
         public List<ITaskRunnerOption> Options
@@ -37,7 +37,7 @@ namespace BrunchTaskRunner
             {
                 if (_options == null)
                 {
-                    InitializeBrunchRunnerOptions();
+                    InitializeCakeRunnerOptions();
                 }
 
                 return _options;

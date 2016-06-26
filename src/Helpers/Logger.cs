@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.Shell.Interop;
 
-namespace BrunchTaskRunner
+namespace CakeTaskRunner.Helpers
 {
     public static class Logger
     {

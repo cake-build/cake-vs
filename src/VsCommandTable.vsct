@@ -5,9 +5,9 @@
     <Extern href="vsshlids.h"/>
     <Include href="KnownImageIds.vsct"/>
 
-    <Commands package="guidBrunchPackage">
+    <Commands package="guidCakePackage">
         <Buttons>
-            <Button guid="guidBrunchPackageCmdSet" id="cmdDebug" priority="0x0400" type="Button">
+            <Button guid="guidCakePackageCmdSet" id="cmdDebug" priority="0x0400" type="Button">
                 <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
                 <Icon guid="ImageCatalogGuid" id="StartLogging" />
                 <CommandFlag>IconIsMoniker</CommandFlag>
@@ -22,13 +22,13 @@
 
     <Symbols>
         <!-- This is the package guid. -->
-        <GuidSymbol name="guidBrunchPackage" value="{4da50b2f-e51e-448a-8fa7-cdb0a5013ee9}" />
+        <GuidSymbol name="guidCakePackage" value="{62E192B9-D3B1-4FFE-969F-47EA65AF40D4}" />
 
-        <GuidSymbol name="guidBrunchPackageCmdSet" value="{8a146367-3169-459c-80ed-3c012ec0e380}">
+        <GuidSymbol name="guidCakePackageCmdSet" value="{053A476E-69C1-4DDD-A56E-2019A3AE8AB9}">
             <IDSymbol name="cmdDebug" value="0x0100" />
         </GuidSymbol>
 
-        <GuidSymbol name="guidTaskRunnerExplorerCmdSet" value="{9E78B319-2142-4381-873C-6EC83F092915}">
+        <GuidSymbol name="guidTaskRunnerExplorerCmdSet" value="{39FAA100-AC2B-40F9-81E5-AC24DF0D3D1B}">
             <IDSymbol name="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" value="0x2002" />
         </GuidSymbol>
     </Symbols>

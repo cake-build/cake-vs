@@ -2,10 +2,11 @@
 using System.IO;
 using System.Text;
 using System.Windows.Media;
+using CakeTaskRunner.Helpers;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TaskRunnerExplorer;
 
-namespace BrunchTaskRunner
+namespace CakeTaskRunner.TaskRunner
 {
     class TaskRunnerConfig : ITaskRunnerConfig
     {
@@ -64,7 +65,7 @@ namespace BrunchTaskRunner
                 }
 
                 IVsPersistDocData persistDocData;
-                if (!BrunchPackage.IsDocumentDirty(configPath, out persistDocData) && persistDocData != null)
+                if (!CakePackage.IsDocumentDirty(configPath, out persistDocData) && persistDocData != null)
                 {
                     int cancelled;
                     string newName;

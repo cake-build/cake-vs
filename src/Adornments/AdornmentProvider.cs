@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
 
-namespace BrunchTaskRunner
+namespace CakeTaskRunner.Adornments
 {
     [Export(typeof(IWpfTextViewCreationListener))]
     [ContentType("text")]

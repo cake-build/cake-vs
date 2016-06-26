@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
 
-namespace BrunchTaskRunner
+namespace CakeTaskRunner.Adornments
 {
     class AdornmentLayer
     {

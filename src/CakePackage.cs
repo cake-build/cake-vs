@@ -1,18 +1,19 @@
 ﻿using System.Runtime.InteropServices;
+using CakeTaskRunner.Helpers;
 using EnvDTE;
 using EnvDTE80;
 using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
-namespace BrunchTaskRunner
+namespace CakeTaskRunner
 {
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", Vsix.Version, IconResourceID = 400)]
     [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
-    [Guid(PackageGuids.guidBrunchPackageString)]
+    [Guid(PackageGuids.guidCakePackageString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    public sealed class BrunchPackage : Package
+    public sealed class CakePackage : Package
     {
         internal static DTE2 Dte;
 

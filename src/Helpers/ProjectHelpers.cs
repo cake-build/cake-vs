@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 using EnvDTE;
 using EnvDTE80;
 
-namespace BrunchTaskRunner
+namespace CakeTaskRunner.Helpers
 {
     public static class ProjectHelpers
     {
-        private static DTE2 _dte = BrunchPackage.Dte;
+        private static DTE2 _dte = CakePackage.Dte;
 
         public static void CheckFileOutOfSourceControl(string file)
         {

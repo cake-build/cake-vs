@@ -9,9 +9,9 @@
     <UseCodebase>true</UseCodebase>
   </PropertyGroup>
   <PropertyGroup>
-      <StartAction>Program</StartAction>
-      <StartProgram>$(DevEnvDir)\devenv.exe</StartProgram>
-      <StartArguments>/rootsuffix Exp</StartArguments>
+    <StartAction>Program</StartAction>
+    <StartProgram>$(DevEnvDir)\devenv.exe</StartProgram>
+    <StartArguments>/rootsuffix Exp</StartArguments>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -22,8 +22,8 @@
     <ProjectGuid>{94660BCF-169A-42E1-BD84-345449743069}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BrunchTaskRunner</RootNamespace>
-    <AssemblyName>BrunchTaskRunner</AssemblyName>
+    <RootNamespace>CakeTaskRunner</RootNamespace>
+    <AssemblyName>CakeTaskRunner</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <GeneratePkgDefFile>true</GeneratePkgDefFile>
     <IncludeAssemblyInVSIXContainer>true</IncludeAssemblyInVSIXContainer>
@@ -65,7 +65,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VsCommandTable.vsct</DependentUpon>
     </Compile>
-    <Compile Include="BrunchPackage.cs" />
+    <Compile Include="CakePackage.cs" />
     <Compile Include="Helpers\ProjectHelpers.cs" />
     <Compile Include="Helpers\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -216,6 +216,7 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Design" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="TemplateBuilder, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\TemplateBuilder.1.1.4.5-beta\lib\TemplateBuilder.dll</HintPath>
       <Private>False</Private>
