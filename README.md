@@ -1,33 +1,23 @@
-# Brunch Task Runner extension
-Adds support for the [Brunch](http://brunch.io/)
+# Cake Task Runner extension
+Adds support for the [Cake](http://cakebuild.net/)
 build tool in Visual Studio 2015's Task Runner Explorer.
 
-[![Build status](https://ci.appveyor.com/api/projects/status/3x24c3gbyv2g34l8?svg=true)](https://ci.appveyor.com/project/madskristensen/brunchtaskrunner)
+Based off Mads Kristensen's excellent [Brunch Task Runner](https://github.com/madskristensen/BrunchTaskRunner) extension.
 
-Download the extension at the
-[VS Gallery](https://visualstudiogallery.msdn.microsoft.com/de706ad0-8a73-4df3-bef5-867bb9a70d51)
-or get the
-[nightly build](http://vsixgallery.com/extension/b4a4ad37-5a4b-4dfd-85fd-595cab6a26a9/)
-
-## Install Brunch
+## Install Cake
 In order to use this extension, you must have
-[Brunch](http://brunch.io/) installed globally or locally
-in your project.
+[Cake](https://cakebuild.net/) installed on your machine.
 
-Use [npm](http://npmjs.org/) to install it globally by
+Use [chocolatey](http://chocolatey.org/) to install it globally by
 typing the following in a command line:
 
->npm install brunch -g
+>cinst -y cake.portable
 
 ## Config files
 The Brunch Task Runner automatically triggers when it finds
-Brunch configuration files. These file names are supported:
+a `build.cake` file. 
 
-1. config.coffee
-2. brunch-config.coffee
-3. brunch-config.js
-
-Any config file will have a Brunch logo watermark at
+This Cake script will have a Cake logo watermark at
 the bottom right corner of the editor window.
 
 ![Watermark](art/watermark.png)
@@ -36,8 +26,7 @@ You can toggle the visibility of the watermark by clicking
 on it.
 
 ## Task Runner Explorer
-Open Task Runner Explorer by right-clicking the Brunch
-configuration file and select **Task Runner Explorer** from
+Open Task Runner Explorer by right-clicking the Cake script and select **Task Runner Explorer** from
 the context menu:
 
 ![Open Task Runner Explorer](art/open-trx.png)

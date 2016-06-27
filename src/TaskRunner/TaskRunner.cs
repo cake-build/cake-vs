@@ -59,27 +59,27 @@ namespace CakeTaskRunner.TaskRunner
             string configFileName = Path.GetFileName(configPath);
             string cwd = Path.GetDirectoryName(configPath);
 
-            ITaskRunnerNode root = new TaskRunnerNode("Brunch");
+            ITaskRunnerNode root = new TaskRunnerNode("Cake");
 
             // Build
             TaskRunnerNode build = new TaskRunnerNode("Build", false);
-            TaskRunnerNode buildDev = CreateTask(cwd, "build", "Runs 'brunch build'", "/c brunch build");
+            TaskRunnerNode buildDev = CreateTask(cwd, "build", "Runs 'cake build.cake'", "/c cake");
             build.Children.Add(buildDev);
 
-            TaskRunnerNode buildProd = CreateTask(cwd, "build production", "Runs 'brunch build --production'", "/c brunch build -p");
-            build.Children.Add(buildProd);
+            //TaskRunnerNode buildProd = CreateTask(cwd, "build production", "Runs 'brunch build --production'", "/c brunch build -p");
+            //build.Children.Add(buildProd);
 
             root.Children.Add(build);
 
             // Watch
-            TaskRunnerNode watch = new TaskRunnerNode("Watch", false);
-            TaskRunnerNode watchDev = CreateTask(cwd, "watch", "Runs 'brunch watch'", "/c brunch watch");
-            watch.Children.Add(watchDev);
+            //TaskRunnerNode watch = new TaskRunnerNode("Watch", false);
+            //TaskRunnerNode watchDev = CreateTask(cwd, "watch", "Runs 'brunch watch'", "/c brunch watch");
+            //watch.Children.Add(watchDev);
 
-            TaskRunnerNode watchProd = CreateTask(cwd, "watch production", "Runs 'brunch watch --production'", "/c brunch watch -p");
-            watch.Children.Add(watchProd);
+            //TaskRunnerNode watchProd = CreateTask(cwd, "watch production", "Runs 'brunch watch --production'", "/c brunch watch -p");
+            //watch.Children.Add(watchProd);
 
-            root.Children.Add(watch);
+            //root.Children.Add(watch);
 
             return root;
         }
@@ -92,7 +92,7 @@ namespace CakeTaskRunner.TaskRunner
                 Command = GetCommand(cwd, args)
             };
 
-            ApplyOverrides(task);
+            //ApplyOverrides(task);
 
             return task;
         }
