@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
 
-namespace CakeTaskRunner.Adornments
+namespace Cake.VisualStudio.Adornments
 {
     [Export(typeof(IWpfTextViewCreationListener))]
     [ContentType("text")]
@@ -67,7 +67,7 @@ namespace CakeTaskRunner.Adornments
             if (string.IsNullOrEmpty(fileName) || !Path.IsPathRooted(document.FilePath))
                 return;
 
-            if (fileName.StartsWith("brunch-config.") || fileName.Contains(".overrides.") || fileName == "config.coffee")
+            if (fileName.EndsWith(".cake"))
             {
                 textView.Properties.GetOrCreateSingletonProperty(() => new LogoAdornment(textView, _isVisible, _initOpacity));
             }

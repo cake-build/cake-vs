@@ -22,8 +22,8 @@
     <ProjectGuid>{94660BCF-169A-42E1-BD84-345449743069}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CakeTaskRunner</RootNamespace>
-    <AssemblyName>CakeTaskRunner</AssemblyName>
+    <RootNamespace>Cake.VisualStudio</RootNamespace>
+    <AssemblyName>Cake.VisualStudio</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <GeneratePkgDefFile>true</GeneratePkgDefFile>
     <IncludeAssemblyInVSIXContainer>true</IncludeAssemblyInVSIXContainer>
@@ -59,6 +59,7 @@
     <Compile Include="source.extension.cs">
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Compile>
+    <Compile Include="TaskRunner\TaskParser.cs" />
     <Compile Include="TaskRunner\TaskRunnerOption.cs" />
     <Compile Include="VsCommandTable.cs">
       <AutoGen>True</AutoGen>
@@ -80,9 +81,9 @@
     <Content Include="source.extension.ico">
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Content>
-    <None Include="ItemTemplates\Brunch\brunch-config.coffee" />
     <None Include="packages.config" />
     <None Include="Properties\template-builder.props" />
+    <None Include="Snippets\cake-task.snippet" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
       <Generator>VsixManifestGenerator</Generator>
@@ -229,13 +230,9 @@
       <Generator>VsctGenerator</Generator>
       <LastGenOutput>VsCommandTable.cs</LastGenOutput>
     </VSCTCompile>
-    <Content Include="ItemTemplates\Brunch\icon.png" />
-    <Content Include="ItemTemplates\Brunch\preview.png" />
-    <Content Include="ItemTemplates\Brunch\_Definitions\CSharp.vstemplate" />
-    <Content Include="ItemTemplates\Brunch\_Definitions\Web.csharp.vstemplate" />
-    <Content Include="ItemTemplates\Brunch\_preprocess.xml" />
-    <Content Include="registry.pkgdef">
+    <Content Include="snippets.pkgdef">
       <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\icon.png">
       <IncludeInVSIX>true</IncludeInVSIX>
@@ -256,6 +253,9 @@
       <MergeWithCTO>true</MergeWithCTO>
       <ManifestResourceName>VSPackage</ManifestResourceName>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ContentType\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />

@@ -1,27 +1,33 @@
 ﻿using System.Runtime.InteropServices;
-using CakeTaskRunner.Helpers;
+using Cake.VisualStudio.Helpers;
 using EnvDTE;
 using EnvDTE80;
+using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
-namespace CakeTaskRunner
+namespace Cake.VisualStudio
 {
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", Vsix.Version, IconResourceID = 400)]
     [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
     [Guid(PackageGuids.guidCakePackageString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    public sealed class CakePackage : Package
+    public sealed class CakePackage : Package, IVsShellPropertyEvents
     {
-        internal static DTE2 Dte;
+        private static DTE2 _dte;
+        internal static DTE2 Dte => _dte ?? (_dte = (DTE2) GetGlobalService(typeof(DTE)));
+
+        uint _cookie;
 
         protected override void Initialize()
         {
-            Dte = (DTE2)GetService(typeof(DTE));
             Logger.Initialize(this, Vsix.Name);
             base.Initialize();
+            IVsShell shellService = GetService(typeof(SVsShell)) as IVsShell;
+            if (shellService != null)
+                ErrorHandler.ThrowOnFailure(shellService.AdviseShellPropertyChanges(this, out _cookie));
         }
 
         public static bool IsDocumentDirty(string documentPath, out IVsPersistDocData persistDocData)
@@ -40,6 +46,38 @@ namespace CakeTaskRunner
             }
 
             return false;
+        }
+
+        public int OnShellPropertyChange(int propid, object var)
+        {
+            // when zombie state changes to false, finish package initialization
+
+            if ((int)__VSSPROPID.VSSPROPID_Zombie == propid)
+
+            {
+
+                if ((bool)var == false)
+
+                {
+
+                    // zombie state dependent code
+
+                    //Dte = (DTE2)GetService(typeof(DTE));
+                    // eventlistener no longer needed
+
+                    IVsShell shellService = GetService(typeof(SVsShell)) as IVsShell;
+
+                    if (shellService != null)
+
+                        ErrorHandler.ThrowOnFailure(shellService.UnadviseShellPropertyChanges(this._cookie));
+
+                    this._cookie = 0;
+
+                }
+
+            }
+
+            return VSConstants.S_OK;
         }
     }
 }

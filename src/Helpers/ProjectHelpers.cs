@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using EnvDTE;
 using EnvDTE80;
 
-namespace CakeTaskRunner.Helpers
+namespace Cake.VisualStudio.Helpers
 {
     public static class ProjectHelpers
     {

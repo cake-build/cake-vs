@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TaskRunnerExplorer;
 
-namespace CakeTaskRunner.TaskRunner
+namespace Cake.VisualStudio.TaskRunner
 {
     public class TaskRunnerOption : ITaskRunnerOption
     {

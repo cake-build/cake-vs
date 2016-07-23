@@ -8,7 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Microsoft.VisualStudio.TaskRunnerExplorer;
 
-namespace CakeTaskRunner.TaskRunner
+namespace Cake.VisualStudio.TaskRunner
 {
     [TaskRunnerExport("build.cake")]
     class TaskRunner : ITaskRunner
@@ -28,7 +28,7 @@ namespace CakeTaskRunner.TaskRunner
         private void InitializeCakeRunnerOptions()
         {
             _options = new List<ITaskRunnerOption>();
-            _options.Add(new TaskRunnerOption("Debug", PackageIds.cmdDebug, PackageGuids.guidCakePackageCmdSet, false, "-debug"));
+            _options.Add(new TaskRunnerOption("Debug", PackageIds.cmdDebug, PackageGuids.guidCakePackageCmdSet, false, "-Verbosity=\"Diagnostic\""));
         }
 
         public List<ITaskRunnerOption> Options
@@ -62,24 +62,15 @@ namespace CakeTaskRunner.TaskRunner
             ITaskRunnerNode root = new TaskRunnerNode("Cake");
 
             // Build
-            TaskRunnerNode build = new TaskRunnerNode("Build", false);
-            TaskRunnerNode buildDev = CreateTask(cwd, "build", "Runs 'cake build.cake'", "/c cake");
-            build.Children.Add(buildDev);
-
-            //TaskRunnerNode buildProd = CreateTask(cwd, "build production", "Runs 'brunch build --production'", "/c brunch build -p");
-            //build.Children.Add(buildProd);
-
-            root.Children.Add(build);
-
-            // Watch
-            //TaskRunnerNode watch = new TaskRunnerNode("Watch", false);
-            //TaskRunnerNode watchDev = CreateTask(cwd, "watch", "Runs 'brunch watch'", "/c brunch watch");
-            //watch.Children.Add(watchDev);
-
-            //TaskRunnerNode watchProd = CreateTask(cwd, "watch production", "Runs 'brunch watch --production'", "/c brunch watch -p");
-            //watch.Children.Add(watchProd);
-
-            //root.Children.Add(watch);
+            TaskRunnerNode buildDev = CreateTask(cwd, $"Default ({configFileName})", "Runs 'cake build.cake'", configFileName);
+            var tasks = TaskParser.LoadTasks(configPath);
+            var commands =
+                tasks.Select(
+                    t =>
+                        CreateTask(cwd, t.Key, $"Runs {configFileName} with the \"{t.Key}\" target",
+                            buildDev.Command.Args + $" {t.Value}"));
+            buildDev.Children.AddRange(commands);
+            root.Children.Add(buildDev);
 
             return root;
         }
@@ -118,7 +109,7 @@ namespace CakeTaskRunner.TaskRunner
 
         private ITaskRunnerCommand GetCommand(string cwd, string arguments)
         {
-            ITaskRunnerCommand command = new TaskRunnerCommand(cwd, "cmd", arguments);
+            ITaskRunnerCommand command = new TaskRunnerCommand(cwd, "cake", arguments);
 
             return command;
         }

@@ -2,11 +2,11 @@
 using System.IO;
 using System.Text;
 using System.Windows.Media;
-using CakeTaskRunner.Helpers;
+using Cake.VisualStudio.Helpers;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TaskRunnerExplorer;
 
-namespace CakeTaskRunner.TaskRunner
+namespace Cake.VisualStudio.TaskRunner
 {
     class TaskRunnerConfig : ITaskRunnerConfig
     {
