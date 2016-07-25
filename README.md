@@ -11,7 +11,7 @@ In order to use this extension, you must have
 Use [chocolatey](http://chocolatey.org/) to install it globally by
 typing the following in an elevated command prompt:
 
->cinst -y cake.portable
+>choco install -y cake.portable
 
 ## Build scripts
 The Cake Task Runner automatically triggers when it finds
