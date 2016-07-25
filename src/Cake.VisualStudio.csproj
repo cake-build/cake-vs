@@ -56,6 +56,15 @@
     <Compile Include="Adornments\AdornmentLayer.cs" />
     <Compile Include="Adornments\AdornmentProvider.cs" />
     <Compile Include="Adornments\LogoAdornment.cs" />
+    <Compile Include="Classifier\CakeClassifier.cs" />
+    <Compile Include="Classifier\CakeClassificationDefinition.cs" />
+    <Compile Include="Classifier\CakeClassifierFormat.cs" />
+    <Compile Include="Classifier\CakeClassifierProvider.cs" />
+    <Compile Include="Classifier\ClassifierNames.cs" />
+    <Compile Include="Classifier\Languages\BaseLanguage.cs" />
+    <Compile Include="Classifier\Languages\CakeLanguage.cs" />
+    <Compile Include="ContentType\CakeContentTypeDefinition.cs" />
+    <Compile Include="Helpers\Constants.cs" />
     <Compile Include="source.extension.cs">
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Compile>
@@ -78,12 +87,17 @@
       <Link>Resources\LICENSE</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="ContentType\icons.pkgdef">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="source.extension.ico">
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <None Include="Properties\template-builder.props" />
     <None Include="Snippets\cake-task.snippet" />
+    <None Include="Snippets\argument.snippet" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
       <Generator>VsixManifestGenerator</Generator>
@@ -116,6 +130,7 @@
       <HintPath>..\packages\Microsoft.VisualStudio.Imaging.14.2.25123\lib\net45\Microsoft.VisualStudio.Imaging.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.Language.StandardClassification, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.OLE.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <HintPath>..\packages\Microsoft.VisualStudio.OLE.Interop.7.10.6070\lib\Microsoft.VisualStudio.OLE.Interop.dll</HintPath>
       <Private>True</Private>
@@ -215,9 +230,12 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Design" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
     <Reference Include="TemplateBuilder, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\TemplateBuilder.1.1.4.5-beta\lib\TemplateBuilder.dll</HintPath>
       <Private>False</Private>
@@ -254,9 +272,7 @@
       <ManifestResourceName>VSPackage</ManifestResourceName>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ContentType\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(TemplateBuilderTargets)" Condition="Exists('$(TemplateBuilderTargets)')" Label="TemplateBuilder" />

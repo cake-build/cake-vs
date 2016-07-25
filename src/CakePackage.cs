@@ -14,7 +14,7 @@ namespace Cake.VisualStudio
     [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
     [Guid(PackageGuids.guidCakePackageString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    public sealed class CakePackage : Package, IVsShellPropertyEvents
+    public sealed partial class CakePackage : Package, IVsShellPropertyEvents
     {
         private static DTE2 _dte;
         internal static DTE2 Dte => _dte ?? (_dte = (DTE2) GetGlobalService(typeof(DTE)));
