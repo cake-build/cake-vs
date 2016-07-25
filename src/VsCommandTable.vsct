@@ -7,16 +7,36 @@
 
     <Commands package="guidCakePackage">
         <Buttons>
-            <Button guid="guidCakePackageCmdSet" id="cmdDebug" priority="0x0400" type="Button">
+            <Button guid="guidCakePackageCmdSet" id="cmdVerbose" priority="0x0400" type="Button">
                 <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
                 <Icon guid="ImageCatalogGuid" id="StartLogging" />
                 <CommandFlag>IconIsMoniker</CommandFlag>
                 <CommandFlag>DefaultInvisible</CommandFlag>
                 <CommandFlag>DynamicVisibility</CommandFlag>
                 <Strings>
-                    <ButtonText>Debug</ButtonText>
+                    <ButtonText>Verbose</ButtonText>
                 </Strings>
             </Button>
+          <Button guid="guidCakePackageCmdSet" id="cmdDebug" priority="0x0400" type="Button">
+            <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
+            <Icon guid="ImageCatalogGuid" id="RemoteDebugger" />
+            <CommandFlag>IconIsMoniker</CommandFlag>
+            <CommandFlag>DefaultInvisible</CommandFlag>
+            <CommandFlag>DynamicVisibility</CommandFlag>
+            <Strings>
+              <ButtonText>Debug</ButtonText>
+            </Strings>
+          </Button>
+        <Button guid="guidCakePackageCmdSet" id="cmdDryRun" priority="0x0400" type="Button">
+            <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
+            <Icon guid="ImageCatalogGuid" id="TestPlan" />
+            <CommandFlag>IconIsMoniker</CommandFlag>
+            <CommandFlag>DefaultInvisible</CommandFlag>
+            <CommandFlag>DynamicVisibility</CommandFlag>
+            <Strings>
+              <ButtonText>Dry Run</ButtonText>
+            </Strings>
+          </Button>
         </Buttons>
     </Commands>
 
@@ -25,10 +45,12 @@
         <GuidSymbol name="guidCakePackage" value="{62E192B9-D3B1-4FFE-969F-47EA65AF40D4}" />
 
         <GuidSymbol name="guidCakePackageCmdSet" value="{053A476E-69C1-4DDD-A56E-2019A3AE8AB9}">
-            <IDSymbol name="cmdDebug" value="0x0100" />
+            <IDSymbol name="cmdDebug" value="0x0101" />
+          <IDSymbol name="cmdVerbose" value="0x0102" />
+        <IDSymbol name="cmdDryRun" value="0x0103" />
         </GuidSymbol>
 
-        <GuidSymbol name="guidTaskRunnerExplorerCmdSet" value="{39FAA100-AC2B-40F9-81E5-AC24DF0D3D1B}">
+        <GuidSymbol name="guidTaskRunnerExplorerCmdSet" value="{9E78B319-2142-4381-873C-6EC83F092915}">
             <IDSymbol name="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" value="0x2002" />
         </GuidSymbol>
     </Symbols>

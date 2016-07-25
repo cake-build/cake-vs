@@ -27,8 +27,13 @@ namespace Cake.VisualStudio.TaskRunner
 
         private void InitializeCakeRunnerOptions()
         {
-            _options = new List<ITaskRunnerOption>();
-            _options.Add(new TaskRunnerOption("Debug", PackageIds.cmdDebug, PackageGuids.guidCakePackageCmdSet, false, "-Verbosity=\"Diagnostic\""));
+            _options = new List<ITaskRunnerOption>
+            {
+                new TaskRunnerOption("Verbose", PackageIds.cmdVerbose, PackageGuids.guidCakePackageCmdSet, false,
+                    "-Verbosity=\"Diagnostic\""),
+                new TaskRunnerOption("Debug", PackageIds.cmdDebug, PackageGuids.guidCakePackageCmdSet, false, "-debug"),
+                new TaskRunnerOption("Dry Run", PackageIds.cmdDryRun, PackageGuids.guidCakePackageCmdSet, false, "-dryrun")
+            };
         }
 
         public List<ITaskRunnerOption> Options
@@ -86,25 +91,6 @@ namespace Cake.VisualStudio.TaskRunner
             //ApplyOverrides(task);
 
             return task;
-        }
-
-        private void ApplyOverrides(ITaskRunnerNode parent)
-        {
-            var files = Directory.EnumerateFiles(parent.Command.WorkingDirectory).Where(f => f.Contains(".overrides."));
-
-            foreach (string file in files)
-            {
-                int dot = file.LastIndexOf('.');
-                string name = file.Substring(dot + 1);
-
-                var task = new TaskRunnerNode($"env: {name}", true)
-                {
-                    Description = $"Runs '{parent.Name} --env {name}'",
-                    Command = GetCommand(parent.Command.WorkingDirectory, $"{parent.Command.Args} --env {name}")
-                };
-
-                parent.Children.Add(task);
-            }
         }
 
         private ITaskRunnerCommand GetCommand(string cwd, string arguments)

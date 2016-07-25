@@ -1,2 +1,5 @@
 ﻿[$RootKey$\ShellFileAssociations\.cake]
 "DefaultIconMoniker"="KnownMonikers.UserBuild"
+
+[$RootKey$\ShellFileAssociations\.bindings]
+"DefaultIconMoniker"="KnownMonikers.Binding"

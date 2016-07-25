@@ -14,7 +14,7 @@ namespace Cake.VisualStudio
     {
         public const string guidCakePackageString = "62e192b9-d3b1-4ffe-969f-47ea65af40d4";
         public const string guidCakePackageCmdSetString = "053a476e-69c1-4ddd-a56e-2019a3ae8ab9";
-        public const string guidTaskRunnerExplorerCmdSetString = "39faa100-ac2b-40f9-81e5-ac24df0d3d1b";
+        public const string guidTaskRunnerExplorerCmdSetString = "9e78b319-2142-4381-873c-6ec83f092915";
         public static Guid guidCakePackage = new Guid(guidCakePackageString);
         public static Guid guidCakePackageCmdSet = new Guid(guidCakePackageCmdSetString);
         public static Guid guidTaskRunnerExplorerCmdSet = new Guid(guidTaskRunnerExplorerCmdSetString);
@@ -24,7 +24,9 @@ namespace Cake.VisualStudio
     /// </summary>
     internal sealed partial class PackageIds
     {
-        public const int cmdDebug = 0x0100;
+        public const int cmdDebug = 0x0101;
+        public const int cmdVerbose = 0x0102;
+        public const int cmdDryRun = 0x0103;
         public const int IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS = 0x2002;
     }
 }
