@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -95,9 +96,20 @@ namespace Cake.VisualStudio.TaskRunner
 
         private ITaskRunnerCommand GetCommand(string cwd, string arguments)
         {
-            ITaskRunnerCommand command = new TaskRunnerCommand(cwd, "cake", arguments);
+            ITaskRunnerCommand command = new TaskRunnerCommand(cwd, GetCakePath(cwd), arguments);
 
             return command;
+        }
+
+        private static string GetCakePath(string cwd)
+        {
+            var knownPaths = new[] {"tools/Cake/Cake.exe", "Cake/Cake.exe", "Cake.exe"};
+            foreach (var path in knownPaths)
+            {
+                var fullPath = Path.Combine(cwd, path);
+                if (File.Exists(fullPath)) return fullPath;
+            }
+            return "cake"; // assume PATH
         }
 
         private static string GetExecutableFolder()
