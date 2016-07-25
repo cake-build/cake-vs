@@ -8,7 +8,7 @@ namespace Cake.VisualStudio.Helpers
 {
     public static class Constants
     {
-        public const string CakeContentType = "CakeScript";
+        public const string CakeContentType = "Cake";
         public const string CakeExtension = ".cake";
         public const string Cake = "Cake";
         public const string BaseContentType = "code";

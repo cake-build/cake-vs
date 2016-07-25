@@ -1,0 +1,35 @@
+﻿<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <Header>
+      <Title>argument</Title>
+      <Author>Cake</Author>
+      <Shortcut>arg</Shortcut>
+      <Description>Code snippet for "argument" in Cake</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>name</ID>
+          <ToolTip>The name of the Argument</ToolTip>
+          <Default>name</Default>
+        </Literal>
+        <Literal>
+      <ID>type</ID>
+          <ToolTip>The type of the Argument</ToolTip>
+          <Default>string</Default>
+        </Literal>
+      <Literal>
+      <ID>default</ID>
+          <ToolTip>The default value of the Argument</ToolTip>
+          <Default>default</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[var $name$ = Argument<$type$>("$name$", "$default$");$end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

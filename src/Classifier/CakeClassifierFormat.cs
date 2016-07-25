@@ -17,8 +17,8 @@ namespace Cake.VisualStudio.Classifier
     /// and is underlined.
     /// </summary>
     [Export(typeof(EditorFormatDefinition))]
-    [ClassificationType(ClassificationTypeNames = Constants.ClassifierName)]
-    [Name(Constants.ClassifierName)]
+    [ClassificationType(ClassificationTypeNames = ClassifierNames.Cake)]
+    [Name(ClassifierNames.Cake)]
     [UserVisible(true)] // This should be visible to the end user
     [Order(Before = Priority.Default)] // Set the priority to be after the default classifiers
     internal sealed class CakeClassifierFormat : ClassificationFormatDefinition
@@ -33,4 +33,40 @@ namespace Cake.VisualStudio.Classifier
             this.TextDecorations = System.Windows.TextDecorations.Underline;
         }
     }
+
+    [Export(typeof(EditorFormatDefinition))]
+    [ClassificationType(ClassificationTypeNames = ClassifierNames.Keywords)]
+    [Name(ClassifierNames.Keywords)]
+    internal sealed class CakeKeywordFormat : ClassificationFormatDefinition
+    {
+        public CakeKeywordFormat()
+        {
+            DisplayName = "Cake Task Declaration";
+            ForegroundColor = Colors.OrangeRed;
+        }
+    }
+
+    [Export(typeof(EditorFormatDefinition))]
+    [ClassificationType(ClassificationTypeNames = ClassifierNames.SpecialKeywords)]
+    [Name(ClassifierNames.SpecialKeywords)]
+    internal sealed class CakeSpecialKeywordFormat : ClassificationFormatDefinition
+    {
+        public CakeSpecialKeywordFormat()
+        {
+            ForegroundColor = Colors.DodgerBlue;
+        }
+    }
+
+    [Export(typeof(EditorFormatDefinition))]
+    [ClassificationType(ClassificationTypeNames = ClassifierNames.Preprocessors)]
+    [Name(ClassifierNames.Preprocessors)]
+    internal sealed class CakePreprocessorFormat : ClassificationFormatDefinition
+    {
+        public CakePreprocessorFormat()
+        {
+            ForegroundColor = Colors.Orange;
+        }
+    }
+
+
 }

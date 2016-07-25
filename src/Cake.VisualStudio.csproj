@@ -57,10 +57,12 @@
     <Compile Include="Adornments\AdornmentProvider.cs" />
     <Compile Include="Adornments\LogoAdornment.cs" />
     <Compile Include="Classifier\CakeClassifier.cs" />
-    <Compile Include="Classifier\CakeClassifierClassificationDefinition.cs" />
+    <Compile Include="Classifier\CakeClassificationDefinition.cs" />
     <Compile Include="Classifier\CakeClassifierFormat.cs" />
     <Compile Include="Classifier\CakeClassifierProvider.cs" />
-    <Compile Include="Classifier\CakeLanguage.cs" />
+    <Compile Include="Classifier\ClassifierNames.cs" />
+    <Compile Include="Classifier\Languages\BaseLanguage.cs" />
+    <Compile Include="Classifier\Languages\CakeLanguage.cs" />
     <Compile Include="ContentType\CakeContentTypeDefinition.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="source.extension.cs">
@@ -95,6 +97,7 @@
     <None Include="packages.config" />
     <None Include="Properties\template-builder.props" />
     <None Include="Snippets\cake-task.snippet" />
+    <None Include="Snippets\argument.snippet" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
       <Generator>VsixManifestGenerator</Generator>

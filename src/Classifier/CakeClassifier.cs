@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Cake.VisualStudio.Classifier.Languages;
 using Cake.VisualStudio.Helpers;
 using Microsoft.VisualStudio.Language.StandardClassification;
 using Microsoft.VisualStudio.Text;
@@ -19,16 +20,9 @@ namespace Cake.VisualStudio.Classifier
     /// </summary>
     internal class CakeClassifier : IClassifier
     {
-        IClassificationType _whiteSpaceType;
-        IClassificationType _keywordType;
-        IClassificationType _commentType;
-        IClassificationType _stringType;
-        IClassificationType _identifierType;
-
-        /// <summary>
-        /// Classification type.
-        /// </summary>
-        private readonly IClassificationType classificationType;
+        private readonly IDictionary<List<string>, IClassificationType> _predefinedTypes;
+        private Dictionary<List<string>, IClassificationType> _dslTypes;
+        private IClassificationType _commentType;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CakeClassifier"/> class.
@@ -36,12 +30,22 @@ namespace Cake.VisualStudio.Classifier
         /// <param name="registry">Classification registry.</param>
         internal CakeClassifier(IClassificationTypeRegistryService registry)
         {
-            _whiteSpaceType = registry.GetClassificationType(PredefinedClassificationTypeNames.WhiteSpace);
-            _keywordType = registry.GetClassificationType(PredefinedClassificationTypeNames.Keyword);
             _commentType = registry.GetClassificationType(PredefinedClassificationTypeNames.Comment);
-            _stringType = registry.GetClassificationType(PredefinedClassificationTypeNames.String);
-            _identifierType = registry.GetClassificationType(PredefinedClassificationTypeNames.Identifier);
-            classificationType = registry.GetClassificationType(Constants.ClassifierName);
+            _predefinedTypes = new Dictionary<List<string>, IClassificationType>
+            {
+                [BaseLanguage.Quoted] = registry.GetClassificationType(PredefinedClassificationTypeNames.String),
+                [BaseLanguage.Identifiers] = registry.GetClassificationType(PredefinedClassificationTypeNames.SymbolDefinition),
+                [BaseLanguage.Operators] = registry.GetClassificationType(PredefinedClassificationTypeNames.Operator),
+                [BaseLanguage.OtherKeywords] = registry.GetClassificationType(PredefinedClassificationTypeNames.SymbolDefinition),
+                [BaseLanguage.Linq] = registry.GetClassificationType(PredefinedClassificationTypeNames.NaturalLanguage),
+                [BaseLanguage.Control] = registry.GetClassificationType(PredefinedClassificationTypeNames.Keyword)
+            };
+            _dslTypes = new Dictionary<List<string>, IClassificationType>
+            {
+                [CakeLanguage.Keywords] = registry.GetClassificationType(ClassifierNames.Keywords),
+                [CakeLanguage.SpecialKeywords] = registry.GetClassificationType(ClassifierNames.SpecialKeywords),
+                [CakeLanguage.Preprocessors] = registry.GetClassificationType(ClassifierNames.Preprocessors)
+            };
         }
 
         #region IClassifier
@@ -71,19 +75,20 @@ namespace Cake.VisualStudio.Classifier
         /// <returns>A list of ClassificationSpans that represent spans identified to be of this classification.</returns>
         public IList<ClassificationSpan> GetClassificationSpans(SnapshotSpan span)
         {
-            var result = new List<ClassificationSpan>()
+            /* var result = new List<ClassificationSpan>()
             {
                 new ClassificationSpan(new SnapshotSpan(span.Snapshot, new Span(span.Start, span.Length)), this.classificationType)
             };
 
-            return result;
+            return result; */
 
             //create a list to hold the results
             List<ClassificationSpan> classifications = new List<ClassificationSpan>();
             string current = span.GetText();
+
             bool commentFound = false;
             // Note:  Comments should go to the end of the line.
-            foreach (var item in CakeLanguage.Comments)
+            foreach (var item in BaseLanguage.Comments)
             {
                 Regex reg = new Regex(item, RegexOptions.IgnoreCase);
                 var matches = reg.Matches(current);
@@ -100,18 +105,23 @@ namespace Cake.VisualStudio.Classifier
                                           _commentType));
                 }
             }
-            if (commentFound)
-                return classifications;
-            Classify(classifications, current, span, _brightScriptLanguage.Custom,
-                          _classificationType);
-            Classify(classifications, current, span, _brightScriptLanguage.Quoted,
-                          _stringType);
-            Classify(classifications, current, span, _brightScriptLanguage.KeyWords,
-                          _keywordType);
-            Classify(classifications, current, span, _brightScriptLanguage.IdentifierTypes,
-                          _identifierType);
-            Classify(classifications, current, span, _brightScriptLanguage.Numeric,
-                          _numericType);
+            if (commentFound) return classifications;
+            foreach (var dslType in _dslTypes)
+            {
+                Classify(classifications, current, span, dslType.Key, dslType.Value);
+            }
+            foreach (var predefinedType in _predefinedTypes)
+            {
+                Classify(classifications, current, span, predefinedType.Key, predefinedType.Value);
+            }
+            //Classify(classifications, current, span, _brightScriptLanguage.Quoted,
+            //              _stringType);
+            //Classify(classifications, current, span, _brightScriptLanguage.KeyWords,
+            //              _keywordType);
+            //Classify(classifications, current, span, _brightScriptLanguage.IdentifierTypes,
+            //              _identifierType);
+            //Classify(classifications, current, span, _brightScriptLanguage.Numeric,
+            //              _numericType);
             return classifications;
         }
         private void Classify(List<ClassificationSpan> classifications, string current,
@@ -119,7 +129,7 @@ namespace Cake.VisualStudio.Classifier
         {
             foreach (var item in matchList)
             {
-                Regex reg = new Regex(item, RegexOptions.IgnoreCase);
+                Regex reg = new Regex(item);
                 var matches = reg.Matches(current);
                 for (int i = 0; i < matches.Count; i++)
                 {
