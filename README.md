@@ -42,6 +42,11 @@ Choose Cake Build from the Build menu to quickly install the default bootstrappe
 
 ![Template installers](art/installers.png)
 
+## Cake installation
+The runner will automatically use a project-local copy of Cake if it is already present 
+in the current directory or one of the default paths. 
+However, at this time, it will not automatically download Cake for you.
+
 ## Contribute
 Check out the [Cake contribution guidelines](https://http://cakebuild.net/docs/contributing/guidelines)
 if you want to contribute to this project.
