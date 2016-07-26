@@ -1,57 +1,115 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-    <Extern href="stdidcmd.h"/>
-    <Extern href="vsshlids.h"/>
-    <Include href="KnownImageIds.vsct"/>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable"
+              xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-    <Commands package="guidCakePackage">
-        <Buttons>
-            <Button guid="guidCakePackageCmdSet" id="cmdVerbose" priority="0x0400" type="Button">
-                <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
-                <Icon guid="ImageCatalogGuid" id="StartLogging" />
-                <CommandFlag>IconIsMoniker</CommandFlag>
-                <CommandFlag>DefaultInvisible</CommandFlag>
-                <CommandFlag>DynamicVisibility</CommandFlag>
-                <Strings>
-                    <ButtonText>Verbose</ButtonText>
-                </Strings>
-            </Button>
-          <Button guid="guidCakePackageCmdSet" id="cmdDebug" priority="0x0400" type="Button">
-            <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
-            <Icon guid="ImageCatalogGuid" id="RemoteDebugger" />
-            <CommandFlag>IconIsMoniker</CommandFlag>
-            <CommandFlag>DefaultInvisible</CommandFlag>
-            <CommandFlag>DynamicVisibility</CommandFlag>
-            <Strings>
-              <ButtonText>Debug</ButtonText>
-            </Strings>
-          </Button>
-        <Button guid="guidCakePackageCmdSet" id="cmdDryRun" priority="0x0400" type="Button">
-            <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
-            <Icon guid="ImageCatalogGuid" id="TestPlan" />
-            <CommandFlag>IconIsMoniker</CommandFlag>
-            <CommandFlag>DefaultInvisible</CommandFlag>
-            <CommandFlag>DynamicVisibility</CommandFlag>
-            <Strings>
-              <ButtonText>Dry Run</ButtonText>
-            </Strings>
-          </Button>
-        </Buttons>
-    </Commands>
+  <Extern href="stdidcmd.h" />
+  <Extern href="vsshlids.h" />
+  <Include href="KnownImageIds.vsct" />
 
-    <Symbols>
-        <!-- This is the package guid. -->
-        <GuidSymbol name="guidCakePackage" value="{62E192B9-D3B1-4FFE-969F-47EA65AF40D4}" />
+  <Commands package="guidCakePackage">
+    <Buttons>
+      <Button guid="guidCakePackageCmdSet" id="cmdVerbose" priority="0x0400" type="Button">
+        <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
+        <Icon guid="ImageCatalogGuid" id="StartLogging" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Verbose</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidCakePackageCmdSet" id="cmdDebug" priority="0x0400" type="Button">
+        <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
+        <Icon guid="ImageCatalogGuid" id="RemoteDebugger" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Debug</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidCakePackageCmdSet" id="cmdDryRun" priority="0x0400" type="Button">
+        <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
+        <Icon guid="ImageCatalogGuid" id="TestPlan" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Dry Run</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidCakePackageCmdSet1" id="cmdidInstallBootstrapperCommand" priority="0x0100" type="Button">
+        <Parent guid="guidCakePackageCmdSet1" id="SubMenuGroup" />
+        <Icon guid="menuIcon" id="menuPsIcon" />
+        <Strings>
+          <ButtonText>Install PowerShell bootstrapper</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidCakePackageCmdSet1" id="cmdidInstallShellBootstrapperCommand" priority="0x0100" type="Button">
+        <Parent guid="guidCakePackageCmdSet1" id="SubMenuGroup" />
+        <Icon guid="menuIcon" id="menuBashIcon" />
+        <Strings>
+          <ButtonText>Install Bash bootstrapper</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidCakePackageCmdSet1" id="cmdidInstallConfigFileCommand" priority="0x0100" type="Button">
+        <Parent guid="guidCakePackageCmdSet1" id="SubMenuGroup" />
+        <Icon guid="menuIcon" id="menuConfigIcon" />
+        <Strings>
+          <ButtonText>Install Cake config file</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+    <Menus>
+      <Menu guid="guidCakePackageCmdSet1" id="CakeSubMenu" priority="0x0100" type="Menu">
+        <Parent guid="guidCakePackageCmdSet1" id="TopMenuGroup" />
+        <Strings>
+          <ButtonText>Cake Build</ButtonText>
+          <CommandName>Cake Build</CommandName>
+        </Strings>
+      </Menu>
+    </Menus>
+    <Groups>
+      <Group guid="guidCakePackageCmdSet1" id="SubMenuGroup" priority="0x0600">
+        <Parent guid="guidCakePackageCmdSet1" id="CakeSubMenu" />
+      </Group>
+      <Group guid="guidCakePackageCmdSet1" id="TopMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_BUILD" />
+      </Group>
+    </Groups>
+  <Bitmaps>
+    <Bitmap guid="menuIcon" href="Resources\MenuIcons.bmp" usedList="menuCakeIcon, menuPsIcon, menuBashIcon, menuConfigIcon"/>
+  </Bitmaps>
+  </Commands>
 
-        <GuidSymbol name="guidCakePackageCmdSet" value="{053A476E-69C1-4DDD-A56E-2019A3AE8AB9}">
-            <IDSymbol name="cmdDebug" value="0x0101" />
-          <IDSymbol name="cmdVerbose" value="0x0102" />
-        <IDSymbol name="cmdDryRun" value="0x0103" />
-        </GuidSymbol>
+  <Symbols>
+    <!-- This is the package guid. -->
+    <GuidSymbol name="guidCakePackage" value="{62E192B9-D3B1-4FFE-969F-47EA65AF40D4}" />
 
-        <GuidSymbol name="guidTaskRunnerExplorerCmdSet" value="{9E78B319-2142-4381-873C-6EC83F092915}">
-            <IDSymbol name="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" value="0x2002" />
-        </GuidSymbol>
-    </Symbols>
+    <GuidSymbol name="guidCakePackageCmdSet" value="{053A476E-69C1-4DDD-A56E-2019A3AE8AB9}">
+      <IDSymbol name="cmdDebug" value="0x0101" />
+      <IDSymbol name="cmdVerbose" value="0x0102" />
+      <IDSymbol name="cmdDryRun" value="0x0103" />
+    </GuidSymbol>
+
+    <GuidSymbol name="guidTaskRunnerExplorerCmdSet" value="{9E78B319-2142-4381-873C-6EC83F092915}">
+      <IDSymbol name="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" value="0x2002" />
+    </GuidSymbol>
+
+    <GuidSymbol value="{6003519f-6876-4db3-ad29-8d5379949869}" name="guidCakePackageCmdSet1">
+      <IDSymbol value="4128" name="SubMenuGroup" />
+      <IDSymbol value="4120" name="CakeSubMenu" />
+      <IDSymbol value="4121" name="TopMenuGroup" />
+      <IDSymbol value="4129" name="cmdidInstallBootstrapperCommand" />
+      <IDSymbol value="4132" name="cmdidInstallShellBootstrapperCommand" />
+      <IDSymbol value="4133" name="cmdidInstallConfigFileCommand" />
+    </GuidSymbol>
+    <GuidSymbol name="menuIcon" value="{323AFEB5-C72F-40A7-B345-BB57CE3BBC46}">
+      <IDSymbol name="menuCakeIcon" value="1"/>
+      <IDSymbol name="menuPsIcon" value="2"/>
+    <IDSymbol name="menuBashIcon" value="3"/>
+              <IDSymbol name="menuConfigIcon" value="4"/>
+    </GuidSymbol>
+  </Symbols>
 </CommandTable>

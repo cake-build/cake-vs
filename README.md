@@ -37,6 +37,11 @@ with Visual Studio events such as _Project Open_ etc.
 
 ![Bindings](art/bindings.png)
 
+## Template Installers
+Choose Cake Build from the Build menu to quickly install the default bootstrapper scripts or Cake configuration files into your solution.
+
+![Template installers](art/installers.png)
+
 ## Contribute
 Check out the [Cake contribution guidelines](https://http://cakebuild.net/docs/contributing/guidelines)
 if you want to contribute to this project.

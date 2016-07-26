@@ -18,8 +18,10 @@ namespace Cake.VisualStudio
     {
         private static DTE2 _dte;
         internal static DTE2 Dte => _dte ?? (_dte = (DTE2) GetGlobalService(typeof(DTE)));
+        internal static IVsUIShell Shell => _shell ?? (_shell = (IVsUIShell) GetGlobalService(typeof(IVsUIShell)));
 
         uint _cookie;
+        private static IVsUIShell _shell;
 
         protected override void Initialize()
         {
@@ -28,6 +30,9 @@ namespace Cake.VisualStudio
             IVsShell shellService = GetService(typeof(SVsShell)) as IVsShell;
             if (shellService != null)
                 ErrorHandler.ThrowOnFailure(shellService.AdviseShellPropertyChanges(this, out _cookie));
+            Cake.VisualStudio.Menus.InstallBootstrapperCommand.Initialize(this);
+            Cake.VisualStudio.Menus.InstallShellBootstrapperCommand.Initialize(this);
+            Cake.VisualStudio.Menus.InstallConfigFileCommand.Initialize(this);
         }
 
         public static bool IsDocumentDirty(string documentPath, out IVsPersistDocData persistDocData)
