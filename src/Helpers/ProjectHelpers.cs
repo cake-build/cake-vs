@@ -5,6 +5,8 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using EnvDTE;
 using EnvDTE80;
+using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Interop;
 
 namespace Cake.VisualStudio.Helpers
 {
@@ -115,6 +117,29 @@ namespace Cake.VisualStudio.Helpers
                     .Cast<ProjectItem>()
                     .Where(p => p.SubProject != null)
                     .SelectMany(p => GetChildProjects(p.SubProject));
+        }
+
+        internal static Project GetSolutionItemsProject(DTE2 dte)
+        {
+            var solItems =
+                            dte.Solution.Projects.Cast<Project>().FirstOrDefault(p => p.Name == "Solution Items" || p.Kind == EnvDTE.Constants.vsProjectItemKindSolutionItems);
+            var projs = dte.Solution.Projects.Cast<Project>().ToList();
+            if (solItems == null)
+            {
+                try
+                {
+                    Solution2 sol2 = (Solution2)dte.Solution;
+                    solItems = sol2.AddSolutionFolder("Solution Items");
+                    VsShellUtilities.LogMessage(Constants.PackageName,
+                        $"Created Solution Items project for solution {dte.Solution.FullName}",
+                        __ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION);
+                }
+                catch
+                {
+                    // ignored
+                }
+            }
+            return solItems;
         }
     }
 
