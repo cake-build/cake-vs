@@ -22,8 +22,9 @@ namespace Cake.VisualStudio.Menus
             var dte = CakePackage.Dte;
             try
             {
-                var slnDirPath = Path.Combine(new FileInfo(dte.Solution.FullName).Directory.FullName);
-                var targetPath = Path.Combine(slnDirPath, targetFileName);
+                var slnFilePath = new FileInfo(dte.Solution.FullName).FullName;
+                var cakeScriptPath = dte.Solution.FindProjectItem(Constants.ScriptFileName)?.FileNames[1];
+                var targetPath = Path.Combine(new FileInfo(string.IsNullOrWhiteSpace(cakeScriptPath) ? slnFilePath : cakeScriptPath).Directory.FullName, targetFileName);
                 bool confirm = true;
                 if (File.Exists(targetPath))
                 {

@@ -12,7 +12,7 @@ using Microsoft.VisualStudio.TaskRunnerExplorer;
 
 namespace Cake.VisualStudio.TaskRunner
 {
-    [TaskRunnerExport("build.cake")]
+    [TaskRunnerExport(Constants.ScriptFileName)]
     class TaskRunner : ITaskRunner
     {
         private static ImageSource _icon;
