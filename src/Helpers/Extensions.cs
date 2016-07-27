@@ -9,7 +9,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 
 namespace Cake.VisualStudio.Helpers
 {
-    internal static class MenuExtensions
+    internal static class Extensions
     {
         internal static void ShowMessageBox(this IServiceProvider provider, string message,
             string title = "Cake Installer")
@@ -36,6 +36,10 @@ namespace Cake.VisualStudio.Helpers
                 OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
         }
 
-        
+        internal static void ShowStatusBarText(this DTE2 dte, string text)
+        {
+            if (dte?.StatusBar == null) return;
+            dte.StatusBar.Text = text;
+        }
     }
 }

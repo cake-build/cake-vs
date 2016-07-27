@@ -103,7 +103,7 @@ namespace Cake.VisualStudio.Menus
             }
             else
             {
-                if (MenuHelpers.DownloadFileToProject(Constants.ConfigFilePath, "cake.config"))
+                if (MenuHelpers.DownloadFileToProject(Constants.ConfigTemplatePath, "cake.config"))
                 {
                     VsShellUtilities.LogMessage(Constants.PackageName, "Cake configuraiton file installed into solution", __ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION);
                     ServiceProvider.ShowMessageBox("Cake configuration file successfully downloaded.");

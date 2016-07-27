@@ -22,8 +22,9 @@ namespace Cake.VisualStudio.Menus
             var dte = CakePackage.Dte;
             try
             {
-                var slnDirPath = Path.Combine(new FileInfo(dte.Solution.FullName).Directory.FullName);
-                var targetPath = Path.Combine(slnDirPath, targetFileName);
+                var slnFilePath = new FileInfo(dte.Solution.FullName).FullName;
+                var cakeScriptPath = dte.Solution.FindProjectItem(Constants.ScriptFileName)?.FileNames[1];
+                var targetPath = Path.Combine(new FileInfo(string.IsNullOrWhiteSpace(cakeScriptPath) ? slnFilePath : cakeScriptPath).Directory.FullName, targetFileName);
                 bool confirm = true;
                 if (File.Exists(targetPath))
                 {
@@ -46,23 +47,7 @@ namespace Cake.VisualStudio.Menus
                         VsShellUtilities.LogMessage(Constants.PackageName,
                             $"File downloaded from '{downloadPath}' to '{targetPath}'",
                             __ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION);
-                        var solItems =
-                            dte.Solution.Projects.Cast<Project>().FirstOrDefault(p => p.Name == "Solution Items" && p.Kind == EnvDTE.Constants.vsProjectItemKindSolutionItems);
-                        if (solItems == null)
-                        {
-                            try
-                            {
-                                Solution2 sol2 = (Solution2) CakePackage.Dte.Solution;
-                                solItems = sol2.AddSolutionFolder("Solution Items");
-                                VsShellUtilities.LogMessage(Constants.PackageName,
-                                    $"Created Solution Items project for solution {dte.Solution.FullName}",
-                                    __ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION);
-                            }
-                            catch
-                            {
-                                // ignored
-                            }
-                        }
+                        var solItems = ProjectHelpers.GetSolutionItemsProject(dte);
                         solItems?.AddFileToProject(targetPath);
                         if (solItems != null)
                             VsShellUtilities.LogMessage(Constants.PackageName,

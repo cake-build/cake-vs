@@ -63,9 +63,13 @@
     <Compile Include="Classifier\ClassifierNames.cs" />
     <Compile Include="Classifier\Languages\BaseLanguage.cs" />
     <Compile Include="Classifier\Languages\CakeLanguage.cs" />
+    <Compile Include="Configuration\BindingParser.cs" />
+    <Compile Include="Configuration\ConfigurationExtensions.cs" />
+    <Compile Include="Configuration\ConfigurationParser.cs" />
     <Compile Include="ContentType\CakeContentTypeDefinition.cs" />
     <Compile Include="Helpers\Constants.cs" />
-    <Compile Include="Helpers\MenuExtensions.cs" />
+    <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Helpers\PathHelpers.cs" />
     <Compile Include="Menus\InstallShellBootstrapperCommand.cs" />
     <Compile Include="Menus\InstallBootstrapperCommand.cs" />
     <Compile Include="Menus\InstallConfigFileCommand.cs" />
@@ -127,6 +131,10 @@
     </Reference>
     <Reference Include="EnvDTE90, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="INIFileParser, Version=2.3.0.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
+      <HintPath>..\packages\ini-parser.2.3.0\lib\net20\INIFileParser.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.CSharp" />
@@ -252,6 +260,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="TemplateBuilder, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\TemplateBuilder.1.1.4.5-beta\lib\TemplateBuilder.dll</HintPath>
       <Private>False</Private>
