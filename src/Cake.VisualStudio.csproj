@@ -65,7 +65,7 @@
     <Compile Include="Classifier\Languages\CakeLanguage.cs" />
     <Compile Include="ContentType\CakeContentTypeDefinition.cs" />
     <Compile Include="Helpers\Constants.cs" />
-    <Compile Include="Helpers\MenuExtensions.cs" />
+    <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\PathHelpers.cs" />
     <Compile Include="Menus\InstallShellBootstrapperCommand.cs" />
     <Compile Include="Menus\InstallBootstrapperCommand.cs" />
