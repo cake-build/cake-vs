@@ -12,7 +12,7 @@ namespace Cake.VisualStudio
     /// </summary>
     internal sealed partial class PackageGuids
     {
-        public const string guidCakePackageString = "62e192b9-d3b1-4ffe-969f-47ea65af40d4";
+        public const string guidCakePackageString = "3cf9b016-d63f-44ee-849d-6f3efc996134";
         public const string guidCakePackageCmdSetString = "053a476e-69c1-4ddd-a56e-2019a3ae8ab9";
         public const string guidTaskRunnerExplorerCmdSetString = "9e78b319-2142-4381-873c-6ec83f092915";
         public const string guidCakePackageCmdSet1String = "6003519f-6876-4db3-ad29-8d5379949869";
