@@ -66,6 +66,7 @@
     <Compile Include="ContentType\CakeContentTypeDefinition.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\MenuExtensions.cs" />
+    <Compile Include="Helpers\PathHelpers.cs" />
     <Compile Include="Menus\InstallShellBootstrapperCommand.cs" />
     <Compile Include="Menus\InstallBootstrapperCommand.cs" />
     <Compile Include="Menus\InstallConfigFileCommand.cs" />
