@@ -1,0 +1,39 @@
+﻿<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <Header>
+      <Title>Cake Property Alias</Title>
+      <Author>Cake</Author>
+      <Shortcut>ckpa</Shortcut>
+      <Description>Code snippet for a property alias for use in Cake addins</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>name</ID>
+          <ToolTip>The name of the Alias</ToolTip>
+          <Default>Runner</Default>
+        </Literal>
+        <Literal>
+          <ID>category</ID>
+          <ToolTip>The category of the Alias</ToolTip>
+          <Default>Cake</Default>
+        </Literal>
+        <Literal>
+          <ID>returns</ID>
+          <ToolTip>The return type for the property</ToolTip>
+          <Default>object</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[[CakeAliasCategory("$category$")]
+[CakePropertyAlias]
+public static $returns$ $name$(this ICakeContext ctx) {
+  $end$
+}]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

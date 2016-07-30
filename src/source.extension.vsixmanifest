@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="62E192B9-D3B1-4FFE-969F-47EA65AF40D4" Version="0.1" Language="en-US" Publisher="Alistair Chapman" />
+    <Identity Id="62E192B9-D3B1-4FFE-969F-47EA65AF40D4" Version="0.2" Language="en-US" Publisher="Alistair Chapman" />
     <DisplayName>Cake Task Runner</DisplayName>
     <Description xml:space="preserve">Adds support for Cake build scripts in Visual Studio 2015's Task Runner Explorer.</Description>
     <MoreInfo>https://github.com/agc93/Cake.TaskRunner</MoreInfo>
@@ -20,7 +20,9 @@
   <Assets>
     <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />
     <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
-    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="snippets.pkgdef" />
+    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="Snippets\snippets.pkgdef" />
     <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="ContentType\icons.pkgdef" />
+    <Asset Type="cake.core.0.15.1.nupkg" d:Source="File" Path="Resources\cake.core.0.15.1.nupkg" d:VsixSubPath="Packages" />
+    <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="AddinTemplate" d:TargetPath="|AddinTemplate;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
   </Assets>
 </PackageManifest>

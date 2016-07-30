@@ -106,8 +106,13 @@
     </Content>
     <None Include="packages.config" />
     <None Include="Properties\template-builder.props" />
-    <None Include="Snippets\cake-task.snippet" />
-    <None Include="Snippets\argument.snippet" />
+    <None Include="Resources\cake.core.0.15.1.nupkg" />
+    <None Include="Snippets\Cake\cake-task.snippet" />
+    <None Include="Snippets\Cake\argument.snippet" />
+    <None Include="Snippets\CSharp\method-alias.snippet" />
+    <None Include="Snippets\CSharp\property-alias.snippet">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
       <Generator>VsixManifestGenerator</Generator>
@@ -266,7 +271,7 @@
       <LastGenOutput>VsCommandTable.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </VSCTCompile>
-    <Content Include="snippets.pkgdef">
+    <Content Include="Snippets\snippets.pkgdef">
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -292,6 +297,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Menus\Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\template\AddinTemplate\AddinTemplate.csproj">
+      <Project>{FCE573DD-E74E-4AB1-9D17-56FC8869797F}</Project>
+      <Name>AddinTemplate</Name>
+      <VSIXSubPath>ProjectTemplates</VSIXSubPath>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />

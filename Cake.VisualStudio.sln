@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddinTemplate", "template\AddinTemplate\AddinTemplate.csproj", "{FCE573DD-E74E-4AB1-9D17-56FC8869797F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{7067556F-B744-4F73-B509-C8CC9F559AB9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,8 +24,15 @@ Global
 		{94660BCF-169A-42E1-BD84-345449743069}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94660BCF-169A-42E1-BD84-345449743069}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94660BCF-169A-42E1-BD84-345449743069}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCE573DD-E74E-4AB1-9D17-56FC8869797F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCE573DD-E74E-4AB1-9D17-56FC8869797F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCE573DD-E74E-4AB1-9D17-56FC8869797F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCE573DD-E74E-4AB1-9D17-56FC8869797F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FCE573DD-E74E-4AB1-9D17-56FC8869797F} = {7067556F-B744-4F73-B509-C8CC9F559AB9}
 	EndGlobalSection
 EndGlobal
