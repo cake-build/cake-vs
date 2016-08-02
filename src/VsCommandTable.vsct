@@ -85,7 +85,7 @@
 
   <Symbols>
     <!-- This is the package guid. -->
-    <GuidSymbol name="guidCakePackage" value="{62E192B9-D3B1-4FFE-969F-47EA65AF40D4}" />
+    <GuidSymbol name="guidCakePackage" value="{3cf9b016-d63f-44ee-849d-6f3efc996134}" />
 
     <GuidSymbol name="guidCakePackageCmdSet" value="{053A476E-69C1-4DDD-A56E-2019A3AE8AB9}">
       <IDSymbol name="cmdDebug" value="0x0101" />

@@ -7,7 +7,7 @@ namespace Cake.VisualStudio
 {
     static class Vsix
     {
-        public const string Id = "62E192B9-D3B1-4FFE-969F-47EA65AF40D4";
+        public const string Id = "3cf9b016-d63f-44ee-849d-6f3efc996134";
         public const string Name = "Cake Task Runner";
         public const string Description = "Adds support for Cake build scripts in Visual Studio 2015's Task Runner Explorer.";
         public const string Language = "en-US";
