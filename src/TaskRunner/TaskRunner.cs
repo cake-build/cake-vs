@@ -24,7 +24,7 @@ namespace Cake.VisualStudio.TaskRunner
             if (_icon == null)
             {
                 string folder = GetExecutableFolder();
-                _icon = new BitmapImage(new Uri(Path.Combine(folder, "Resources\\logo.png")));
+                _icon = new BitmapImage(new Uri(Path.Combine(folder, "Resources\\TaskRunner.png")));
             }
         }
 

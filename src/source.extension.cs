@@ -11,7 +11,7 @@ namespace Cake.VisualStudio
         public const string Name = "Cake Task Runner";
         public const string Description = "Adds support for Cake build scripts in Visual Studio 2015's Task Runner Explorer.";
         public const string Language = "en-US";
-        public const string Version = "0.1";
+        public const string Version = "0.1.1";
         public const string Author = "Alistair Chapman";
         public const string Tags = "cake, build";
     }
