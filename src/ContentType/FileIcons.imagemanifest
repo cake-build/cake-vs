@@ -9,7 +9,7 @@
   </Symbols>
   <Images>
     <Image Guid="$(FileIconsGuid)" ID="$(cake)">
-      <Source Uri="$(Resources)/Resources/logo.png">
+      <Source Uri="$(Resources)/Resources/CakeFile.png">
         <Size Value="16" />
       </Source>
     </Image>

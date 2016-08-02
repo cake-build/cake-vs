@@ -100,7 +100,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Resource Include="Resources\CakeFile.png" />
     <Content Include="Resources\MenuIcons.bmp" />
+    <Content Include="Resources\TaskRunner.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="source.extension.ico">
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Content>
@@ -285,9 +289,6 @@
     <Content Include="Resources\icon.png">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Resource Include="Resources\logo.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Content Include="Resources\preview.png">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
@@ -305,6 +306,13 @@
     <Folder Include="Menus\Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ItemTemplate\ItemTemplate.csproj">
+      <Project>{C27AB61E-D245-4A8C-ABD1-53313E388509}</Project>
+      <Name>ItemTemplate</Name>
+      <VSIXSubPath>ItemTemplates</VSIXSubPath>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
     <ProjectReference Include="..\template\AddinTemplate\AddinTemplate.csproj">
       <Project>{FCE573DD-E74E-4AB1-9D17-56FC8869797F}</Project>
       <Name>AddinTemplate</Name>

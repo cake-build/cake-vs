@@ -24,7 +24,7 @@
     <FullClassName>NuGet.VisualStudio.TemplateWizard</FullClassName>
   </WizardExtension>
   <WizardData>
-    <packages repository="extension" repositoryId="62E192B9-D3B1-4FFE-969F-47EA65AF40D4">
+    <packages repository="extension" repositoryId="3cf9b016-d63f-44ee-849d-6f3efc996134">
       <package id="Cake.Core" version="0.15.1" />
     </packages>
   </WizardData>
