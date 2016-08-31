@@ -7,6 +7,7 @@
 using System;
 using System.ComponentModel.Design;
 using System.Globalization;
+using System.IO;
 using Cake.VisualStudio.Helpers;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
@@ -103,9 +104,11 @@ namespace Cake.VisualStudio.Menus
             }
             else
             {
-                if (MenuHelpers.DownloadFileToProject(Constants.ConfigTemplatePath, "cake.config"))
+                if (MenuHelpers.DownloadFileToProject(Constants.ConfigTemplatePath, Constants.ConfigFileName,
+                    MenuHelpers.ProjectInstallCommand))
                 {
-                    VsShellUtilities.LogMessage(Constants.PackageName, "Cake configuraiton file installed into solution", __ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION);
+                    VsShellUtilities.LogMessage(Constants.PackageName, "Cake configuration file installed into solution",
+                        __ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION);
                     ServiceProvider.ShowMessageBox("Cake configuration file successfully downloaded.");
                 }
             }

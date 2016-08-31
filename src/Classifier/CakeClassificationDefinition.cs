@@ -18,6 +18,7 @@ namespace Cake.VisualStudio.Classifier
     {
         // This disables "The field is never used" compiler's warning. Justification: the field is used by MEF.
 #pragma warning disable 169
+#pragma warning disable 649
 
         /// <summary>
         /// Defines the "CakeClassifier" classification type.
@@ -38,6 +39,7 @@ namespace Cake.VisualStudio.Classifier
         [Name(ClassifierNames.Preprocessors)]
         internal static ClassificationTypeDefinition CakePreprocessorsDefinition;
 
+#pragma warning restore 649
 #pragma warning restore 169
     }
 }
