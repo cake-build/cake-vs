@@ -17,7 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddinTemplate", "template\A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{7067556F-B744-4F73-B509-C8CC9F559AB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemTemplate", "ItemTemplate\ItemTemplate.csproj", "{C27AB61E-D245-4A8C-ABD1-53313E388509}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleTemplate", "template\ModuleTemplate\ModuleTemplate.csproj", "{85BCBED7-39BD-4670-85F7-EE36D0DA31C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemTemplate", "template\ItemTemplate\ItemTemplate.csproj", "{C27AB61E-D245-4A8C-ABD1-53313E388509}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,14 @@ Global
 		{FCE573DD-E74E-4AB1-9D17-56FC8869797F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCE573DD-E74E-4AB1-9D17-56FC8869797F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCE573DD-E74E-4AB1-9D17-56FC8869797F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85BCBED7-39BD-4670-85F7-EE36D0DA31C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85BCBED7-39BD-4670-85F7-EE36D0DA31C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85BCBED7-39BD-4670-85F7-EE36D0DA31C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85BCBED7-39BD-4670-85F7-EE36D0DA31C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C27AB61E-D245-4A8C-ABD1-53313E388509}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C27AB61E-D245-4A8C-ABD1-53313E388509}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C27AB61E-D245-4A8C-ABD1-53313E388509}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C27AB61E-D245-4A8C-ABD1-53313E388509}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C27AB61E-D245-4A8C-ABD1-53313E388509}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C27AB61E-D245-4A8C-ABD1-53313E388509}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C27AB61E-D245-4A8C-ABD1-53313E388509}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -43,6 +53,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FCE573DD-E74E-4AB1-9D17-56FC8869797F} = {7067556F-B744-4F73-B509-C8CC9F559AB9}
+		{85BCBED7-39BD-4670-85F7-EE36D0DA31C0} = {7067556F-B744-4F73-B509-C8CC9F559AB9}
 		{C27AB61E-D245-4A8C-ABD1-53313E388509} = {7067556F-B744-4F73-B509-C8CC9F559AB9}
 	EndGlobalSection
 EndGlobal
