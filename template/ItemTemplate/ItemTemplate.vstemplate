@@ -6,16 +6,10 @@
     <Icon>ItemTemplate.ico</Icon>
     <TemplateID>7d181506-47e9-4f9d-8ac3-5ac65f6b8354</TemplateID>
     <ProjectType>CSharp</ProjectType>
-    <RequiredFrameworkVersion>4.5</RequiredFrameworkVersion>
     <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
     <DefaultName>build.cake</DefaultName>
   </TemplateData>
   <TemplateContent>
-    <References>
-      <Reference>
-        <Assembly>System</Assembly>
-      </Reference>
-    </References>
-    <ProjectItem ReplaceParameters="true">build.cake</ProjectItem>
+    <ProjectItem ReplaceParameters="false">build.cake</ProjectItem>
   </TemplateContent>
 </VSTemplate>

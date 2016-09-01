@@ -1,7 +1,6 @@
-﻿using Cake.Core.Diagnostics;
+﻿using Cake.Core;
+using Cake.Core.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace $safeprojectname$
 {
