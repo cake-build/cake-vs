@@ -5,7 +5,7 @@
   <TemplateData>
     <Name>Cake Module</Name>
     <Description>Basic project template for creating a new Cake module, including a sample module.</Description>
-    <Icon>AddinTemplate.ico</Icon>
+    <Icon>ModuleTemplate.ico</Icon>
     <ProjectType>CSharp</ProjectType>
     <RequiredFrameworkVersion>4.5</RequiredFrameworkVersion>
     <SortOrder>1000</SortOrder>
@@ -18,7 +18,8 @@
   <TemplateContent>
     <Project File="ProjectTemplate.csproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="true" TargetFileName="Properties\AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true" OpenInEditor="true">Module.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" OpenInEditor="true">SampleLogModule.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" OpenInEditor="true">ReverseLog.cs</ProjectItem>
     </Project>
   </TemplateContent>
   <WizardExtension>
