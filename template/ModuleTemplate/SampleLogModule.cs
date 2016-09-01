@@ -11,29 +11,11 @@ $endif$using System.Text;
 
 namespace $safeprojectname$
 {
-
     public class SampleLogModule : ICakeModule
 {
     public void Register(ICakeContainerRegistry registry)
     {
         registry.RegisterType<ReverseLog>().As<ICakeLog>().Singleton();
-    }
-}
-
-public sealed class ReverseLog : ICakeLog
-{
-    private readonly IConsole _console;
-    public Verbosity Verbosity { get; set; }
-
-    public ReverseLog(IConsole console)
-    {
-        _console = console;
-    }
-
-    public void Write(Verbosity verbosity, LogLevel level, string format, params object[] args)
-    {
-        var message = string.Format(format, args);
-        _console.WriteLine(new string(message.Reverse().ToArray()));
     }
 }
 }

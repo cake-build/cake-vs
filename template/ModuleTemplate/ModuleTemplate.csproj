@@ -77,17 +77,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="AssemblyInfo.cs" />
-    <None Include="Module.cs" />
+    <None Include="SampleLogModule.cs" />
+    <None Include="ReverseLog.cs" />
     <None Include="ProjectTemplate.csproj" />
     <None Include="ModuleTemplate.ico" />
   </ItemGroup>
   <ItemGroup>
-    <VSTemplate Include="ModuleTemplate.vstemplate" >
+    <VSTemplate Include="ModuleTemplate.vstemplate">
       <OutputSubPath>Cake</OutputSubPath>
     </VSTemplate>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="AddinTemplate.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

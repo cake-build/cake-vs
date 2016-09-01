@@ -44,7 +44,8 @@
 		<Reference Include="System.Xml"/>
 	</ItemGroup>
 	<ItemGroup>
-		<Compile Include="Module.cs" />
+		<Compile Include="SampleLogModule.cs" />
+    <Compile Include="ReverseLog.cs" />
 
 		<Compile Include="Properties\AssemblyInfo.cs" />
 	</ItemGroup>
