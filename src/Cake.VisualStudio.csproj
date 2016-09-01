@@ -113,8 +113,11 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="packages.config" />
+    <Content Include="Packages\cake.core.0.15.1.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\template-builder.props" />
-    <None Include="Resources\cake.core.0.15.1.nupkg" />
     <None Include="Snippets\Cake\cake-task.snippet" />
     <None Include="Snippets\Cake\argument.snippet" />
     <None Include="Snippets\CSharp\method-alias.snippet" />

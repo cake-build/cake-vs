@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="3cf9b016-d63f-44ee-849d-6f3efc996134" Version="0.1.1" Language="en-US" Publisher="Cake" />
+    <Identity Id="3cf9b016-d63f-44ee-849d-6f3efc996134" Version="0.1.1.1" Language="en-US" Publisher="Cake" />
     <DisplayName>Cake for Visual Studio</DisplayName>
     <Description xml:space="preserve">Adds support for the Cake build tool in Visual Studio 2015. Includes support for the Task Runner Explorer, new templates and bootstrapping important Cake files.</Description>
     <MoreInfo>https://github.com/agc93/Cake.TaskRunner</MoreInfo>
@@ -22,7 +22,7 @@
     <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
     <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="Snippets\snippets.pkgdef" />
     <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="ContentType\icons.pkgdef" />
-    <Asset Type="cake.core.0.15.1.nupkg" d:Source="File" Path="Resources\cake.core.0.15.1.nupkg" d:VsixSubPath="Packages" />
+    <Asset Type="cake.core.0.15.1.nupkg" d:Source="File" Path="Packages\cake.core.0.15.1.nupkg" d:VsixSubPath="Packages" />
     <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="AddinTemplate" d:TargetPath="|AddinTemplate;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
     <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="Project" d:ProjectName="ItemTemplate" d:TargetPath="|ItemTemplate;TemplateProjectOutputGroup|" Path="ItemTemplates" d:VsixSubPath="ItemTemplates" />
     <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="ModuleTemplate" d:TargetPath="|ModuleTemplate;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
