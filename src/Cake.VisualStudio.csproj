@@ -131,11 +131,26 @@
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Packages\xunit.abstractions.2.0.1.nupkg" />
-    <None Include="Packages\xunit.assert.2.1.0.nupkg" />
-    <None Include="Packages\xunit.core.2.1.0.nupkg" />
-    <None Include="Packages\xunit.extensibility.core.2.1.0.nupkg" />
-    <None Include="Packages\xunit.extensibility.execution.2.1.0.nupkg" />
+    <Content Include="Packages\xunit.abstractions.2.0.1.nupkg" >
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Packages\xunit.assert.2.1.0.nupkg" >
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Packages\xunit.core.2.1.0.nupkg" >
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Packages\xunit.extensibility.core.2.1.0.nupkg" >
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Packages\xunit.extensibility.execution.2.1.0.nupkg" >
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\template-builder.props" />
     <None Include="Snippets\Cake\cake-task.snippet" />
     <None Include="Snippets\Cake\argument.snippet" />
