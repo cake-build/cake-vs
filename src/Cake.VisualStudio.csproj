@@ -131,23 +131,23 @@
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Packages\xunit.abstractions.2.0.1.nupkg" >
+    <Content Include="Packages\xunit.abstractions.2.0.1.nupkg">
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Packages\xunit.assert.2.1.0.nupkg" >
+    <Content Include="Packages\xunit.assert.2.1.0.nupkg">
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Packages\xunit.core.2.1.0.nupkg" >
+    <Content Include="Packages\xunit.core.2.1.0.nupkg">
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Packages\xunit.extensibility.core.2.1.0.nupkg" >
+    <Content Include="Packages\xunit.extensibility.core.2.1.0.nupkg">
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Packages\xunit.extensibility.execution.2.1.0.nupkg" >
+    <Content Include="Packages\xunit.extensibility.execution.2.1.0.nupkg">
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -352,6 +352,13 @@
     <ProjectReference Include="..\template\AddinTemplate\AddinTemplate.csproj">
       <Project>{FCE573DD-E74E-4AB1-9D17-56FC8869797F}</Project>
       <Name>AddinTemplate</Name>
+      <VSIXSubPath>ProjectTemplates</VSIXSubPath>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
+    <ProjectReference Include="..\template\AddinTestBasicTemplate\AddinTestBasicTemplate.csproj">
+      <Project>{F21E9BF8-745B-4B29-B113-0E55AE840D24}</Project>
+      <Name>AddinTestBasicTemplate</Name>
       <VSIXSubPath>ProjectTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
