@@ -121,6 +121,14 @@
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Packages\xunit.2.1.0.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Packages\xunit.runner.visualstudio.2.1.0.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\template-builder.props" />
     <None Include="Snippets\Cake\cake-task.snippet" />
     <None Include="Snippets\Cake\argument.snippet" />
@@ -316,6 +324,13 @@
     <ProjectReference Include="..\template\AddinTemplate\AddinTemplate.csproj">
       <Project>{FCE573DD-E74E-4AB1-9D17-56FC8869797F}</Project>
       <Name>AddinTemplate</Name>
+      <VSIXSubPath>ProjectTemplates</VSIXSubPath>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
+    <ProjectReference Include="..\template\AddinTestTemplate\AddinTestTemplate.csproj">
+      <Project>{AB983284-D1F6-4853-9462-402F2985A141}</Project>
+      <Name>AddinTestTemplate</Name>
       <VSIXSubPath>ProjectTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>

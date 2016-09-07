@@ -2,8 +2,8 @@
 <VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
   <TemplateData>
     <Name>Cake Addin Unit Test Project</Name>
-    <Description>Basic project template for creating unit tests for a Cake addin</Description>
-    <Icon>AddinTestTemplate.ico</Icon>
+    <Description>Basic project template, including samples, for creating unit tests for a Cake addin</Description>
+    <Icon>CakeTestTemplate.ico</Icon>
     <ProjectType>CSharp</ProjectType>
     <RequiredFrameworkVersion>4.5</RequiredFrameworkVersion>
     <SortOrder>1000</SortOrder>
@@ -15,7 +15,10 @@
   <TemplateContent>
     <Project File="ProjectTemplate.csproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="true" TargetFileName="Properties\AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true" OpenInEditor="true">Class1.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" OpenInEditor="true">AddinTests.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" OpenInEditor="true">CakeFixture.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" OpenInEditor="true">CakeTool.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" OpenInEditor="false">CakeToolSettings.cs</ProjectItem>
     </Project>
   </TemplateContent>
   <WizardExtension>
@@ -26,6 +29,8 @@
     <packages repository="extension" repositoryId="3cf9b016-d63f-44ee-849d-6f3efc996134">
       <package id="Cake.Core" version="0.15.2" />
       <package id="Cake.Testing" version="0.15.2" />
+      <package id="xunit" version="2.1.0" />
+      <package id="xunit.runner.visualstudio" version="2.1.0" />
     </packages>
   </WizardData>
 </VSTemplate>
