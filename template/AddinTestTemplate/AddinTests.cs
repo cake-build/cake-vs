@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Xunit;
 $if$ ($targetframeworkversion$ >= 3.5)using System.Linq;
 $endif$using System.Text;
+using Xunit;
 
 namespace $safeprojectname$
 {
