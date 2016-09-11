@@ -8,7 +8,7 @@
     <ID Name="cake" Value="0" />
   </Symbols>
   <Images>
-    <Image Guid="$(FileIconsGuid)" ID="$(cake)">
+    <Image Guid="$(FileIconsGuid)" ID="$(cake)" AllowColorInversion="false">
       <Source Uri="$(Resources)/Resources/CakeFile.png">
         <Size Value="16" />
       </Source>
