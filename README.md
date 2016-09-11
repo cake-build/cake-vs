@@ -54,7 +54,7 @@ Choose Cake Build from the Build menu to quickly install the default bootstrappe
 
 ## Templates
 
-The extension includes an item template for build scripts and a project template for Cake addins.
+The extension includes an item template for build scripts and project templates for Cake modules, addins, and unit tests.
 
 ![Project Template](art/templates.png)
 
