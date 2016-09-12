@@ -1,3 +1,7 @@
+#addin nuget:?package=Cake.Tfx
+
+using Cake.Tfx.Extension.Publish;
+
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 ///////////////////////////////////////////////////////////////////////////////
@@ -14,6 +18,9 @@ var solution = ParseSolution(solutionPath);
 var projects = solution.Projects;
 var projectPaths = projects.Select(p => p.Path.GetDirectory());
 var artifacts = "./dist/";
+
+var accountVar = "Marketplace_Account";
+var tokenVar = "Marketplace_Token";
 
 ///////////////////////////////////////////////////////////////////////////////
 // SETUP / TEARDOWN
@@ -79,7 +86,18 @@ Task("Post-Build")
     CopyFileToDirectory("./src/bin/" + configuration + "/Cake.VisualStudio.vsix", artifacts);
 });
 
+Task("Publish")
+    .IsDependentOn("Post-Build")
+    .WithCriteria(() => HasEnvironmentVariable(accountVar) && HasEnvironmentVariable(tokenVar))
+    .Does(() => {
+        TfxExtensionPublish(artifacts + "Cake.VisualStudio.vsix", new List<string> { EnvironmentVariable(accountVar) }, new TfxExtensionPublishSettings()
+        {
+            AuthType = TfxAuthType.Pat,
+            Token = EnvironmentVariable(tokenVar)
+        });
+    });
+
 Task("Default")
-	.IsDependentOn("Post-Build");
+	.IsDependentOn("Publish");
 
 RunTarget(target);
