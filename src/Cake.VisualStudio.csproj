@@ -74,8 +74,6 @@
     <Compile Include="Menus\InstallBootstrapperCommand.cs" />
     <Compile Include="Menus\InstallConfigFileCommand.cs" />
     <Compile Include="Menus\MenuHelpers.cs" />
-    <Compile Include="Packages\PackageWizard.cs" />
-    <Compile Include="Packages\PackageDescriptor.cs" />
     <Compile Include="source.extension.cs">
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Compile>
