@@ -29,3 +29,4 @@ _NCrunch_WebCompiler
 ![Tt]ools/packages.config
 [Tt]ools/**/*
 dist/**
+!src/Packages/**
