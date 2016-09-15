@@ -88,14 +88,11 @@ Task("Post-Build")
 
 Task("Publish")
     .IsDependentOn("Post-Build")
-    .WithCriteria(() => HasEnvironmentVariable(accountVar) && HasEnvironmentVariable(tokenVar))
-    .Does(() => {
-        TfxExtensionPublish(artifacts + "Cake.VisualStudio.vsix", new List<string> { EnvironmentVariable(accountVar) }, new TfxExtensionPublishSettings()
-        {
-            AuthType = TfxAuthType.Pat,
-            Token = EnvironmentVariable(tokenVar)
-        });
-    });
+    .WithCriteria(AppVeyor.IsRunningOnAppVeyor)
+    .Does(() => 
+{
+    AppVeyor.UploadArtifact(artifacts + "Cake.VisualStudio.vsix");
+});
 
 Task("Default")
 	.IsDependentOn("Publish");
