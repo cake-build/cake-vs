@@ -15,8 +15,15 @@ var projects = solution.Projects;
 var projectPaths = projects.Select(p => p.Path.GetDirectory());
 var artifacts = "./dist/";
 
-var accountVar = "Marketplace_Account";
-var tokenVar = "Marketplace_Token";
+///////////////////////////////////////////////////////////////////////////////
+// BUILD VARIABLES
+///////////////////////////////////////////////////////////////////////////////
+
+var buildSystem = BuildSystem;
+var IsMainCakeVsRepo = StringComparer.OrdinalIgnoreCase.Equals("cake-build/cake-vs", buildSystem.AppVeyor.Environment.Repository.Name);
+var IsMainCakeVsBranch = StringComparer.OrdinalIgnoreCase.Equals("master", buildSystem.AppVeyor.Environment.Repository.Branch);
+var IsBuildTagged = buildSystem.AppVeyor.Environment.Repository.Tag.IsTag
+            && !string.IsNullOrWhiteSpace(buildSystem.AppVeyor.Environment.Repository.Tag.Name);
 
 ///////////////////////////////////////////////////////////////////////////////
 // SETUP / TEARDOWN
@@ -82,15 +89,19 @@ Task("Post-Build")
     CopyFileToDirectory("./src/bin/" + configuration + "/Cake.VisualStudio.vsix", artifacts);
 });
 
-Task("Publish")
+Task("Publish-Extension")
     .IsDependentOn("Post-Build")
-    .WithCriteria(AppVeyor.IsRunningOnAppVeyor)
+    .WithCriteria(() => AppVeyor.IsRunningOnAppVeyor)
+    .WithCriteria(() => IsMainCakeVsRepo)
     .Does(() => 
 {
     AppVeyor.UploadArtifact(artifacts + "Cake.VisualStudio.vsix");
 });
 
 Task("Default")
-	.IsDependentOn("Publish");
+	.IsDependentOn("Post-Build");
+
+Task("AppVeyor")
+    .IsDependentOn("Publish-Extension");
 
 RunTarget(target);
