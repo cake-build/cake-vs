@@ -20,8 +20,8 @@ var artifacts = "./dist/";
 ///////////////////////////////////////////////////////////////////////////////
 
 var buildSystem = BuildSystem;
-var IsMainCakeVsRepo = StringComparer.OrdinalIgnoreCase.Equals("master", buildSystem.AppVeyor.Environment.Repository.Branch);
-var IsMainCakeVsBranch = StringComparer.OrdinalIgnoreCase.Equals("cake-build/cake-vs", buildSystem.AppVeyor.Environment.Repository.Name);
+var IsMainCakeVsRepo = StringComparer.OrdinalIgnoreCase.Equals("cake-build/cake-vs", buildSystem.AppVeyor.Environment.Repository.Name);
+var IsMainCakeVsBranch = StringComparer.OrdinalIgnoreCase.Equals("master", buildSystem.AppVeyor.Environment.Repository.Branch);
 var IsBuildTagged = buildSystem.AppVeyor.Environment.Repository.Tag.IsTag
             && !string.IsNullOrWhiteSpace(buildSystem.AppVeyor.Environment.Repository.Tag.Name);
 
