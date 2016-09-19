@@ -82,7 +82,7 @@ Task("Post-Build")
     CopyFileToDirectory("./src/bin/" + configuration + "/Cake.VisualStudio.vsix", artifacts);
 });
 
-Task("Publish")
+Task("Publish-Extension")
     .IsDependentOn("Post-Build")
     .WithCriteria(AppVeyor.IsRunningOnAppVeyor)
     .Does(() => 
@@ -91,6 +91,9 @@ Task("Publish")
 });
 
 Task("Default")
-	.IsDependentOn("Publish");
+	.IsDependentOn("Post-Build");
+
+Task("AppVeyor")
+    .IsDependentOn("Publish-Extension");
 
 RunTarget(target);
