@@ -8,9 +8,9 @@ namespace $safeprojectname$
 {
     public class SampleLogModule : ICakeModule
     {
-        public void Register(ICakeContainerRegistry registry)
+        public void Register(ICakeContainerRegistrar registrar)
         {
-            registry.RegisterType<ReverseLog>().As<ICakeLog>().Singleton();
+            registrar.RegisterType<ReverseLog>().As<ICakeLog>().Singleton();
         }
     }
 }
