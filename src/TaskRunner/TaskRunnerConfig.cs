@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using System;
 using System.IO;
 using System.Text;
 using System.Windows.Media;
@@ -50,7 +54,7 @@ namespace Cake.VisualStudio.TaskRunner
                 var cpath = Path.Combine(Path.GetDirectoryName(configPath), Constants.ConfigFileName);
                 try
                 {
-                    
+
                     if (!File.Exists(cpath) && create) File.Create(cpath).Close();
                     if (File.Exists(cpath)) ProjectHelpers.GetSolutionItemsProject(CakePackage.Dte).AddFileToProject(cpath);
                 }
