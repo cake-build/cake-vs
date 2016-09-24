@@ -18,42 +18,46 @@ namespace Cake.VisualStudio.Adornments
     [TextViewRole(PredefinedTextViewRoles.PrimaryDocument)]
     class AdornmentProvider : IWpfTextViewCreationListener
     {
-        private const string _propertyName = "ShowWatermark";
-        private const double _initOpacity = 0.4D;
+        private const string PropertyName = "ShowWatermark";
+        private const double InitOpacity = 0.4D;
 
-        private SettingsManager _settingsManager;
         private static bool _isVisible, _hasLoaded;
+        private SettingsManager _settingsManager;
 
         [Import]
         public ITextDocumentFactoryService TextDocumentFactoryService { get; set; }
 
         [Import]
-        public SVsServiceProvider serviceProvider { get; set; }
+        public SVsServiceProvider ServiceProvider { get; set; }
 
         private void LoadSettings()
         {
             if (_hasLoaded)
+            {
                 return;
+            }
 
             _hasLoaded = true;
 
-            _settingsManager = new ShellSettingsManager(serviceProvider);
-            SettingsStore store = _settingsManager.GetReadOnlySettingsStore(SettingsScope.UserSettings);
+            _settingsManager = new ShellSettingsManager(ServiceProvider);
+            var store = _settingsManager.GetReadOnlySettingsStore(SettingsScope.UserSettings);
 
             LogoAdornment.VisibilityChanged += AdornmentVisibilityChanged;
 
-            _isVisible = store.GetBoolean(Vsix.Name, _propertyName, true);
+            _isVisible = store.GetBoolean(Vsix.Name, PropertyName, true);
         }
 
         private void AdornmentVisibilityChanged(object sender, bool isVisible)
         {
-            WritableSettingsStore wstore = _settingsManager.GetWritableSettingsStore(SettingsScope.UserSettings);
+            var wstore = _settingsManager.GetWritableSettingsStore(SettingsScope.UserSettings);
             _isVisible = isVisible;
 
             if (!wstore.CollectionExists(Vsix.Name))
+            {
                 wstore.CreateCollection(Vsix.Name);
+            }
 
-            wstore.SetBoolean(Vsix.Name, _propertyName, isVisible);
+            wstore.SetBoolean(Vsix.Name, PropertyName, isVisible);
         }
 
         public void TextViewCreated(IWpfTextView textView)
@@ -61,19 +65,23 @@ namespace Cake.VisualStudio.Adornments
             ITextDocument document;
 
             if (!TextDocumentFactoryService.TryGetTextDocument(textView.TextDataModel.DocumentBuffer, out document))
+            {
                 return;
+            }
 
             LoadSettings();
 
-            string fileName = Path.GetFileName(document.FilePath).ToLowerInvariant();
+            var fileName = Path.GetFileName(document.FilePath).ToLowerInvariant();
 
             // Check if filename is absolute because when debugging, script files are sometimes dynamically created.
             if (string.IsNullOrEmpty(fileName) || !Path.IsPathRooted(document.FilePath))
+            {
                 return;
+            }
 
             if (fileName.EndsWith(".cake"))
             {
-                textView.Properties.GetOrCreateSingletonProperty(() => new LogoAdornment(textView, _isVisible, _initOpacity));
+                textView.Properties.GetOrCreateSingletonProperty(() => new LogoAdornment(textView, _isVisible, InitOpacity));
             }
         }
     }

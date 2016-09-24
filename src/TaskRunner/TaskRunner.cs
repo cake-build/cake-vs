@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -27,7 +26,7 @@ namespace Cake.VisualStudio.TaskRunner
         {
             if (_icon == null)
             {
-                string folder = GetExecutableFolder();
+                var folder = GetExecutableFolder();
                 _icon = new BitmapImage(new Uri(Path.Combine(folder, "Resources\\TaskRunner.png")));
             }
         }
@@ -36,10 +35,10 @@ namespace Cake.VisualStudio.TaskRunner
         {
             _options = new List<ITaskRunnerOption>
             {
-                new TaskRunnerOption("Verbose", PackageIds.cmdVerbose, PackageGuids.guidCakePackageCmdSet, false,
+                new TaskRunnerOption("Verbose", PackageIds.cmdVerbose, PackageGuids.GuidCakePackageCmdSet, false,
                     "-Verbosity=\"Diagnostic\""),
-                new TaskRunnerOption("Debug", PackageIds.cmdDebug, PackageGuids.guidCakePackageCmdSet, false, "-debug"),
-                new TaskRunnerOption("Dry Run", PackageIds.cmdDryRun, PackageGuids.guidCakePackageCmdSet, false, "-dryrun")
+                new TaskRunnerOption("Debug", PackageIds.cmdDebug, PackageGuids.GuidCakePackageCmdSet, false, "-debug"),
+                new TaskRunnerOption("Dry Run", PackageIds.cmdDryRun, PackageGuids.GuidCakePackageCmdSet, false, "-dryrun")
             };
         }
 
@@ -60,7 +59,7 @@ namespace Cake.VisualStudio.TaskRunner
         {
             return await Task.Run(() =>
             {
-                ITaskRunnerNode hierarchy = LoadTasks(configPath);
+                var hierarchy = LoadTasks(configPath);
 
                 return new TaskRunnerConfig(context, hierarchy, _icon);
             });
@@ -68,8 +67,8 @@ namespace Cake.VisualStudio.TaskRunner
 
         private ITaskRunnerNode LoadTasks(string configPath)
         {
-            string cwd = Path.GetDirectoryName(configPath);
-            this._executablePath = GetCakePath(cwd);
+            var cwd = Path.GetDirectoryName(configPath);
+            _executablePath = GetCakePath(cwd);
             return string.IsNullOrWhiteSpace(_executablePath) ? NotFoundNode(configPath) : LoadHierarchy(configPath);
         }
 
@@ -99,13 +98,13 @@ namespace Cake.VisualStudio.TaskRunner
 
         private ITaskRunnerNode LoadHierarchy(string configPath)
         {
-            string configFileName = Path.GetFileName(configPath);
-            string cwd = Path.GetDirectoryName(configPath);
+            var configFileName = Path.GetFileName(configPath);
+            var cwd = Path.GetDirectoryName(configPath);
 
             ITaskRunnerNode root = new TaskRunnerNode("Cake");
 
             // Build
-            TaskRunnerNode buildDev = CreateTask(cwd, $"Default ({configFileName})", "Runs 'cake build.cake'", configFileName);
+            var buildDev = CreateTask(cwd, $"Default ({configFileName})", "Runs 'cake build.cake'", configFileName);
             var tasks = TaskParser.LoadTasks(configPath);
             var commands =
                 tasks.Select(
@@ -156,7 +155,7 @@ namespace Cake.VisualStudio.TaskRunner
 
         private static string GetExecutableFolder()
         {
-            string assembly = Assembly.GetExecutingAssembly().Location;
+            var assembly = Assembly.GetExecutingAssembly().Location;
             return Path.GetDirectoryName(assembly);
         }
     }

@@ -19,7 +19,7 @@ namespace Cake.VisualStudio.TaskRunner
 
             try
             {
-                string document = File.ReadAllText(configPath);
+                var document = File.ReadAllText(configPath);
                 var r = new Regex("Task\\([\\w\"](\\w+)\\\"*\\)");
                 var matches = r.Matches(document);
                 var taskNames = matches.Cast<Match>().Select(m => m.Groups[1].Value);

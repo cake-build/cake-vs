@@ -4,7 +4,6 @@
 
 
 using System.ComponentModel.Composition;
-using Cake.VisualStudio.Helpers;
 using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Utilities;
 

@@ -26,7 +26,7 @@ namespace Cake.VisualStudio.Helpers
             if (_dte.SourceControl.IsItemUnderSCC(file) && !_dte.SourceControl.IsItemCheckedOut(file))
                 _dte.SourceControl.CheckOutItem(file);
 
-            FileInfo info = new FileInfo(file);
+            var info = new FileInfo(file);
             info.IsReadOnly = false;
         }
 
@@ -39,7 +39,7 @@ namespace Cake.VisualStudio.Helpers
             {
                 if (_dte.Solution.FindProjectItem(file) == null)
                 {
-                    ProjectItem item = project.ProjectItems.AddFromFile(file);
+                    var item = project.ProjectItems.AddFromFile(file);
 
                     if (string.IsNullOrEmpty(itemType)
                         || project.IsKind(ProjectTypes.WEBSITE_PROJECT)
@@ -57,7 +57,7 @@ namespace Cake.VisualStudio.Helpers
 
         public static void AddNestedFile(string parentFile, string newFile)
         {
-            ProjectItem item = _dte.Solution.FindProjectItem(parentFile);
+            var item = _dte.Solution.FindProjectItem(parentFile);
 
             try
             {
@@ -88,7 +88,7 @@ namespace Cake.VisualStudio.Helpers
 
         public static void DeleteFileFromProject(string file)
         {
-            ProjectItem item = _dte.Solution.FindProjectItem(file);
+            var item = _dte.Solution.FindProjectItem(file);
 
             if (item == null)
                 return;
@@ -132,7 +132,7 @@ namespace Cake.VisualStudio.Helpers
             {
                 try
                 {
-                    Solution2 sol2 = (Solution2)dte.Solution;
+                    var sol2 = (Solution2)dte.Solution;
                     solItems = sol2.AddSolutionFolder("Solution Items");
                     VsShellUtilities.LogMessage(Constants.PackageName,
                         $"Created Solution Items project for solution {dte.Solution.FullName}",
