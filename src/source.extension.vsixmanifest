@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="3cf9b016-d63f-44ee-849d-6f3efc996134" Version="0.2.1.0" Language="en-US" Publisher="Cake Build" />
+    <Identity Id="3cf9b016-d63f-44ee-849d-6f3efc996134" Version="0.1.0.0" Language="en-US" Publisher="Cake Build" />
     <DisplayName>Cake for Visual Studio</DisplayName>
     <Description xml:space="preserve">Adds support for the Cake build tool in Visual Studio 2015. Includes support for the Task Runner Explorer, new templates and bootstrapping important Cake files.</Description>
     <MoreInfo>https://github.com/cake-build/cake-vs</MoreInfo>
