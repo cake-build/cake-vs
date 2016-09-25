@@ -4,7 +4,6 @@
 
 using System.ComponentModel.Composition;
 using System.Windows.Media;
-using Cake.VisualStudio.Helpers;
 using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Utilities;
 
@@ -26,9 +25,9 @@ namespace Cake.VisualStudio.Classifier
         /// </summary>
         public CakeClassifierFormat()
         {
-            this.DisplayName = "Cake Script Classifier"; // Human readable version of the name
-            this.BackgroundColor = Colors.BlueViolet;
-            this.TextDecorations = System.Windows.TextDecorations.Underline;
+            DisplayName = "Cake Script Classifier"; // Human readable version of the name
+            BackgroundColor = Colors.BlueViolet;
+            TextDecorations = System.Windows.TextDecorations.Underline;
         }
     }
 

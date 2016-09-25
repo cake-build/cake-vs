@@ -15,6 +15,6 @@ namespace Cake.VisualStudio.Adornments
         [Export(typeof(AdornmentLayerDefinition))]
         [Name(LayerName)]
         [Order(Before = PredefinedAdornmentLayers.Caret)]
-        public AdornmentLayerDefinition editorAdornmentLayer = null;
+        public AdornmentLayerDefinition EditorAdornmentLayer = null;
     }
 }

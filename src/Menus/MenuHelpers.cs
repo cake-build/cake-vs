@@ -3,15 +3,9 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using Cake.VisualStudio.Helpers;
-using EnvDTE;
-using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Constants = Cake.VisualStudio.Helpers.Constants;

@@ -25,7 +25,7 @@ namespace Cake.VisualStudio.Classifier
         /// to the custom classification type later.
         /// </summary>
         [Import]
-        private IClassificationTypeRegistryService classificationRegistry;
+        private IClassificationTypeRegistryService _classificationRegistry;
 
 #pragma warning restore 649
 
@@ -38,7 +38,7 @@ namespace Cake.VisualStudio.Classifier
         /// <returns>A classifier for the text buffer, or null if the provider cannot do so in its current state.</returns>
         public IClassifier GetClassifier(ITextBuffer buffer)
         {
-            return buffer.Properties.GetOrCreateSingletonProperty<CakeClassifier>(creator: () => new CakeClassifier(this.classificationRegistry));
+            return buffer.Properties.GetOrCreateSingletonProperty<CakeClassifier>(creator: () => new CakeClassifier(_classificationRegistry));
         }
 
         #endregion

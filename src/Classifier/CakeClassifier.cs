@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Cake.VisualStudio.Classifier.Languages;
-using Cake.VisualStudio.Helpers;
 using Microsoft.VisualStudio.Language.StandardClassification;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Classification;
@@ -82,32 +81,36 @@ namespace Cake.VisualStudio.Classifier
 
             //create a list to hold the results
             List<ClassificationSpan> classifications = new List<ClassificationSpan>();
-            string current = span.GetText();
+            var current = span.GetText();
 
-            bool commentFound = false;
+            var commentFound = false;
+
             // Note:  Comments should go to the end of the line.
             foreach (var item in BaseLanguage.Comments)
             {
-                Regex reg = new Regex(item, RegexOptions.IgnoreCase);
+                var reg = new Regex(item, RegexOptions.IgnoreCase);
                 var matches = reg.Matches(current);
-                for (int i = 0; i < matches.Count; i++)
+                for (var i = 0; i < matches.Count; i++)
                 {
                     commentFound = true;
-                    Match m = matches[i];
-                    Span new_span = new Span(span.Start.Position + m.Index,
-                                          current.Length - m.Index);
-                    SnapshotSpan new_snapshot = new SnapshotSpan(span.Snapshot,
-                                          new_span);
-                    var newText = new_snapshot.GetText();
-                    classifications.Add(new ClassificationSpan(new_snapshot,
-                                          _commentType));
+                    var m = matches[i];
+                    var newSpan = new Span(span.Start.Position + m.Index, current.Length - m.Index);
+                    var newSnapshot = new SnapshotSpan(span.Snapshot, newSpan);
+                    var newText = newSnapshot.GetText();
+                    classifications.Add(new ClassificationSpan(newSnapshot, _commentType));
                 }
             }
-            if (commentFound) return classifications;
+
+            if (commentFound)
+            {
+                return classifications;
+            }
+
             foreach (var dslType in _dslTypes)
             {
                 Classify(classifications, current, span, dslType.Key, dslType.Value);
             }
+
             foreach (var predefinedType in _predefinedTypes)
             {
                 Classify(classifications, current, span, predefinedType.Key, predefinedType.Value);
@@ -127,16 +130,15 @@ namespace Cake.VisualStudio.Classifier
         {
             foreach (var item in matchList)
             {
-                Regex reg = new Regex(item);
+                var reg = new Regex(item);
                 var matches = reg.Matches(current);
-                for (int i = 0; i < matches.Count; i++)
+                for (var i = 0; i < matches.Count; i++)
                 {
-                    Match m = matches[i];
-                    Span new_span = new Span(span.Start.Position + m.Index, m.Length);
-                    SnapshotSpan new_snapshot = new SnapshotSpan(span.Snapshot, new_span);
-                    var newText = new_snapshot.GetText();
-                    classifications.Add(new ClassificationSpan(new_snapshot,
-                                          classificationType));
+                    var m = matches[i];
+                    var newSpan = new Span(span.Start.Position + m.Index, m.Length);
+                    var newSnapshot = new SnapshotSpan(span.Snapshot, newSpan);
+                    var newText = newSnapshot.GetText();
+                    classifications.Add(new ClassificationSpan(newSnapshot, classificationType));
                 }
             }
         }

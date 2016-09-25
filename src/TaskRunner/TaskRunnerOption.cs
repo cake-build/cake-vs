@@ -19,9 +19,13 @@ namespace Cake.VisualStudio.TaskRunner
         }
 
         public bool Checked { get; set; }
+
         public uint Id { get; }
+
         public Guid Guid { get; }
+
         public string Name { get; }
+
         public string Command { get; set; }
     }
 }

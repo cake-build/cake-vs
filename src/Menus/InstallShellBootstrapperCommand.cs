@@ -4,13 +4,7 @@
 
 using System;
 using System.ComponentModel.Design;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Net;
 using Cake.VisualStudio.Helpers;
-using EnvDTE;
-using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Constants = Cake.VisualStudio.Helpers.Constants;
@@ -35,13 +29,13 @@ namespace Cake.VisualStudio.Menus
         /// <summary>
         /// VS Package that provides this command, not null.
         /// </summary>
-        private readonly Package package;
+        private readonly Package _package;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InstallShellBootstrapperCommand"/> class.
         /// Adds our command handlers for menu (commands must exist in the command table file)
         /// </summary>
-        /// <param name="package">Owner package, not null.</param>
+        /// <param name="package">Owner _package, not null.</param>
         private InstallShellBootstrapperCommand(Package package)
         {
             if (package == null)
@@ -49,13 +43,13 @@ namespace Cake.VisualStudio.Menus
                 throw new ArgumentNullException("package");
             }
 
-            this.package = package;
+            _package = package;
 
-            OleMenuCommandService commandService = this.ServiceProvider.GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
+            var commandService = ServiceProvider.GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
             if (commandService != null)
             {
                 var menuCommandID = new CommandID(CommandSet, CommandId);
-                var menuItem = new MenuCommand(this.MenuItemCallback, menuCommandID);
+                var menuItem = new MenuCommand(MenuItemCallback, menuCommandID);
                 commandService.AddCommand(menuItem);
             }
         }
@@ -70,20 +64,20 @@ namespace Cake.VisualStudio.Menus
         }
 
         /// <summary>
-        /// Gets the service provider from the owner package.
+        /// Gets the service provider from the owner _package.
         /// </summary>
         private IServiceProvider ServiceProvider
         {
             get
             {
-                return this.package;
+                return _package;
             }
         }
 
         /// <summary>
         /// Initializes the singleton instance of the command.
         /// </summary>
-        /// <param name="package">Owner package, not null.</param>
+        /// <param name="package">Owner _package, not null.</param>
         public static void Initialize(Package package)
         {
             Instance = new InstallShellBootstrapperCommand(package);
@@ -99,7 +93,12 @@ namespace Cake.VisualStudio.Menus
         private void MenuItemCallback(object sender, EventArgs e)
         {
             var dte = CakePackage.Dte;
-            if (dte == null) return;
+
+            if (dte == null)
+            {
+                return;
+            }
+
             if (dte.Solution == null || dte.Solution.Count == 0)
             {
                 ServiceProvider.ShowMessageBox("No solution opened");

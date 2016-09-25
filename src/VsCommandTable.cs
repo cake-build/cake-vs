@@ -12,17 +12,18 @@ namespace Cake.VisualStudio
     /// </summary>
     internal sealed partial class PackageGuids
     {
-        public const string guidCakePackageString = "3cf9b016-d63f-44ee-849d-6f3efc996134";
-        public const string guidCakePackageCmdSetString = "053a476e-69c1-4ddd-a56e-2019a3ae8ab9";
-        public const string guidTaskRunnerExplorerCmdSetString = "9e78b319-2142-4381-873c-6ec83f092915";
-        public const string guidCakePackageCmdSet1String = "6003519f-6876-4db3-ad29-8d5379949869";
-        public const string menuIconString = "323afeb5-c72f-40a7-b345-bb57ce3bbc46";
-        public static Guid guidCakePackage = new Guid(guidCakePackageString);
-        public static Guid guidCakePackageCmdSet = new Guid(guidCakePackageCmdSetString);
-        public static Guid guidTaskRunnerExplorerCmdSet = new Guid(guidTaskRunnerExplorerCmdSetString);
-        public static Guid guidCakePackageCmdSet1 = new Guid(guidCakePackageCmdSet1String);
-        public static Guid menuIcon = new Guid(menuIconString);
+        public const string GuidCakePackageString = "3cf9b016-d63f-44ee-849d-6f3efc996134";
+        public const string GuidCakePackageCmdSetString = "053a476e-69c1-4ddd-a56e-2019a3ae8ab9";
+        public const string GuidTaskRunnerExplorerCmdSetString = "9e78b319-2142-4381-873c-6ec83f092915";
+        public const string GuidCakePackageCmdSet1String = "6003519f-6876-4db3-ad29-8d5379949869";
+        public const string MenuIconString = "323afeb5-c72f-40a7-b345-bb57ce3bbc46";
+        public static Guid GuidCakePackage = new Guid(GuidCakePackageString);
+        public static Guid GuidCakePackageCmdSet = new Guid(GuidCakePackageCmdSetString);
+        public static Guid GuidTaskRunnerExplorerCmdSet = new Guid(GuidTaskRunnerExplorerCmdSetString);
+        public static Guid GuidCakePackageCmdSet1 = new Guid(GuidCakePackageCmdSet1String);
+        public static Guid MenuIcon = new Guid(MenuIconString);
     }
+
     /// <summary>
     /// Helper class that encapsulates all CommandIDs uses across VS Package.
     /// </summary>
