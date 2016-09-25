@@ -1,35 +1,32 @@
-﻿using System;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using System;
 using System.IO;
-using System.Text;
 using System.Windows.Media;
+using Cake.VisualStudio.Configuration;
 using Cake.VisualStudio.Helpers;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TaskRunnerExplorer;
+using Constants = Cake.VisualStudio.Helpers.Constants;
 
 namespace Cake.VisualStudio.TaskRunner
 {
     class TaskRunnerConfig : ITaskRunnerConfig
     {
-        private ImageSource _icon;
         private ITaskRunnerCommandContext _context;
-        ITaskRunnerNode _hierarchy;
 
         public TaskRunnerConfig(ITaskRunnerCommandContext context, ITaskRunnerNode hierarchy, ImageSource icon)
         {
             _context = context;
-            _hierarchy = hierarchy;
-            _icon = icon;
+            TaskHierarchy = hierarchy;
+            Icon = icon;
         }
 
-        public ImageSource Icon
-        {
-            get { return _icon; }
-        }
+        public ImageSource Icon { get; }
 
-        public ITaskRunnerNode TaskHierarchy
-        {
-            get { return _hierarchy; }
-        }
+        public ITaskRunnerNode TaskHierarchy { get; }
 
         public void Dispose()
         {
@@ -38,29 +35,52 @@ namespace Cake.VisualStudio.TaskRunner
 
         public string LoadBindings(string configPath)
         {
-            string bindingPath = configPath + ".bindings";
+            string bindingPath = GetBindingPath(configPath) ?? configPath + ".bindings";
 
-            if (File.Exists(bindingPath))
-                return File.ReadAllText(bindingPath).Replace("///", string.Empty);
+            return File.Exists(bindingPath) ? new ConfigurationParser(bindingPath).LoadBinding().ToXml() : "<binding />";
+        }
 
-            return "<binding />";
+        private string GetBindingPath(string configPath, bool create = false)
+        {
+            string bindingPath;
+            var path = CakePackage.Dte.Solution?.FindProjectItem(Constants.ConfigFileName);
+            if (path != null && path.FileCount == 1)
+            {
+                bindingPath = path.FileNames[1];
+            }
+            else
+            {
+                var cpath = Path.Combine(Path.GetDirectoryName(configPath), Constants.ConfigFileName);
+                try
+                {
+
+                    if (!File.Exists(cpath) && create) File.Create(cpath).Close();
+                    if (File.Exists(cpath)) ProjectHelpers.GetSolutionItemsProject(CakePackage.Dte).AddFileToProject(cpath);
+                }
+                catch
+                {
+                    // ignored
+                }
+                bindingPath = cpath;
+            }
+            return string.IsNullOrWhiteSpace(bindingPath) ? null : bindingPath; // remove the empty string scenario
         }
 
         public bool SaveBindings(string configPath, string bindingsXml)
         {
-            string bindingPath = configPath + ".bindings";
-
+            string bindingPath = GetBindingPath(configPath, true) ?? configPath + ".bindings";
+            var config = new ConfigurationParser(bindingPath);
             try
             {
                 ProjectHelpers.CheckFileOutOfSourceControl(bindingPath);
 
                 if (bindingsXml == "<binding />" && File.Exists(bindingPath))
                 {
-                    ProjectHelpers.DeleteFileFromProject(bindingPath);
+                    config.RemoveBindings();
                 }
                 else
                 {
-                    File.WriteAllText(bindingPath, "///" + bindingsXml, Encoding.UTF8);
+                    config.SaveBinding(TaskBinding.FromXml(bindingsXml));
                     ProjectHelpers.AddNestedFile(configPath, bindingPath);
                 }
 

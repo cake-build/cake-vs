@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using System;
 using System.IO;
 using System.Reflection;
 using System.Windows.Controls;
@@ -28,7 +32,9 @@ namespace Cake.VisualStudio.Adornments
             VisibilityChanged += ToggleVisibility;
 
             if (_adornmentLayer.IsEmpty)
+            {
                 _adornmentLayer.AddAdornment(AdornmentPositioningBehavior.ViewportRelative, null, null, _adornment, null);
+            }
         }
 
         private void ToggleVisibility(object sender, bool isVisible)
@@ -52,17 +58,17 @@ namespace Cake.VisualStudio.Adornments
 
         private static ImageSource GetImage()
         {
-            string assembly = Assembly.GetExecutingAssembly().Location;
-            string folder = Path.GetDirectoryName(assembly);
-            string file =  Path.Combine(folder, "Resources\\icon.png");
+            var assembly = Assembly.GetExecutingAssembly().Location;
+            var folder = Path.GetDirectoryName(assembly);
+            var file = Path.Combine(folder, "Resources\\icon.png");
 
-            Uri url =  new Uri(file, UriKind.Absolute);
+            var url =  new Uri(file, UriKind.Absolute);
             return BitmapFrame.Create(url);
         }
 
         private void SetAdornmentLocation(object sender, EventArgs e)
         {
-            IWpfTextView view = (IWpfTextView)sender;
+            var view = (IWpfTextView)sender;
             Canvas.SetLeft(_adornment, view.ViewportRight - _adornment.Source.Width - 20);
             Canvas.SetTop(_adornment, view.ViewportBottom - _adornment.Source.Height - 20);
         }
@@ -72,7 +78,9 @@ namespace Cake.VisualStudio.Adornments
         internal static void OnVisibilityChanged(bool isVisible)
         {
             if (VisibilityChanged != null)
+            {
                 VisibilityChanged(null, isVisible);
+            }
         }
     }
 }

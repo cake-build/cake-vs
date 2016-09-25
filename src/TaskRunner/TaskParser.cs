@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,7 +19,7 @@ namespace Cake.VisualStudio.TaskRunner
 
             try
             {
-                string document = File.ReadAllText(configPath);
+                var document = File.ReadAllText(configPath);
                 var r = new Regex("Task\\([\\w\"](\\w+)\\\"*\\)");
                 var matches = r.Matches(document);
                 var taskNames = matches.Cast<Match>().Select(m => m.Groups[1].Value);

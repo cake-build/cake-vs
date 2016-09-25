@@ -1,0 +1,39 @@
+﻿<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <Header>
+      <Title>Cake Method Alias</Title>
+      <Author>Cake</Author>
+      <Shortcut>ckma</Shortcut>
+      <Description>Code snippet for a method alias for use in Cake addins</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>name</ID>
+          <ToolTip>The name of the Alias</ToolTip>
+          <Default>Build</Default>
+        </Literal>
+        <Literal>
+          <ID>category</ID>
+          <ToolTip>The category of the Alias</ToolTip>
+          <Default>Cake</Default>
+        </Literal>
+        <Literal>
+          <ID>returns</ID>
+          <ToolTip>The return type for the Alias</ToolTip>
+          <Default>void</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[[CakeAliasCategory("$category$")]
+[CakeMethodAlias]
+public static $returns$ $name$(this ICakeContext ctx$end$) {
+
+}]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>Cake Build Script</Name>
+    <Description>Basic Cake build script with a sample task</Description>
+    <Icon>ItemTemplate.ico</Icon>
+    <TemplateID>7d181506-47e9-4f9d-8ac3-5ac65f6b8354</TemplateID>
+    <ProjectType>CSharp</ProjectType>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <DefaultName>build.cake</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <ProjectItem ReplaceParameters="false">build.cake</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

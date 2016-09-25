@@ -24,3 +24,9 @@ x64/
 *.ncrunchsolution
 *.ncrunchproject
 _NCrunch_WebCompiler
+
+#Cake (generated)
+![Tt]ools/packages.config
+[Tt]ools/**/*
+dist/**
+!src/Packages/**

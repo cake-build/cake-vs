@@ -12,19 +12,36 @@ namespace Cake.VisualStudio
     /// </summary>
     internal sealed partial class PackageGuids
     {
-        public const string guidCakePackageString = "62e192b9-d3b1-4ffe-969f-47ea65af40d4";
-        public const string guidCakePackageCmdSetString = "053a476e-69c1-4ddd-a56e-2019a3ae8ab9";
-        public const string guidTaskRunnerExplorerCmdSetString = "39faa100-ac2b-40f9-81e5-ac24df0d3d1b";
-        public static Guid guidCakePackage = new Guid(guidCakePackageString);
-        public static Guid guidCakePackageCmdSet = new Guid(guidCakePackageCmdSetString);
-        public static Guid guidTaskRunnerExplorerCmdSet = new Guid(guidTaskRunnerExplorerCmdSetString);
+        public const string GuidCakePackageString = "3cf9b016-d63f-44ee-849d-6f3efc996134";
+        public const string GuidCakePackageCmdSetString = "053a476e-69c1-4ddd-a56e-2019a3ae8ab9";
+        public const string GuidTaskRunnerExplorerCmdSetString = "9e78b319-2142-4381-873c-6ec83f092915";
+        public const string GuidCakePackageCmdSet1String = "6003519f-6876-4db3-ad29-8d5379949869";
+        public const string MenuIconString = "323afeb5-c72f-40a7-b345-bb57ce3bbc46";
+        public static Guid GuidCakePackage = new Guid(GuidCakePackageString);
+        public static Guid GuidCakePackageCmdSet = new Guid(GuidCakePackageCmdSetString);
+        public static Guid GuidTaskRunnerExplorerCmdSet = new Guid(GuidTaskRunnerExplorerCmdSetString);
+        public static Guid GuidCakePackageCmdSet1 = new Guid(GuidCakePackageCmdSet1String);
+        public static Guid MenuIcon = new Guid(MenuIconString);
     }
+
     /// <summary>
     /// Helper class that encapsulates all CommandIDs uses across VS Package.
     /// </summary>
     internal sealed partial class PackageIds
     {
-        public const int cmdDebug = 0x0100;
+        public const int cmdDebug = 0x0101;
+        public const int cmdVerbose = 0x0102;
+        public const int cmdDryRun = 0x0103;
         public const int IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS = 0x2002;
+        public const int SubMenuGroup = 0x1020;
+        public const int CakeSubMenu = 0x1018;
+        public const int TopMenuGroup = 0x1019;
+        public const int cmdidInstallBootstrapperCommand = 0x1021;
+        public const int cmdidInstallShellBootstrapperCommand = 0x1024;
+        public const int cmdidInstallConfigFileCommand = 0x1025;
+        public const int menuCakeIcon = 0x0001;
+        public const int menuPsIcon = 0x0002;
+        public const int menuBashIcon = 0x0003;
+        public const int menuConfigIcon = 0x0004;
     }
 }

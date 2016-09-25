@@ -1,4 +1,8 @@
-﻿using System.Runtime.InteropServices;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using System.Runtime.InteropServices;
 using Cake.VisualStudio.Helpers;
 using EnvDTE;
 using EnvDTE80;
@@ -12,22 +16,31 @@ namespace Cake.VisualStudio
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", Vsix.Version, IconResourceID = 400)]
     [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
-    [Guid(PackageGuids.guidCakePackageString)]
+    [Guid(PackageGuids.GuidCakePackageString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    public sealed class CakePackage : Package, IVsShellPropertyEvents
+    public sealed partial class CakePackage : Package, IVsShellPropertyEvents
     {
         private static DTE2 _dte;
         internal static DTE2 Dte => _dte ?? (_dte = (DTE2) GetGlobalService(typeof(DTE)));
+        internal static IVsUIShell Shell => _shell ?? (_shell = (IVsUIShell) GetGlobalService(typeof(IVsUIShell)));
 
         uint _cookie;
+        private static IVsUIShell _shell;
 
         protected override void Initialize()
         {
             Logger.Initialize(this, Vsix.Name);
             base.Initialize();
-            IVsShell shellService = GetService(typeof(SVsShell)) as IVsShell;
+            var shellService = GetService(typeof(SVsShell)) as IVsShell;
+
             if (shellService != null)
+            {
                 ErrorHandler.ThrowOnFailure(shellService.AdviseShellPropertyChanges(this, out _cookie));
+            }
+
+            Menus.InstallBootstrapperCommand.Initialize(this);
+            Menus.InstallShellBootstrapperCommand.Initialize(this);
+            Menus.InstallConfigFileCommand.Initialize(this);
         }
 
         public static bool IsDocumentDirty(string documentPath, out IVsPersistDocData persistDocData)
@@ -38,6 +51,7 @@ namespace Cake.VisualStudio
             uint itemId, docCookie;
             VsShellUtilities.GetRDTDocumentInfo(
                 serviceProvider, documentPath, out vsHierarchy, out itemId, out persistDocData, out docCookie);
+
             if (persistDocData != null)
             {
                 int isDirty;
@@ -51,30 +65,23 @@ namespace Cake.VisualStudio
         public int OnShellPropertyChange(int propid, object var)
         {
             // when zombie state changes to false, finish package initialization
-
             if ((int)__VSSPROPID.VSSPROPID_Zombie == propid)
-
             {
-
                 if ((bool)var == false)
-
                 {
-
                     // zombie state dependent code
 
-                    //Dte = (DTE2)GetService(typeof(DTE));
+                    // Dte = (DTE2)GetService(typeof(DTE));
                     // eventlistener no longer needed
 
-                    IVsShell shellService = GetService(typeof(SVsShell)) as IVsShell;
+                    var shellService = GetService(typeof(SVsShell)) as IVsShell;
 
                     if (shellService != null)
 
-                        ErrorHandler.ThrowOnFailure(shellService.UnadviseShellPropertyChanges(this._cookie));
+                        ErrorHandler.ThrowOnFailure(shellService.UnadviseShellPropertyChanges(_cookie));
 
-                    this._cookie = 0;
-
+                    _cookie = 0;
                 }
-
             }
 
             return VSConstants.S_OK;

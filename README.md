@@ -1,17 +1,20 @@
-# Cake Task Runner extension
+# Cake for Visual Studio
 Adds support for the [Cake](http://cakebuild.net/)
-build tool in Visual Studio 2015's Task Runner Explorer.
+build tool in Visual Studio 2015. Includes support for the Task Runner Explorer, 
+new item and project templates and bootstrapping important Cake files
 
-Based off Mads Kristensen's [Brunch Task Runner](https://github.com/madskristensen/BrunchTaskRunner) extension.
+Originally based off Mads Kristensen's [Brunch Task Runner](https://github.com/madskristensen/BrunchTaskRunner) extension.
 
 ## Install Cake
 In order to use this extension, you must have
-[Cake](https://cakebuild.net/) installed on your machine.
+[Cake](https://cakebuild.net/) installed on your machine or in your solution.
 
 Use [chocolatey](http://chocolatey.org/) to install it globally by
 typing the following in an elevated command prompt:
 
 >choco install -y cake.portable
+
+Alternatively, if you have run the bootstrapper at least once, Visual Studio should automatically discover it (see below).
 
 ## Build scripts
 The Cake Task Runner automatically triggers when it finds
@@ -36,6 +39,24 @@ Task bindings make it possible to associate individual tasks
 with Visual Studio events such as _Project Open_ etc.
 
 ![Bindings](art/bindings.png)
+
+These bindings are stored in your `cake.config` file.
+
+### Cake installation
+The runner will automatically use a project-local copy of Cake if it is already present 
+in the current directory or one of the default paths. 
+However, at this time, it will not automatically download Cake for you.
+
+## Template Installers
+Choose Cake Build from the Build menu to quickly install the default bootstrapper scripts or Cake configuration files into your solution.
+
+![Template installers](art/installers.png)
+
+## Templates
+
+The extension includes an item template for build scripts and project templates for Cake modules, addins, and unit tests.
+
+![Project Template](art/templates.png)
 
 ## Contribute
 Check out the [Cake contribution guidelines](https://http://cakebuild.net/docs/contributing/guidelines)

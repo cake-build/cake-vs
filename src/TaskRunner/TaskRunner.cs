@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,29 +10,36 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Cake.VisualStudio.Helpers;
 using Microsoft.VisualStudio.TaskRunnerExplorer;
 
 namespace Cake.VisualStudio.TaskRunner
 {
-    [TaskRunnerExport("build.cake")]
+    [TaskRunnerExport(Constants.ScriptFileName)]
     class TaskRunner : ITaskRunner
     {
         private static ImageSource _icon;
         private List<ITaskRunnerOption> _options = null;
+        private string _executablePath;
 
         public TaskRunner()
         {
             if (_icon == null)
             {
-                string folder = GetExecutableFolder();
-                _icon = new BitmapImage(new Uri(Path.Combine(folder, "Resources\\logo.png")));
+                var folder = GetExecutableFolder();
+                _icon = new BitmapImage(new Uri(Path.Combine(folder, "Resources\\TaskRunner.png")));
             }
         }
 
         private void InitializeCakeRunnerOptions()
         {
-            _options = new List<ITaskRunnerOption>();
-            _options.Add(new TaskRunnerOption("Debug", PackageIds.cmdDebug, PackageGuids.guidCakePackageCmdSet, false, "-Verbosity=\"Diagnostic\""));
+            _options = new List<ITaskRunnerOption>
+            {
+                new TaskRunnerOption("Verbose", PackageIds.cmdVerbose, PackageGuids.GuidCakePackageCmdSet, false,
+                    "-Verbosity=\"Diagnostic\""),
+                new TaskRunnerOption("Debug", PackageIds.cmdDebug, PackageGuids.GuidCakePackageCmdSet, false, "-debug"),
+                new TaskRunnerOption("Dry Run", PackageIds.cmdDryRun, PackageGuids.GuidCakePackageCmdSet, false, "-dryrun")
+            };
         }
 
         public List<ITaskRunnerOption> Options
@@ -48,30 +59,62 @@ namespace Cake.VisualStudio.TaskRunner
         {
             return await Task.Run(() =>
             {
-                ITaskRunnerNode hierarchy = LoadHierarchy(configPath);
+                var hierarchy = LoadTasks(configPath);
 
                 return new TaskRunnerConfig(context, hierarchy, _icon);
             });
         }
 
+        private ITaskRunnerNode LoadTasks(string configPath)
+        {
+            var cwd = Path.GetDirectoryName(configPath);
+            _executablePath = GetCakePath(cwd);
+            return string.IsNullOrWhiteSpace(_executablePath) ? NotFoundNode(configPath) : LoadHierarchy(configPath);
+        }
+
+        private ITaskRunnerNode NotFoundNode(string configPath)
+        {
+            var message = "Could not find Cake.exe in local folder or in PATH";
+            CakePackage.Dte.ShowStatusBarText(message);
+            return new TaskRunnerNode("Cake.exe not found", true)
+            {
+                Description = message,
+                Command = new TaskRunnerCommand(Path.GetDirectoryName(configPath), "echo", message),
+            };
+            /*
+             * return new TaskRunnerNode("Cake")
+            {
+                Children =
+                {
+                    new TaskRunnerNode("Cake.exe not found", true)
+                    {
+                        Description = message,
+                        Command = new TaskRunnerCommand(Path.GetDirectoryName(configPath), "echo", message),
+                    }
+                }
+            };
+            */
+        }
+
         private ITaskRunnerNode LoadHierarchy(string configPath)
         {
-            string configFileName = Path.GetFileName(configPath);
-            string cwd = Path.GetDirectoryName(configPath);
+            var configFileName = Path.GetFileName(configPath);
+            var cwd = Path.GetDirectoryName(configPath);
 
             ITaskRunnerNode root = new TaskRunnerNode("Cake");
 
             // Build
-            TaskRunnerNode buildDev = CreateTask(cwd, $"Default ({configFileName})", "Runs 'cake build.cake'", configFileName);
+            var buildDev = CreateTask(cwd, $"Default ({configFileName})", "Runs 'cake build.cake'", configFileName);
             var tasks = TaskParser.LoadTasks(configPath);
             var commands =
                 tasks.Select(
                     t =>
                         CreateTask(cwd, t.Key, $"Runs {configFileName} with the \"{t.Key}\" target",
                             buildDev.Command.Args + $" {t.Value}"));
-            buildDev.Children.AddRange(commands);
+            var nodes = commands as IList<TaskRunnerNode> ?? commands.ToList();
+            buildDev.Children.AddRange(nodes);
             root.Children.Add(buildDev);
-
+            CakePackage.Dte.ShowStatusBarText($"Loaded {nodes.Count} tasks from {configFileName}");
             return root;
         }
 
@@ -88,35 +131,31 @@ namespace Cake.VisualStudio.TaskRunner
             return task;
         }
 
-        private void ApplyOverrides(ITaskRunnerNode parent)
-        {
-            var files = Directory.EnumerateFiles(parent.Command.WorkingDirectory).Where(f => f.Contains(".overrides."));
-
-            foreach (string file in files)
-            {
-                int dot = file.LastIndexOf('.');
-                string name = file.Substring(dot + 1);
-
-                var task = new TaskRunnerNode($"env: {name}", true)
-                {
-                    Description = $"Runs '{parent.Name} --env {name}'",
-                    Command = GetCommand(parent.Command.WorkingDirectory, $"{parent.Command.Args} --env {name}")
-                };
-
-                parent.Children.Add(task);
-            }
-        }
-
         private ITaskRunnerCommand GetCommand(string cwd, string arguments)
         {
-            ITaskRunnerCommand command = new TaskRunnerCommand(cwd, "cake", arguments);
+            ITaskRunnerCommand command = new TaskRunnerCommand(cwd, _executablePath, arguments);
 
             return command;
         }
 
+        private static string GetCakePath(string cwd)
+        {
+            var knownPaths = new[] {"tools/Cake/Cake.exe", "Cake/Cake.exe", "Cake.exe"};
+            foreach (var path in knownPaths)
+            {
+                var fullPath = Path.Combine(cwd, path);
+                if (File.Exists(fullPath)) return fullPath;
+            }
+            if (PathHelpers.ExistsOnPath("cake.exe") || PathHelpers.ExistsOnPath("cake"))
+            {
+                return "cake"; // assume PATH
+            }
+            return null;
+        }
+
         private static string GetExecutableFolder()
         {
-            string assembly = Assembly.GetExecutingAssembly().Location;
+            var assembly = Assembly.GetExecutingAssembly().Location;
             return Path.GetDirectoryName(assembly);
         }
     }

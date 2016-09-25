@@ -4,11 +4,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.VisualStudio", "src\Cake.VisualStudio.csproj", "{94660BCF-169A-42E1-BD84-345449743069}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FCE573DD-E74E-4AB1-9D17-56FC8869797F} = {FCE573DD-E74E-4AB1-9D17-56FC8869797F}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{04D0CE67-A915-44BB-BC3C-8E7885CF9E97}"
 	ProjectSection(SolutionItems) = preProject
+		build.cake = build.cake
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddinTemplate", "template\AddinTemplate\AddinTemplate.csproj", "{FCE573DD-E74E-4AB1-9D17-56FC8869797F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{7067556F-B744-4F73-B509-C8CC9F559AB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleTemplate", "template\ModuleTemplate\ModuleTemplate.csproj", "{85BCBED7-39BD-4670-85F7-EE36D0DA31C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemTemplate", "template\ItemTemplate\ItemTemplate.csproj", "{C27AB61E-D245-4A8C-ABD1-53313E388509}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddinTestTemplate", "template\AddinTestTemplate\AddinTestTemplate.csproj", "{AB983284-D1F6-4853-9462-402F2985A141}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddinTestBasicTemplate", "template\AddinTestBasicTemplate\AddinTestBasicTemplate.csproj", "{F21E9BF8-745B-4B29-B113-0E55AE840D24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,8 +36,35 @@ Global
 		{94660BCF-169A-42E1-BD84-345449743069}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94660BCF-169A-42E1-BD84-345449743069}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94660BCF-169A-42E1-BD84-345449743069}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCE573DD-E74E-4AB1-9D17-56FC8869797F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCE573DD-E74E-4AB1-9D17-56FC8869797F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCE573DD-E74E-4AB1-9D17-56FC8869797F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCE573DD-E74E-4AB1-9D17-56FC8869797F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85BCBED7-39BD-4670-85F7-EE36D0DA31C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85BCBED7-39BD-4670-85F7-EE36D0DA31C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85BCBED7-39BD-4670-85F7-EE36D0DA31C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85BCBED7-39BD-4670-85F7-EE36D0DA31C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C27AB61E-D245-4A8C-ABD1-53313E388509}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C27AB61E-D245-4A8C-ABD1-53313E388509}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C27AB61E-D245-4A8C-ABD1-53313E388509}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C27AB61E-D245-4A8C-ABD1-53313E388509}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB983284-D1F6-4853-9462-402F2985A141}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB983284-D1F6-4853-9462-402F2985A141}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB983284-D1F6-4853-9462-402F2985A141}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB983284-D1F6-4853-9462-402F2985A141}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F21E9BF8-745B-4B29-B113-0E55AE840D24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F21E9BF8-745B-4B29-B113-0E55AE840D24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F21E9BF8-745B-4B29-B113-0E55AE840D24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F21E9BF8-745B-4B29-B113-0E55AE840D24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FCE573DD-E74E-4AB1-9D17-56FC8869797F} = {7067556F-B744-4F73-B509-C8CC9F559AB9}
+		{85BCBED7-39BD-4670-85F7-EE36D0DA31C0} = {7067556F-B744-4F73-B509-C8CC9F559AB9}
+		{C27AB61E-D245-4A8C-ABD1-53313E388509} = {7067556F-B744-4F73-B509-C8CC9F559AB9}
+		{AB983284-D1F6-4853-9462-402F2985A141} = {7067556F-B744-4F73-B509-C8CC9F559AB9}
+		{F21E9BF8-745B-4B29-B113-0E55AE840D24} = {7067556F-B744-4F73-B509-C8CC9F559AB9}
 	EndGlobalSection
 EndGlobal

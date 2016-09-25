@@ -1,10 +1,16 @@
-﻿using System;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using EnvDTE;
 using EnvDTE80;
+using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Interop;
 
 namespace Cake.VisualStudio.Helpers
 {
@@ -20,10 +26,10 @@ namespace Cake.VisualStudio.Helpers
             if (_dte.SourceControl.IsItemUnderSCC(file) && !_dte.SourceControl.IsItemCheckedOut(file))
                 _dte.SourceControl.CheckOutItem(file);
 
-            FileInfo info = new FileInfo(file);
+            var info = new FileInfo(file);
             info.IsReadOnly = false;
         }
-        
+
         public static void AddFileToProject(this Project project, string file, string itemType = null)
         {
             if (project.IsKind(ProjectTypes.ASPNET_5))
@@ -33,7 +39,7 @@ namespace Cake.VisualStudio.Helpers
             {
                 if (_dte.Solution.FindProjectItem(file) == null)
                 {
-                    ProjectItem item = project.ProjectItems.AddFromFile(file);
+                    var item = project.ProjectItems.AddFromFile(file);
 
                     if (string.IsNullOrEmpty(itemType)
                         || project.IsKind(ProjectTypes.WEBSITE_PROJECT)
@@ -51,7 +57,7 @@ namespace Cake.VisualStudio.Helpers
 
         public static void AddNestedFile(string parentFile, string newFile)
         {
-            ProjectItem item = _dte.Solution.FindProjectItem(parentFile);
+            var item = _dte.Solution.FindProjectItem(parentFile);
 
             try
             {
@@ -82,7 +88,7 @@ namespace Cake.VisualStudio.Helpers
 
         public static void DeleteFileFromProject(string file)
         {
-            ProjectItem item = _dte.Solution.FindProjectItem(file);
+            var item = _dte.Solution.FindProjectItem(file);
 
             if (item == null)
                 return;
@@ -115,6 +121,29 @@ namespace Cake.VisualStudio.Helpers
                     .Cast<ProjectItem>()
                     .Where(p => p.SubProject != null)
                     .SelectMany(p => GetChildProjects(p.SubProject));
+        }
+
+        internal static Project GetSolutionItemsProject(DTE2 dte)
+        {
+            var solItems =
+                            dte.Solution.Projects.Cast<Project>().FirstOrDefault(p => p.Name == "Solution Items" || p.Kind == EnvDTE.Constants.vsProjectItemKindSolutionItems);
+            var projs = dte.Solution.Projects.Cast<Project>().ToList();
+            if (solItems == null)
+            {
+                try
+                {
+                    var sol2 = (Solution2)dte.Solution;
+                    solItems = sol2.AddSolutionFolder("Solution Items");
+                    VsShellUtilities.LogMessage(Constants.PackageName,
+                        $"Created Solution Items project for solution {dte.Solution.FullName}",
+                        __ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION);
+                }
+                catch
+                {
+                    // ignored
+                }
+            }
+            return solItems;
         }
     }
 
