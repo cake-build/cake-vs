@@ -27,7 +27,7 @@ Teardown(ctx =>
 
 Task("Default")
 .Does(() => {
-	Information("Hello Cake!")
+	Information("Hello Cake!");
 });
 
 RunTarget(target);
