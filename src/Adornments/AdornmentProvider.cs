@@ -21,7 +21,8 @@ namespace Cake.VisualStudio.Adornments
         private const string PropertyName = "ShowWatermark";
         private const double InitOpacity = 0.4D;
 
-        private static bool _isVisible, _hasLoaded;
+        private static bool _isVisible;
+        private static bool _hasLoaded;
         private SettingsManager _settingsManager;
 
         [Import]
@@ -29,6 +30,31 @@ namespace Cake.VisualStudio.Adornments
 
         [Import]
         public SVsServiceProvider ServiceProvider { get; set; }
+
+        public void TextViewCreated(IWpfTextView textView)
+        {
+            ITextDocument document;
+
+            if (!TextDocumentFactoryService.TryGetTextDocument(textView.TextDataModel.DocumentBuffer, out document))
+            {
+                return;
+            }
+
+            LoadSettings();
+
+            var fileName = Path.GetFileName(document.FilePath).ToLowerInvariant();
+
+            // Check if filename is absolute because when debugging, script files are sometimes dynamically created.
+            if (string.IsNullOrEmpty(fileName) || !Path.IsPathRooted(document.FilePath))
+            {
+                return;
+            }
+
+            if (fileName.EndsWith(".cake"))
+            {
+                textView.Properties.GetOrCreateSingletonProperty(() => new LogoAdornment(textView, _isVisible, InitOpacity));
+            }
+        }
 
         private void LoadSettings()
         {
@@ -58,31 +84,6 @@ namespace Cake.VisualStudio.Adornments
             }
 
             wstore.SetBoolean(Vsix.Name, PropertyName, isVisible);
-        }
-
-        public void TextViewCreated(IWpfTextView textView)
-        {
-            ITextDocument document;
-
-            if (!TextDocumentFactoryService.TryGetTextDocument(textView.TextDataModel.DocumentBuffer, out document))
-            {
-                return;
-            }
-
-            LoadSettings();
-
-            var fileName = Path.GetFileName(document.FilePath).ToLowerInvariant();
-
-            // Check if filename is absolute because when debugging, script files are sometimes dynamically created.
-            if (string.IsNullOrEmpty(fileName) || !Path.IsPathRooted(document.FilePath))
-            {
-                return;
-            }
-
-            if (fileName.EndsWith(".cake"))
-            {
-                textView.Properties.GetOrCreateSingletonProperty(() => new LogoAdornment(textView, _isVisible, InitOpacity));
-            }
         }
     }
 }

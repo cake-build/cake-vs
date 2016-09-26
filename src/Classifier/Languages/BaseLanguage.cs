@@ -8,8 +8,9 @@ namespace Cake.VisualStudio.Classifier.Languages
 {
     static class BaseLanguage
     {
-        public static List<string> Comments => new List<string> {@"//"};
-        public static List<string> Quoted => new List<string> {@"([""'])(?:\\\1|.)*?\1"};
+        public static List<string> Comments => new List<string> { @"//" };
+
+        public static List<string> Quoted => new List<string> { @"([""'])(?:\\\1|.)*?\1" };
 
         public static List<string> Identifiers
             =>
@@ -39,10 +40,10 @@ namespace Cake.VisualStudio.Classifier.Languages
                 };
 
         public static List<string> Operators
-            => new List<string> {@"\b(new|is|as|using|checked|unchecked|typeof|sizeof|override|readonly|stackalloc)\b"};
+            => new List<string> { @"\b(new|is|as|using|checked|unchecked|typeof|sizeof|override|readonly|stackalloc)\b" };
 
         public static List<string> OtherKeywords
-            => new List<string> {@"\b(event|delegate|fixed|add|remove|set|get|value)\b"};
+            => new List<string> { @"\b(event|delegate|fixed|add|remove|set|get|value)\b" };
 
         public static List<string> Linq
             =>

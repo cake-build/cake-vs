@@ -25,27 +25,14 @@ namespace Cake.VisualStudio
     public sealed partial class CakePackage : Package, IVsShellPropertyEvents
     {
         private static DTE2 _dte;
-        internal static DTE2 Dte => _dte ?? (_dte = (DTE2) GetGlobalService(typeof(DTE)));
-        internal static IVsUIShell Shell => _shell ?? (_shell = (IVsUIShell) GetGlobalService(typeof(IVsUIShell)));
+
+        internal static DTE2 Dte => _dte ?? (_dte = (DTE2)GetGlobalService(typeof(DTE)));
+
+        internal static IVsUIShell Shell => _shell ?? (_shell = (IVsUIShell)GetGlobalService(typeof(IVsUIShell)));
 
         uint _cookie;
+
         private static IVsUIShell _shell;
-
-        protected override void Initialize()
-        {
-            Logger.Initialize(this, Vsix.Name);
-            base.Initialize();
-            var shellService = GetService(typeof(SVsShell)) as IVsShell;
-
-            if (shellService != null)
-            {
-                ErrorHandler.ThrowOnFailure(shellService.AdviseShellPropertyChanges(this, out _cookie));
-            }
-
-            Menus.InstallBootstrapperCommand.Initialize(this);
-            Menus.InstallShellBootstrapperCommand.Initialize(this);
-            Menus.InstallConfigFileCommand.Initialize(this);
-        }
 
         public static bool IsDocumentDirty(string documentPath, out IVsPersistDocData persistDocData)
         {
@@ -69,26 +56,43 @@ namespace Cake.VisualStudio
         public int OnShellPropertyChange(int propid, object var)
         {
             // when zombie state changes to false, finish package initialization
-            if ((int)__VSSPROPID.VSSPROPID_Zombie == propid)
+            if (propid == (int)__VSSPROPID.VSSPROPID_Zombie)
             {
                 if ((bool)var == false)
                 {
-                    // zombie state dependent code
+                    //// zombie state dependent code
 
-                    // Dte = (DTE2)GetService(typeof(DTE));
-                    // eventlistener no longer needed
+                    //// Dte = (DTE2)GetService(typeof(DTE));
+                    //// eventlistener no longer needed
 
                     var shellService = GetService(typeof(SVsShell)) as IVsShell;
 
                     if (shellService != null)
-
+                    {
                         ErrorHandler.ThrowOnFailure(shellService.UnadviseShellPropertyChanges(_cookie));
+                    }
 
                     _cookie = 0;
                 }
             }
 
             return VSConstants.S_OK;
+        }
+
+        protected override void Initialize()
+        {
+            Logger.Initialize(this, Vsix.Name);
+            base.Initialize();
+            var shellService = GetService(typeof(SVsShell)) as IVsShell;
+
+            if (shellService != null)
+            {
+                ErrorHandler.ThrowOnFailure(shellService.AdviseShellPropertyChanges(this, out _cookie));
+            }
+
+            Menus.InstallBootstrapperCommand.Initialize(this);
+            Menus.InstallShellBootstrapperCommand.Initialize(this);
+            Menus.InstallConfigFileCommand.Initialize(this);
         }
     }
 }

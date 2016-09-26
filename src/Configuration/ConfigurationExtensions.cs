@@ -13,7 +13,11 @@ namespace Cake.VisualStudio.Configuration
     {
         internal static void UpdateBindings(this IniData data, TaskBinding binding, string sectionName = "TaskRunnerBindings")
         {
-            if (data.Sections.ContainsSection(sectionName)) data.Sections.RemoveSection(sectionName);
+            if (data.Sections.ContainsSection(sectionName))
+            {
+                data.Sections.RemoveSection(sectionName);
+            }
+
             data.Sections.AddSection(sectionName);
             data[sectionName].AddIfAny(BindingTargets.BeforeBuild, binding.BeforeBuild);
             data[sectionName].AddIfAny(BindingTargets.AfterBuild, binding.AfterBuild);
@@ -28,18 +32,13 @@ namespace Cake.VisualStudio.Configuration
                 : element.Attribute(target).Value.Split(',').Select(s => s.Trim());
         }
 
-        private static void AddIfAny(this KeyDataCollection collection, string target, IEnumerable<string> data)
-        {
-            var values = data as IList<string> ?? data.ToList();
-            if (values.Any())
-            {
-                collection[target] = string.Join(",", values).Trim(',');
-            }
-        }
-
         internal static IEnumerable<string> ReadValues(this KeyDataCollection collection, string target)
         {
-            if (collection == null) return new List<string>();
+            if (collection == null)
+            {
+                return new List<string>();
+            }
+
             try
             {
                 var raw = collection[target];
@@ -48,6 +47,15 @@ namespace Cake.VisualStudio.Configuration
             catch
             {
                 return new List<string>();
+            }
+        }
+
+        private static void AddIfAny(this KeyDataCollection collection, string target, IEnumerable<string> data)
+        {
+            var values = data as IList<string> ?? data.ToList();
+            if (values.Any())
+            {
+                collection[target] = string.Join(",", values).Trim(',');
             }
         }
     }

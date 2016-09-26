@@ -45,8 +45,6 @@ namespace Cake.VisualStudio.Classifier
             };
         }
 
-        #region IClassifier
-
 #pragma warning disable 67
 
         /// <summary>
@@ -79,7 +77,7 @@ namespace Cake.VisualStudio.Classifier
 
             return result; */
 
-            //create a list to hold the results
+            // create a list to hold the results
             List<ClassificationSpan> classifications = new List<ClassificationSpan>();
             var current = span.GetText();
 
@@ -115,18 +113,24 @@ namespace Cake.VisualStudio.Classifier
             {
                 Classify(classifications, current, span, predefinedType.Key, predefinedType.Value);
             }
-            //Classify(classifications, current, span, _brightScriptLanguage.Quoted,
-            //              _stringType);
-            //Classify(classifications, current, span, _brightScriptLanguage.KeyWords,
-            //              _keywordType);
-            //Classify(classifications, current, span, _brightScriptLanguage.IdentifierTypes,
-            //              _identifierType);
-            //Classify(classifications, current, span, _brightScriptLanguage.Numeric,
-            //              _numericType);
+
+            ////Classify(classifications, current, span, _brightScriptLanguage.Quoted,
+            ////              _stringType);
+            ////Classify(classifications, current, span, _brightScriptLanguage.KeyWords,
+            ////              _keywordType);
+            ////Classify(classifications, current, span, _brightScriptLanguage.IdentifierTypes,
+            ////              _identifierType);
+            ////Classify(classifications, current, span, _brightScriptLanguage.Numeric,
+            ////              _numericType);
             return classifications;
         }
-        private void Classify(List<ClassificationSpan> classifications, string current,
-                  SnapshotSpan span, List<string> matchList, IClassificationType classificationType)
+
+        private void Classify(
+            List<ClassificationSpan> classifications,
+            string current,
+            SnapshotSpan span,
+            List<string> matchList,
+            IClassificationType classificationType)
         {
             foreach (var item in matchList)
             {
@@ -142,7 +146,5 @@ namespace Cake.VisualStudio.Classifier
                 }
             }
         }
-
-        #endregion
     }
 }
