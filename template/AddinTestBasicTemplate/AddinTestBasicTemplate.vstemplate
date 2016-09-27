@@ -26,8 +26,8 @@
   </WizardExtension>
   <WizardData>
     <packages repository="extension" repositoryId="3cf9b016-d63f-44ee-849d-6f3efc996134">
-      <package id="Cake.Core" version="0.16.0" />
-      <package id="Cake.Testing" version="0.16.0" />
+      <package id="Cake.Core" version="0.16.1" />
+      <package id="Cake.Testing" version="0.16.1" />
       <package id="xunit" version="2.1.0" targetFramework="net452" />
       <package id="xunit.abstractions" version="2.0.1" targetFramework="net452" />
       <package id="xunit.assert" version="2.1.0" targetFramework="net452" />
