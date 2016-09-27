@@ -113,41 +113,59 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="packages.config" />
-    <Content Include="Packages\cake.core.0.16.0.nupkg">
+    <Content Include="..\packages\cake.core.0.16.0\cake.core.0.16.0.nupkg">
       <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>Packages</VSIXSubPath>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <InProject>false</InProject>
     </Content>
-    <Content Include="Packages\cake.testing.0.16.0.nupkg">
+    <Content Include="..\packages\Cake.Testing.0.16.0\cake.testing.0.16.0.nupkg">
       <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>Packages</VSIXSubPath>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <InProject>false</InProject>
     </Content>
-    <Content Include="Packages\xunit.2.1.0.nupkg">
+    <Content Include="..\packages\xunit.2.1.0\xunit.2.1.0.nupkg">
       <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>Packages</VSIXSubPath>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <InProject>false</InProject>
     </Content>
-    <Content Include="Packages\xunit.runner.visualstudio.2.1.0.nupkg">
+    <Content Include="..\packages\xunit.runner.visualstudio.2.1.0\xunit.runner.visualstudio.2.1.0.nupkg">
       <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>Packages</VSIXSubPath>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <InProject>false</InProject>
     </Content>
-    <Content Include="Packages\xunit.abstractions.2.0.1.nupkg">
+    <Content Include="..\packages\xunit.abstractions.2.0.1\xunit.abstractions.2.0.1.nupkg">
       <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>Packages</VSIXSubPath>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <InProject>false</InProject>
     </Content>
-    <Content Include="Packages\xunit.assert.2.1.0.nupkg">
+    <Content Include="..\packages\xunit.assert.2.1.0\xunit.assert.2.1.0.nupkg">
       <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>Packages</VSIXSubPath>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <InProject>false</InProject>
     </Content>
-    <Content Include="Packages\xunit.core.2.1.0.nupkg">
+    <Content Include="..\packages\xunit.core.2.1.0\xunit.core.2.1.0.nupkg">
       <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>Packages</VSIXSubPath>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <InProject>false</InProject>
     </Content>
-    <Content Include="Packages\xunit.extensibility.core.2.1.0.nupkg">
+    <Content Include="..\packages\xunit.extensibility.core.2.1.0\xunit.extensibility.core.2.1.0.nupkg">
       <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>Packages</VSIXSubPath>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <InProject>false</InProject>
     </Content>
-    <Content Include="Packages\xunit.extensibility.execution.2.1.0.nupkg">
+    <Content Include="..\packages\xunit.extensibility.execution.2.1.0\xunit.extensibility.execution.2.1.0.nupkg">
       <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>Packages</VSIXSubPath>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <InProject>false</InProject>
     </Content>
     <None Include="Properties\template-builder.props" />
     <None Include="Snippets\Cake\cake-task.snippet" />
