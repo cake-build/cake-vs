@@ -77,6 +77,7 @@
     <Compile Include="source.extension.cs">
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Compile>
+    <Compile Include="TaskRunner\ScriptContent.cs" />
     <Compile Include="TaskRunner\TaskParser.cs" />
     <Compile Include="TaskRunner\TaskRunnerOption.cs" />
     <Compile Include="VsCommandTable.cs">
