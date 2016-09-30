@@ -22,7 +22,7 @@ namespace Cake.VisualStudio.TaskRunner
                 var script = new ScriptContent(configPath);
                 script.Parse(_loadPattern, s => s.Replace("#load", string.Empty).Trim().Trim('"', ';'));
                 var document = script.ToString();
-                var r = new Regex("Task\\([\\w\"](\\w+)\\\"*\\)");
+                var r = new Regex("Task\\([\\w\\\"](.+)\\b\\\"*\\)");
                 var matches = r.Matches(document);
                 var taskNames = matches.Cast<Match>().Select(m => m.Groups[1].Value);
                 foreach (var name in taskNames)
