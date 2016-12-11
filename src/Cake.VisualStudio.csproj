@@ -93,6 +93,9 @@
     <Compile Include="Editor\SmartIndentProvider.cs" />
     <Compile Include="Editor\SmartIndent.cs" />
     <Compile Include="ContentType\CakeLanguageService.cs" />
+    <Compile Include="Editor\CakeDropHandler.cs" />
+    <Compile Include="Editor\CakeScriptDropHandler.cs" />
+    <Compile Include="Editor\CakeScriptDropHandlerProvider.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\PathHelpers.cs" />
