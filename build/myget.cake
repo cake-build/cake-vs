@@ -6,6 +6,7 @@ public class MyGetClient : HttpClient
 
     public string ApiKey { get; set; }
     public Uri FeedUri { get; set; }
+    private Action<string> Log { get; set; }
 
     public static MyGetClient GetClient(string uri, string key)
     {
@@ -18,21 +19,29 @@ public class MyGetClient : HttpClient
         };
     }
 
+    public static MyGetClient GetClient(string uri, string key, Action<string> log) {
+        Log = log;
+        return GetClient(uri, key);
+    }
+
     public static MyGetClient GetClient(MyGetFeed feed) 
     {
         return MyGetClient.GetClient(feed.Url, feed.Key);
     }
 
-    public bool UploadVsix(IFile file)
+    public HttpResponseMessage UploadVsix(IFile file)
     {
+        Log = Log ?? s => { };
         using (var content = new MultipartFormDataContent())
         {
+            Log.Invoke("Preparing API request");
             content.Add(new StreamContent(file.Open(FileMode.Open, FileAccess.Read, FileShare.Read)));
             DefaultRequestHeaders.Add("X-NuGet-ApiKey", ApiKey);
+            Log.Invoke(string.Format("Issuing POST request to {0}", FeedUri));
             using (var message =
                    PostAsync(FeedUri, content).Result)
             {
-                return message.IsSuccessStatusCode;
+                return message;
             }
         }
     }
