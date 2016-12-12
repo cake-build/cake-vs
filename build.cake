@@ -115,6 +115,7 @@ Task("Restore")
 Task("Build")
 	.IsDependentOn("Clean")
 	.IsDependentOn("Restore")
+	.IsDependentOn("Update-Manifest-Version")
 	.Does(() =>
 {
 	Information("Building solution...");
@@ -166,9 +167,8 @@ Task("Publish-Extension")
 	var vsixPath = artifacts + "Cake.VisualStudio.vsix";
 	var client = MyGetClient.GetClient(parameters.MyGet.Url, parameters.MyGet.Key, s => Context.Verbose(s));
 	Information("Uploading VSIX to {0}...", parameters.MyGet.Url);
-	Information("Invoking MyGet API Client with path '{0}' (exists: {1})", vsixPath + "Cake.VisualStudio.vsix", FileExists(vsixPath));
 	var response = client.UploadVsix(GetFile(artifacts + "Cake.VisualStudio.vsix"));
-	Information("VSIX Upload {0}", response.IsSuccessStatusCode ? "succeeded" : "failed with " + response.ReasonPhrase + " status");
+	Information("VSIX Upload {0}", response.IsSuccessStatusCode ? "succeeded." : "failed with reason '" + response.ReasonPhrase + "'.");
 });
 
 Task("Default")
