@@ -32,10 +32,8 @@ public class MyGetClient : HttpClient
     public HttpResponseMessage UploadVsix(IFile file)
     {
         Log = Log ?? (s => { });
-        using (var content = new MultipartFormDataContent())
+        using (var content = new StreamContent(file.Open(FileMode.Open, FileAccess.Read, FileShare.Read)))
         {
-            Log.Invoke("Preparing API request");
-            content.Add(new StreamContent(file.Open(FileMode.Open, FileAccess.Read, FileShare.Read)));
             DefaultRequestHeaders.Add("X-NuGet-ApiKey", ApiKey);
             Log.Invoke(string.Format("Issuing POST request to {0}", FeedUri));
             using (var message =
