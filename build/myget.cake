@@ -10,18 +10,18 @@ public class MyGetClient : HttpClient
 
     public static MyGetClient GetClient(string uri, string key)
     {
+        return GetClient(uri, key, s => { });
+    }
+
+    public static MyGetClient GetClient(string uri, string key, Action<string> log) {
         return new MyGetClient
         {
             FeedUri = uri.TrimEnd('/').EndsWith("/upload")
             ? new Uri(uri)
             : new Uri(uri.TrimEnd('/') + "/upload"),
-            ApiKey = key
+            ApiKey = key,
+            Log = log
         };
-    }
-
-    public static MyGetClient GetClient(string uri, string key, Action<string> log) {
-        Log = log;
-        return GetClient(uri, key);
     }
 
     public static MyGetClient GetClient(MyGetFeed feed) 
@@ -31,7 +31,7 @@ public class MyGetClient : HttpClient
 
     public HttpResponseMessage UploadVsix(IFile file)
     {
-        Log = Log ?? s => { };
+        Log = Log ?? (s => { });
         using (var content = new MultipartFormDataContent())
         {
             Log.Invoke("Preparing API request");
