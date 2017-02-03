@@ -67,6 +67,10 @@
     <Compile Include="Configuration\ConfigurationExtensions.cs" />
     <Compile Include="Configuration\ConfigurationParser.cs" />
     <Compile Include="ContentType\CakeContentTypeDefinition.cs" />
+    <Compile Include="Editor\IndentationResult.cs" />
+    <Compile Include="Editor\LineExtensions.cs" />
+    <Compile Include="Editor\SmartIndentProvider.cs" />
+    <Compile Include="Editor\SmartIndent.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\PathHelpers.cs" />

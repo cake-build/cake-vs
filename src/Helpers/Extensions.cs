@@ -3,9 +3,11 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
+using System.Linq;
 using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+using Microsoft.VisualStudio.Text;
 
 namespace Cake.VisualStudio.Helpers
 {
@@ -41,5 +43,11 @@ namespace Cake.VisualStudio.Helpers
             if (dte?.StatusBar == null) return;
             dte.StatusBar.Text = text;
         }
+
+        internal static bool RequiresOffset(this ITextSnapshotLine line, params string[] protectedIdentifiers)
+        {
+            var content = line.GetText().TrimEnd();
+            return protectedIdentifiers.Any(i => content.EndsWith(i));
+        } 
     }
 }
