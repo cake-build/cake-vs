@@ -123,6 +123,7 @@ Task("Build")
 	MSBuild(solutionPath, settings =>
 		settings.SetPlatformTarget(PlatformTarget.MSIL)
             .SetMSBuildPlatform(MSBuildPlatform.x86)
+			.UseToolVersion(MSBuildToolVersion.VS2017)
 			.WithProperty("TreatWarningsAsErrors","true")
 			.SetVerbosity(Verbosity.Quiet)
 			.WithTarget("Build")

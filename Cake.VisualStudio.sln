@@ -1,22 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26127.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.VisualStudio", "src\Cake.VisualStudio.csproj", "{94660BCF-169A-42E1-BD84-345449743069}"
-	ProjectSection(ProjectDependencies) = postProject
-		{FCE573DD-E74E-4AB1-9D17-56FC8869797F} = {FCE573DD-E74E-4AB1-9D17-56FC8869797F}
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{04D0CE67-A915-44BB-BC3C-8E7885CF9E97}"
 	ProjectSection(SolutionItems) = preProject
 		build.cake = build.cake
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddinTemplate", "template\AddinTemplate\AddinTemplate.csproj", "{FCE573DD-E74E-4AB1-9D17-56FC8869797F}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{7067556F-B744-4F73-B509-C8CC9F559AB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.VisualStudio", "src\Cake.VisualStudio.csproj", "{94660BCF-169A-42E1-BD84-345449743069}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FCE573DD-E74E-4AB1-9D17-56FC8869797F} = {FCE573DD-E74E-4AB1-9D17-56FC8869797F}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddinTemplate", "template\AddinTemplate\AddinTemplate.csproj", "{FCE573DD-E74E-4AB1-9D17-56FC8869797F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleTemplate", "template\ModuleTemplate\ModuleTemplate.csproj", "{85BCBED7-39BD-4670-85F7-EE36D0DA31C0}"
 EndProject

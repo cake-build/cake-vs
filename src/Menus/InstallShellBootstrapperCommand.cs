@@ -24,7 +24,7 @@ namespace Cake.VisualStudio.Menus
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("5C88A5B5-E412-40D8-A2F1-D20F7C58129C");
+        public static readonly Guid CommandSet = new Guid("6003519f-6876-4db3-ad29-8d5379949869");
 
         /// <summary>
         /// VS Package that provides this command, not null.
