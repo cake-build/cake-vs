@@ -3,7 +3,7 @@
   <Metadata>
     <Identity Id="3cf9b016-d63f-44ee-849d-6f3efc996134" Version="0.1.1.0" Language="en-US" Publisher="Cake Build" />
     <DisplayName>Cake for Visual Studio</DisplayName>
-    <Description xml:space="preserve">Adds support for the Cake build tool in Visual Studio 2015. Includes support for the Task Runner Explorer, new templates and bootstrapping important Cake files.</Description>
+    <Description xml:space="preserve">Adds support for the Cake build tool in Visual Studio 2015 and 2017. Includes support for the Task Runner Explorer, new templates and bootstrapping important Cake files.</Description>
     <MoreInfo>https://github.com/cake-build/cake-vs</MoreInfo>
     <License>Resources\LICENSE</License>
     <Icon>Resources\icon.png</Icon>
@@ -11,8 +11,17 @@
     <Tags>cake, build</Tags>
   </Metadata>
   <Installation>
-    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0]" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0,15.0]" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Professional" Version="[14.0,15.0]" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[14.0,15.0]" />
   </Installation>
+  <Prerequisites>
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,16.0)" DisplayName="Visual Studio core editor" />
+    <Prerequisite Id="Microsoft.Net.Component.4.5.TargetingPack" Version="[15.0,16.0)" DisplayName=".NET Framework 4.5 targeting pack" />
+    <Prerequisite Id="Microsoft.VisualStudio.Component.Roslyn.LanguageServices" Version="[15.0,16.0)" DisplayName="C# and Visual Basic" />
+    <Prerequisite Id="Microsoft.VisualStudio.Component.Roslyn.Compiler" Version="[15.0,16.0)" DisplayName="C# and Visual Basic Roslyn compilers" />
+    <Prerequisite Id="Microsoft.VisualStudio.Component.NuGet" Version="[15.0,16.0)" DisplayName="NuGet package manager" />
+  </Prerequisites>
   <Dependencies>
     <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
     <Dependency Id="Microsoft.VisualStudio.MPF.14.0" DisplayName="Visual Studio MPF 14.0" d:Source="Installed" Version="[14.0]" />

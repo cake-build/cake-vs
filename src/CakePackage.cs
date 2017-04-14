@@ -18,7 +18,7 @@ namespace Cake.VisualStudio
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", Vsix.Version, IconResourceID = 400)]
     [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
-    [Guid(PackageGuids.GuidCakePackageString)]
+    [Guid(PackageGuids.guidCakePackageString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideLanguageService(typeof(CakeLanguageService), Helpers.Constants.CakeContentType, 100)]
     [ProvideLanguageExtension(typeof(CakeLanguageService), ".cake")]
