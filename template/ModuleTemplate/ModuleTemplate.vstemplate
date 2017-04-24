@@ -28,7 +28,7 @@
   </WizardExtension>
   <WizardData>
     <packages repository="extension" repositoryId="3cf9b016-d63f-44ee-849d-6f3efc996134">
-      <package id="Cake.Core" version="0.17.0" />
+      <package id="Cake.Core" version="0.19.4" />
     </packages>
   </WizardData>
 </VSTemplate>
