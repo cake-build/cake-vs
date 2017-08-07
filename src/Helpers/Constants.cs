@@ -15,7 +15,7 @@ namespace Cake.VisualStudio.Helpers
         public const string ClassifierName = "CakeClassifier";
         public const string PowerShellUri = "https://cakebuild.net/download/bootstrapper/powershell";
         public const string BashUri = "https://cakebuild.net/download/bootstrapper/bash";
-        public const string ConfigTemplatePath = "https://raw.githubusercontent.com/cake-build/resources/develop/cake.config";
+        public const string ConfigTemplatePath = "https://cakebuild.net/download/configuration";
         public const string ConfigFileName = "cake.config";
         public const string ScriptFileName = "build.cake";
     }
