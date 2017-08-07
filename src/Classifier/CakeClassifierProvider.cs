@@ -29,8 +29,6 @@ namespace Cake.VisualStudio.Classifier
 
 #pragma warning restore 649
 
-        #region IClassifierProvider
-
         /// <summary>
         /// Gets a classifier for the given text buffer.
         /// </summary>
@@ -40,7 +38,5 @@ namespace Cake.VisualStudio.Classifier
         {
             return buffer.Properties.GetOrCreateSingletonProperty<CakeClassifier>(creator: () => new CakeClassifier(_classificationRegistry));
         }
-
-        #endregion
     }
 }

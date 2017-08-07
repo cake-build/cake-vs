@@ -14,12 +14,13 @@ namespace Cake.VisualStudio.Adornments
 {
     class LogoAdornment
     {
+        private readonly double _initOpacity;
+
         private IAdornmentLayer _adornmentLayer;
         private Image _adornment;
-        private readonly double _initOpacity;
         private double _currentOpacity;
 
-        public LogoAdornment(IWpfTextView view,  bool isVisible, double initOpacity)
+        public LogoAdornment(IWpfTextView view, bool isVisible, double initOpacity)
         {
             _adornmentLayer = view.GetAdornmentLayer(AdornmentLayer.LayerName);
             _currentOpacity = isVisible ? initOpacity : 0;
@@ -62,7 +63,7 @@ namespace Cake.VisualStudio.Adornments
             var folder = Path.GetDirectoryName(assembly);
             var file = Path.Combine(folder, "Resources\\icon.png");
 
-            var url =  new Uri(file, UriKind.Absolute);
+            var url = new Uri(file, UriKind.Absolute);
             return BitmapFrame.Create(url);
         }
 

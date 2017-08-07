@@ -21,10 +21,14 @@ namespace Cake.VisualStudio.Helpers
         public static void CheckFileOutOfSourceControl(string file)
         {
             if (!File.Exists(file) || _dte.Solution.FindProjectItem(file) == null)
+            {
                 return;
+            }
 
             if (_dte.SourceControl.IsItemUnderSCC(file) && !_dte.SourceControl.IsItemCheckedOut(file))
+            {
                 _dte.SourceControl.CheckOutItem(file);
+            }
 
             var info = new FileInfo(file);
             info.IsReadOnly = false;
@@ -33,7 +37,9 @@ namespace Cake.VisualStudio.Helpers
         public static void AddFileToProject(this Project project, string file, string itemType = null)
         {
             if (project.IsKind(ProjectTypes.ASPNET_5))
+            {
                 return;
+            }
 
             try
             {
@@ -44,7 +50,9 @@ namespace Cake.VisualStudio.Helpers
                     if (string.IsNullOrEmpty(itemType)
                         || project.IsKind(ProjectTypes.WEBSITE_PROJECT)
                         || project.IsKind(ProjectTypes.UNIVERSAL_APP))
+                    {
                         return;
+                    }
 
                     item.Properties.Item("ItemType").Value = "None";
                 }
@@ -64,7 +72,9 @@ namespace Cake.VisualStudio.Helpers
                 if (item == null
                     || item.ContainingProject == null
                     || item.ContainingProject.IsKind(ProjectTypes.ASPNET_5))
+                {
                     return;
+                }
 
                 if (item.ProjectItems == null || item.ContainingProject.IsKind(ProjectTypes.UNIVERSAL_APP))
                 {
@@ -91,7 +101,10 @@ namespace Cake.VisualStudio.Helpers
             var item = _dte.Solution.FindProjectItem(file);
 
             if (item == null)
+            {
                 return;
+            }
+
             try
             {
                 item.Delete();
@@ -100,27 +113,6 @@ namespace Cake.VisualStudio.Helpers
             {
                 Logger.Log(ex);
             }
-        }
-
-        private static IEnumerable<Project> GetChildProjects(Project parent)
-        {
-            try
-            {
-                if (!parent.IsKind(ProjectKinds.vsProjectKindSolutionFolder) && parent.Collection == null)  // Unloaded
-                    return Enumerable.Empty<Project>();
-
-                if (!string.IsNullOrEmpty(parent.FullName))
-                    return new[] { parent };
-            }
-            catch (COMException)
-            {
-                return Enumerable.Empty<Project>();
-            }
-
-            return parent.ProjectItems
-                    .Cast<ProjectItem>()
-                    .Where(p => p.SubProject != null)
-                    .SelectMany(p => GetChildProjects(p.SubProject));
         }
 
         internal static Project GetSolutionItemsProject(DTE2 dte)
@@ -134,7 +126,8 @@ namespace Cake.VisualStudio.Helpers
                 {
                     var sol2 = (Solution2)dte.Solution;
                     solItems = sol2.AddSolutionFolder("Solution Items");
-                    VsShellUtilities.LogMessage(Constants.PackageName,
+                    VsShellUtilities.LogMessage(
+                        Constants.PackageName,
                         $"Created Solution Items project for solution {dte.Solution.FullName}",
                         __ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION);
                 }
@@ -143,7 +136,34 @@ namespace Cake.VisualStudio.Helpers
                     // ignored
                 }
             }
+
             return solItems;
+        }
+
+        private static IEnumerable<Project> GetChildProjects(Project parent)
+        {
+            try
+            {
+                // Unloaded
+                if (!parent.IsKind(ProjectKinds.vsProjectKindSolutionFolder) && parent.Collection == null)
+                {
+                    return Enumerable.Empty<Project>();
+                }
+
+                if (!string.IsNullOrEmpty(parent.FullName))
+                {
+                    return new[] { parent };
+                }
+            }
+            catch (COMException)
+            {
+                return Enumerable.Empty<Project>();
+            }
+
+            return parent.ProjectItems
+                    .Cast<ProjectItem>()
+                    .Where(p => p.SubProject != null)
+                    .SelectMany(p => GetChildProjects(p.SubProject));
         }
     }
 

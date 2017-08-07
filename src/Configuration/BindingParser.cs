@@ -12,18 +12,38 @@ namespace Cake.VisualStudio.Configuration
     internal class TaskBinding
     {
         public IEnumerable<string> BeforeBuild { get; set; } = new List<string>();
+
         public IEnumerable<string> AfterBuild { get; set; } = new List<string>();
+
         public IEnumerable<string> Clean { get; set; } = new List<string>();
+
         public IEnumerable<string> Open { get; set; } = new List<string>();
 
         internal string ToXml()
         {
             var sb = new StringBuilder();
             sb.Append("<binding ");
-            if (BeforeBuild.Any()) sb.Append($"{BindingTargets.BeforeBuild}='{string.Join(",", BeforeBuild)}' ");
-            if (AfterBuild.Any()) sb.Append($"{BindingTargets.AfterBuild}='{string.Join(",", AfterBuild)}' ");
-            if (Clean.Any()) sb.Append($"{BindingTargets.Clean}='{string.Join(",", Clean)}' ");
-            if (Open.Any()) sb.Append($"{BindingTargets.Open}='{string.Join(",", Open)}' ");
+
+            if (BeforeBuild.Any())
+            {
+                sb.Append($"{BindingTargets.BeforeBuild}='{string.Join(",", BeforeBuild)}' ");
+            }
+
+            if (AfterBuild.Any())
+            {
+                sb.Append($"{BindingTargets.AfterBuild}='{string.Join(",", AfterBuild)}' ");
+            }
+
+            if (Clean.Any())
+            {
+                sb.Append($"{BindingTargets.Clean}='{string.Join(",", Clean)}' ");
+            }
+
+            if (Open.Any())
+            {
+                sb.Append($"{BindingTargets.Open}='{string.Join(",", Open)}' ");
+            }
+
             sb.Append("/>");
             return sb.ToString();
         }

@@ -13,8 +13,7 @@ namespace Cake.VisualStudio.Helpers
 {
     internal static class Extensions
     {
-        internal static void ShowMessageBox(this IServiceProvider provider, string message,
-            string title = "Cake Installer")
+        internal static void ShowMessageBox(this IServiceProvider provider, string message, string title = "Cake Installer")
         {
             VsShellUtilities.ShowMessageBox(
                 provider,
@@ -25,8 +24,7 @@ namespace Cake.VisualStudio.Helpers
                 OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
         }
 
-        internal static void ShowErrorMessage(this IServiceProvider provider, string message,
-            string title = "Error during Cake installation")
+        internal static void ShowErrorMessage(this IServiceProvider provider, string message, string title = "Error during Cake installation")
         {
             VsShellUtilities.LogError("Cake.VisualStudio", message);
             VsShellUtilities.ShowMessageBox(
@@ -40,7 +38,11 @@ namespace Cake.VisualStudio.Helpers
 
         internal static void ShowStatusBarText(this DTE2 dte, string text)
         {
-            if (dte?.StatusBar == null) return;
+            if (dte?.StatusBar == null)
+            {
+                return;
+            }
+
             dte.StatusBar.Text = text;
         }
 

@@ -14,7 +14,6 @@ namespace Cake.VisualStudio.Menus
 {
     internal static class MenuHelpers
     {
-
         internal static bool DownloadFileToProject(string downloadPath, string targetFileName)
         {
             var dte = CakePackage.Dte;
@@ -22,15 +21,18 @@ namespace Cake.VisualStudio.Menus
             {
                 var solItems = ProjectHelpers.GetSolutionItemsProject(dte);
                 solItems?.AddFileToProject(targetPath);
+
                 if (solItems != null)
-                    VsShellUtilities.LogMessage(Constants.PackageName,
+                {
+                    VsShellUtilities.LogMessage(
+                        Constants.PackageName,
                         $"New file added to Solution Items for solution {dte.Solution.FullName}",
                         __ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION);
+                }
             });
         }
 
-        internal static bool DownloadFileToProject(string downloadPath, string targetFileName,
-            Action<string> installCallback)
+        internal static bool DownloadFileToProject(string downloadPath, string targetFileName, Action<string> installCallback)
         {
             var dte = CakePackage.Dte;
             try
@@ -39,12 +41,21 @@ namespace Cake.VisualStudio.Menus
                 var cakeScriptPath = dte.Solution.FindProjectItem(Constants.ScriptFileName)?.FileNames[1];
                 var targetPath = Path.Combine(new FileInfo(string.IsNullOrWhiteSpace(cakeScriptPath) ? slnFilePath : cakeScriptPath).Directory.FullName, targetFileName);
                 bool confirm = true;
+
                 if (File.Exists(targetPath))
                 {
-                    confirm = VsShellUtilities.PromptYesNo("File already exists. Overwrite?", $"Downloading {targetFileName}",
-                        OLEMSGICON.OLEMSGICON_QUERY, CakePackage.Shell);
+                    confirm = VsShellUtilities.PromptYesNo(
+                        "File already exists. Overwrite?",
+                        $"Downloading {targetFileName}",
+                        OLEMSGICON.OLEMSGICON_QUERY,
+                        CakePackage.Shell);
                 }
-                if (!confirm) return true;
+
+                if (!confirm)
+                {
+                    return true;
+                }
+
                 try
                 {
                     ProjectHelpers.CheckFileOutOfSourceControl(targetPath);
@@ -53,14 +64,18 @@ namespace Cake.VisualStudio.Menus
                 {
                     // ignored
                 }
+
                 using (var wc = new WebClient())
                 {
                     wc.DownloadFile(downloadPath, targetPath);
-                    VsShellUtilities.LogMessage(Constants.PackageName,
+                    VsShellUtilities.LogMessage(
+                        Constants.PackageName,
                         $"File downloaded from '{downloadPath}' to '{targetPath}'",
                         __ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION);
+
                     installCallback.Invoke(targetPath);
                 }
+
                 return true;
             }
             catch
@@ -83,9 +98,15 @@ namespace Cake.VisualStudio.Menus
             {
                 proj = ProjectHelpers.GetSolutionItemsProject(dte);
             }
-            if (proj == null) return;
+
+            if (proj == null)
+            {
+                return;
+            }
+
             proj.AddFileToProject(s);
-            VsShellUtilities.LogMessage(Constants.PackageName,
+            VsShellUtilities.LogMessage(
+                Constants.PackageName,
                 $"New file added to {proj.Name} for solution {dte.Solution.FullName}",
                 __ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION);
         };

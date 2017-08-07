@@ -35,11 +35,31 @@ namespace Cake.VisualStudio.TaskRunner
         {
             _options = new List<ITaskRunnerOption>
             {
-                new TaskRunnerOption("Verbose", PackageIds.cmdVerbose, PackageGuids.guidCakePackageCmdSet, false,
+                new TaskRunnerOption(
+                    "Verbose",
+                    PackageIds.cmdVerbose,
+                    PackageGuids.GuidCakePackageCmdSet,
+                    false,
                     "-Verbosity=\"Diagnostic\""),
-                new TaskRunnerOption("Debug", PackageIds.cmdDebug, PackageGuids.guidCakePackageCmdSet, false, "-debug"),
-                new TaskRunnerOption("Dry Run", PackageIds.cmdDryRun, PackageGuids.guidCakePackageCmdSet, false, "-dryrun"),
-                new TaskRunnerOption("Experimental", PackageIds.cmdExperimental, PackageGuids.guidCakePackageCmdSet, false, "-experimental")
+                new TaskRunnerOption(
+                    "Debug",
+                    PackageIds.cmdDebug,
+                    PackageGuids.GuidCakePackageCmdSet,
+                    false,
+                    "-debug"),
+                new TaskRunnerOption(
+                    "Dry Run",
+                    PackageIds.cmdDryRun,
+                    PackageGuids.GuidCakePackageCmdSet,
+                    false,
+                    "-dryrun"),
+                new TaskRunnerOption(
+                    "Experimental", 
+                    PackageIds.cmdExperimental, 
+                    PackageGuids.GuidCakePackageCmdSet, 
+                    false, 
+                    "-experimental")
+
             };
         }
 
@@ -110,8 +130,12 @@ namespace Cake.VisualStudio.TaskRunner
             var commands =
                 tasks.Select(
                     t =>
-                        CreateTask(cwd, t.Key, $"Runs {configFileName} with the \"{t.Key}\" target",
+                        CreateTask(
+                            cwd,
+                            t.Key,
+                            $"Runs {configFileName} with the \"{t.Key}\" target",
                             buildDev.Command.Args + $" {t.Value}"));
+
             var nodes = commands as IList<TaskRunnerNode> ?? commands.ToList();
             buildDev.Children.AddRange(nodes);
             root.Children.Add(buildDev);
@@ -127,7 +151,7 @@ namespace Cake.VisualStudio.TaskRunner
                 Command = GetCommand(cwd, args)
             };
 
-            //ApplyOverrides(task);
+            //// ApplyOverrides(task);
 
             return task;
         }
@@ -141,16 +165,22 @@ namespace Cake.VisualStudio.TaskRunner
 
         private static string GetCakePath(string cwd)
         {
-            var knownPaths = new[] {"tools/Cake/Cake.exe", "Cake/Cake.exe", "Cake.exe"};
+            var knownPaths = new[] { "tools/Cake/Cake.exe", "Cake/Cake.exe", "Cake.exe" };
             foreach (var path in knownPaths)
             {
                 var fullPath = Path.Combine(cwd, path);
-                if (File.Exists(fullPath)) return fullPath;
+
+                if (File.Exists(fullPath))
+                {
+                    return fullPath;
+                }
             }
+
             if (PathHelpers.ExistsOnPath("cake.exe") || PathHelpers.ExistsOnPath("cake"))
             {
                 return "cake"; // assume PATH
             }
+
             return null;
         }
 

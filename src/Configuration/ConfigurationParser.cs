@@ -10,14 +10,17 @@ namespace Cake.VisualStudio.Configuration
 {
     internal sealed class ConfigurationParser
     {
-        private static IniDataParser Parser => new IniDataParser(new IniParserConfiguration {AssigmentSpacer = ""});
-        internal string SectionName { get; set; } = "TaskRunnerBindings";
         public ConfigurationParser(string filePath)
         {
             FilePath = filePath;
         }
 
+        internal string SectionName { get; set; } = "TaskRunnerBindings";
+
+        private static IniDataParser Parser => new IniDataParser(new IniParserConfiguration { AssigmentSpacer = string.Empty });
+
         private string FilePath { get; set; }
+
         internal void SaveBinding(TaskBinding binding)
         {
             var parser = new FileIniDataParser(Parser);

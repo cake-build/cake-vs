@@ -18,7 +18,9 @@ namespace Cake.VisualStudio.Helpers
         internal static string GetFullPath(string fileName)
         {
             if (File.Exists(fileName))
+            {
                 return Path.GetFullPath(fileName);
+            }
 
             var values = Environment.GetEnvironmentVariable("PATH");
             return values?.Split(';').Select(path => Path.Combine(path, fileName)).FirstOrDefault(File.Exists);

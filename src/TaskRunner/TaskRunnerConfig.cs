@@ -40,32 +40,6 @@ namespace Cake.VisualStudio.TaskRunner
             return File.Exists(bindingPath) ? new ConfigurationParser(bindingPath).LoadBinding().ToXml() : "<binding />";
         }
 
-        private string GetBindingPath(string configPath, bool create = false)
-        {
-            string bindingPath;
-            var path = CakePackage.Dte.Solution?.FindProjectItem(Constants.ConfigFileName);
-            if (path != null && path.FileCount == 1)
-            {
-                bindingPath = path.FileNames[1];
-            }
-            else
-            {
-                var cpath = Path.Combine(Path.GetDirectoryName(configPath), Constants.ConfigFileName);
-                try
-                {
-
-                    if (!File.Exists(cpath) && create) File.Create(cpath).Close();
-                    if (File.Exists(cpath)) ProjectHelpers.GetSolutionItemsProject(CakePackage.Dte).AddFileToProject(cpath);
-                }
-                catch
-                {
-                    // ignored
-                }
-                bindingPath = cpath;
-            }
-            return string.IsNullOrWhiteSpace(bindingPath) ? null : bindingPath; // remove the empty string scenario
-        }
-
         public bool SaveBindings(string configPath, string bindingsXml)
         {
             string bindingPath = GetBindingPath(configPath, true) ?? configPath + ".bindings";
@@ -103,6 +77,40 @@ namespace Cake.VisualStudio.TaskRunner
                 Logger.Log(ex);
                 return false;
             }
+        }
+
+        private string GetBindingPath(string configPath, bool create = false)
+        {
+            string bindingPath;
+            var path = CakePackage.Dte.Solution?.FindProjectItem(Constants.ConfigFileName);
+            if (path != null && path.FileCount == 1)
+            {
+                bindingPath = path.FileNames[1];
+            }
+            else
+            {
+                var cpath = Path.Combine(Path.GetDirectoryName(configPath), Constants.ConfigFileName);
+                try
+                {
+                    if (!File.Exists(cpath) && create)
+                    {
+                        File.Create(cpath).Close();
+                    }
+
+                    if (File.Exists(cpath))
+                    {
+                        ProjectHelpers.GetSolutionItemsProject(CakePackage.Dte).AddFileToProject(cpath);
+                    }
+                }
+                catch
+                {
+                    // ignored
+                }
+
+                bindingPath = cpath;
+            }
+
+            return string.IsNullOrWhiteSpace(bindingPath) ? null : bindingPath; // remove the empty string scenario
         }
     }
 }
