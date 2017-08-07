@@ -1,5 +1,5 @@
 # Cake for Visual Studio
-Adds support for the [Cake](http://cakebuild.net/)
+Adds support for the [Cake](https://cakebuild.net/)
 build tool in Visual Studio 2015. Includes support for the Task Runner Explorer, 
 new item and project templates and bootstrapping important Cake files
 
@@ -59,7 +59,7 @@ The extension includes an item template for build scripts and project templates 
 ![Project Template](art/templates.png)
 
 ## Contribute
-Check out the [Cake contribution guidelines](https://http://cakebuild.net/docs/contributing/guidelines)
+Check out the [Cake contribution guidelines](https://cakebuild.net/docs/contributing/guidelines)
 if you want to contribute to this project.
 
 For cloning and building this project yourself, make sure 
