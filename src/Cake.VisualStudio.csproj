@@ -147,13 +147,13 @@
     </Content>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <Content Include="..\packages\cake.core.0.19.4\cake.core.0.19.4.nupkg">
+    <Content Include="..\packages\cake.core.0.21.1\cake.core.0.21.1.nupkg">
       <IncludeInVSIX>true</IncludeInVSIX>
       <VSIXSubPath>Packages</VSIXSubPath>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <InProject>false</InProject>
     </Content>
-    <Content Include="..\packages\Cake.Testing.0.19.4\cake.testing.0.19.4.nupkg">
+    <Content Include="..\packages\Cake.Testing.0.21.1\cake.testing.0.21.1.nupkg">
       <IncludeInVSIX>true</IncludeInVSIX>
       <VSIXSubPath>Packages</VSIXSubPath>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -451,7 +451,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.VSSDK.BuildTools.15.0.26201\build\Microsoft.VSSDK.BuildTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VSSDK.BuildTools.15.0.26201\build\Microsoft.VSSDK.BuildTools.targets'))" />
   </Target>
   <Import Project="..\packages\Microsoft.VSSDK.BuildTools.15.0.26201\build\Microsoft.VSSDK.BuildTools.targets" Condition="Exists('..\packages\Microsoft.VSSDK.BuildTools.15.0.26201\build\Microsoft.VSSDK.BuildTools.targets')" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
