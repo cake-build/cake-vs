@@ -4,7 +4,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Cake.VisualStudio.Helpers;
@@ -13,14 +12,17 @@ namespace Cake.VisualStudio.TaskRunner
 {
     class TaskParser
     {
+        private static string _loadPattern = "#load \"";
         public static SortedList<string, string> LoadTasks(string configPath)
         {
             var list = new SortedList<string, string>();
 
             try
             {
-                var document = File.ReadAllText(configPath);
-                var r = new Regex("Task\\([\\w\"](\\w+)\\\"*\\)");
+                var script = new ScriptContent(configPath);
+                script.Parse(_loadPattern, s => s.Replace("#load", string.Empty).Trim().Trim('"', ';'));
+                var document = script.ToString();
+                var r = new Regex("Task\\s*\\(\\s*\\\"(.+)\\b\\\"\\s*\\)");
                 var matches = r.Matches(document);
                 var taskNames = matches.Cast<Match>().Select(m => m.Groups[1].Value);
                 foreach (var name in taskNames)

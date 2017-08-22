@@ -55,7 +55,7 @@ namespace Cake.VisualStudio.Classifier.Languages
             =>
                 new List<string>
                 {
-                    "\\b(if|else|while|for|foreach|in|do|return|continue|break|switch|case|default|goto|throw|try|catch|finally|lock|yield|await)\\b"
+                    "\\b(if|else|while|for|foreach|in|do|return|continue|break|switch|case|default|goto|throw|try|catch|finally|lock|yield|await|params)\\b"
                 };
     }
 }

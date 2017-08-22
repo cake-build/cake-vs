@@ -35,10 +35,11 @@ namespace Cake.VisualStudio.TaskRunner
         {
             _options = new List<ITaskRunnerOption>
             {
-                new TaskRunnerOption("Verbose", PackageIds.cmdVerbose, PackageGuids.GuidCakePackageCmdSet, false,
+                new TaskRunnerOption("Verbose", PackageIds.cmdVerbose, PackageGuids.guidCakePackageCmdSet, false,
                     "-Verbosity=\"Diagnostic\""),
-                new TaskRunnerOption("Debug", PackageIds.cmdDebug, PackageGuids.GuidCakePackageCmdSet, false, "-debug"),
-                new TaskRunnerOption("Dry Run", PackageIds.cmdDryRun, PackageGuids.GuidCakePackageCmdSet, false, "-dryrun")
+                new TaskRunnerOption("Debug", PackageIds.cmdDebug, PackageGuids.guidCakePackageCmdSet, false, "-debug"),
+                new TaskRunnerOption("Dry Run", PackageIds.cmdDryRun, PackageGuids.guidCakePackageCmdSet, false, "-dryrun"),
+                new TaskRunnerOption("Experimental", PackageIds.cmdExperimental, PackageGuids.guidCakePackageCmdSet, false, "-experimental")
             };
         }
 

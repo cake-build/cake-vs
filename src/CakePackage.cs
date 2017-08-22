@@ -3,6 +3,8 @@
 // See the LICENSE file in the project root for more information.
 
 using System.Runtime.InteropServices;
+using System.ComponentModel.Design;
+using Cake.VisualStudio.ContentType;
 using Cake.VisualStudio.Helpers;
 using EnvDTE;
 using EnvDTE80;
@@ -16,8 +18,10 @@ namespace Cake.VisualStudio
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", Vsix.Version, IconResourceID = 400)]
     [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
-    [Guid(PackageGuids.GuidCakePackageString)]
+    [Guid(PackageGuids.guidCakePackageString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
+    [ProvideLanguageService(typeof(CakeLanguageService), Helpers.Constants.CakeContentType, 100)]
+    [ProvideLanguageExtension(typeof(CakeLanguageService), ".cake")]
     public sealed partial class CakePackage : Package, IVsShellPropertyEvents
     {
         private static DTE2 _dte;
