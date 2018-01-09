@@ -59,7 +59,7 @@ The extension includes an item template for build scripts and project templates 
 ![Project Template](art/templates.png)
 
 ## Contribute
-Check out the [Cake contribution guidelines](https://cakebuild.net/docs/contributing/guidelines)
+Check out the [Cake contribution guidelines](https://cakebuild.net/docs/contributing/contribution-guidelines)
 if you want to contribute to this project.
 
 For cloning and building this project yourself, make sure 
