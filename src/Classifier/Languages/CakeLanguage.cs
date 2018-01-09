@@ -11,7 +11,7 @@ namespace Cake.VisualStudio.Classifier.Languages
         public static List<string> SpecialKeywords
             => new List<string> {@"\bRunTarget\([\w\""]+\)", @"\bSetup\b", @"\bTeardown\b"};
 
-        public static List<string> Preprocessors => new List<string> {@"^[#]{1}(load|r|addin|tool)"};
+        public static List<string> Preprocessors => new List<string> {@"^[#]{1}(load|l|reference|r|addin|tool)"};
 
 
         public static List<string> Keywords
