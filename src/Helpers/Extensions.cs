@@ -48,7 +48,7 @@ namespace Cake.VisualStudio.Helpers
         {
             if (line == null) return false;
             var content = line.GetText().TrimEnd();
-            return protectedIdentifiers.Any(i => content.EndsWith(i));
+            return protectedIdentifiers?.Any(i => content.EndsWith(i)) ?? false;
         } 
     }
 }
