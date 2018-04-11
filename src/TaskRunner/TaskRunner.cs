@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Cake.VisualStudio.Configuration;
 using Cake.VisualStudio.Helpers;
 using Microsoft.VisualStudio.TaskRunnerExplorer;
 
@@ -141,6 +142,15 @@ namespace Cake.VisualStudio.TaskRunner
 
         private static string GetCakePath(string cwd)
         {
+            string bindingPath = Path.Combine(cwd, Constants.ConfigFileName);
+            var config = new ConfigurationParser(bindingPath);
+            var customCakePath = config.LoadCakePath();
+
+            if (!string.IsNullOrEmpty(customCakePath))
+            {
+                return (Path.IsPathRooted(customCakePath)) ? customCakePath : Path.Combine(cwd, customCakePath);
+            }
+
             var knownPaths = new[] {"tools/Cake/Cake.exe", "Cake/Cake.exe", "Cake.exe"};
             foreach (var path in knownPaths)
             {

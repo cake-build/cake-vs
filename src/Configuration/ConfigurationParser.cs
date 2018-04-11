@@ -10,6 +10,9 @@ namespace Cake.VisualStudio.Configuration
 {
     internal sealed class ConfigurationParser
     {
+        private const string ToolSettingsSectionName = "ToolSettings";
+        private const string CakePathSettingName = "CakePath";
+
         private static IniDataParser Parser => new IniDataParser(new IniParserConfiguration {AssigmentSpacer = ""});
         internal string SectionName { get; set; } = "TaskRunnerBindings";
         public ConfigurationParser(string filePath)
@@ -45,6 +48,14 @@ namespace Cake.VisualStudio.Configuration
             var data = parser.ReadFile(FilePath);
             var removeSection = data.Sections.RemoveSection(SectionName);
             parser.WriteFile(FilePath, data);
+        }
+
+        internal string LoadCakePath()
+        {
+            var parser = new FileIniDataParser(Parser);
+            var data = parser.ReadFile(FilePath);
+
+            return data[ToolSettingsSectionName].ReadValue(CakePathSettingName);
         }
     }
 }

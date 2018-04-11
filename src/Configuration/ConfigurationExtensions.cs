@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
@@ -48,6 +49,20 @@ namespace Cake.VisualStudio.Configuration
             catch
             {
                 return new List<string>();
+            }
+        }
+
+        internal static string ReadValue(this KeyDataCollection collection, string target)
+        {
+            if (collection == null) return string.Empty;
+            try
+            {
+                var raw = collection[target];
+                return raw?.Trim().TrimEnd(',') ?? string.Empty;
+            }
+            catch
+            {
+                return string.Empty;
             }
         }
     }
