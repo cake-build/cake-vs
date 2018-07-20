@@ -92,17 +92,22 @@ namespace Cake.VisualStudio.TaskRunner
             ITaskRunnerNode root = new TaskRunnerNode("Cake");
 
             // Build
-            var buildDev = CreateTask(cwd, $"Default ({configFileName})", "Runs 'cake build.cake'", configFileName);
-            var tasks = TaskParser.LoadTasks(configPath);
-            var commands =
-                tasks.Select(
-                    t =>
-                        CreateTask(cwd, t.Key, $"Runs {configFileName} with the \"{t.Key}\" target",
-                            buildDev.Command.Args + $" {t.Value}"));
-            var nodes = commands as IList<TaskRunnerNode> ?? commands.ToList();
-            buildDev.Children.AddRange(nodes);
-            root.Children.Add(buildDev);
-            CakePackage.Dte.ShowStatusBarText($"Loaded {nodes.Count} tasks from {configFileName}");
+            string[] filePaths = Directory.GetFiles(cwd, "*.cake");
+            foreach (var filePath in filePaths)
+            {
+                var file = Path.GetFileName(filePath);
+                var buildDev = CreateTask(cwd, $"{file}", $"Runs 'cake {file}'", file);
+                var tasks = TaskParser.LoadTasks(filePath);
+                var commands =
+                    tasks.Select(
+                        t =>
+                            CreateTask(cwd, t.Key, $"Runs {file} with the \"{t.Key}\" target",
+                                buildDev.Command.Args + $" {t.Value}"));
+                var nodes = commands as IList<TaskRunnerNode> ?? commands.ToList();
+                buildDev.Children.AddRange(nodes);
+                root.Children.Add(buildDev);
+                CakePackage.Dte.ShowStatusBarText($"Loaded {nodes.Count} tasks from {file}");
+            }
             return root;
         }
 
