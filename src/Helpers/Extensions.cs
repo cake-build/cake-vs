@@ -46,6 +46,7 @@ namespace Cake.VisualStudio.Helpers
 
         internal static bool RequiresOffset(this ITextSnapshotLine line, params string[] protectedIdentifiers)
         {
+            if (line == null) return false;
             var content = line.GetText().TrimEnd();
             return protectedIdentifiers.Any(i => content.EndsWith(i));
         } 

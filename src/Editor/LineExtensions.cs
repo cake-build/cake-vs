@@ -19,6 +19,7 @@ namespace Cake.VisualStudio.Editor
         /// </summary>
         public static int? GetFirstNonWhitespacePosition(this ITextSnapshotLine line)
         {
+            if (line == null) return null;
             var text = line.GetText();
 
             for (int i = 0; i < text.Length; i++)
@@ -39,6 +40,7 @@ namespace Cake.VisualStudio.Editor
         /// </summary>
         public static int? GetFirstNonWhitespaceOffset(this ITextSnapshotLine line)
         {
+            if (line == null) return null;
             var text = line.GetText();
 
             for (int i = 0; i < text.Length; i++)
@@ -57,6 +59,7 @@ namespace Cake.VisualStudio.Editor
         /// </summary>
         public static bool IsEmptyOrWhitespace(this ITextSnapshotLine line)
         {
+            if (line == null) return true;
             var text = line.GetText();
 
             for (int i = 0; i < text.Length; i++)
@@ -72,7 +75,7 @@ namespace Cake.VisualStudio.Editor
 
         public static ITextSnapshotLine GetPreviousMatchingLine(this ITextSnapshotLine line, Func<ITextSnapshotLine, bool> predicate)
         {
-            if (line.LineNumber <= 0)
+            if (line == null || line.LineNumber <= 0)
             {
                 return null;
             }
@@ -94,21 +97,22 @@ namespace Cake.VisualStudio.Editor
 
         public static int GetColumnOfFirstNonWhitespaceCharacterOrEndOfLine(this ITextSnapshotLine line, IEditorOptions editorOptions)
         {
-            return line.GetColumnOfFirstNonWhitespaceCharacterOrEndOfLine(editorOptions.GetTabSize());
+            return line == null ? 0 : line.GetColumnOfFirstNonWhitespaceCharacterOrEndOfLine(editorOptions.GetTabSize());
         }
 
         public static int GetColumnOfFirstNonWhitespaceCharacterOrEndOfLine(this ITextSnapshotLine line, int tabSize)
         {
-            return line.GetText().GetColumnOfFirstNonWhitespaceCharacterOrEndOfLine(tabSize);
+            return line == null ? 0 : line.GetText().GetColumnOfFirstNonWhitespaceCharacterOrEndOfLine(tabSize);
         }
 
         public static int GetColumnFromLineOffset(this ITextSnapshotLine line, int lineOffset, IEditorOptions editorOptions)
         {
-            return line.GetText().GetColumnFromLineOffset(lineOffset, editorOptions.GetTabSize());
+            return line == null ? 0 : line.GetText().GetColumnFromLineOffset(lineOffset, editorOptions.GetTabSize());
         }
 
         public static int GetColumnOfFirstNonWhitespaceCharacterOrEndOfLine(this string line, int tabSize)
         {
+            if (line == null) return 0;
             var firstNonWhitespaceChar = line.GetFirstNonWhitespaceOffset();
 
             if (firstNonWhitespaceChar.HasValue)
@@ -124,6 +128,7 @@ namespace Cake.VisualStudio.Editor
 
         public static int? GetFirstNonWhitespaceOffset(this string line)
         {
+            if (line == null) return null;
             for (int i = 0; i < line.Length; i++)
             {
                 if (!char.IsWhiteSpace(line[i]))
@@ -137,6 +142,7 @@ namespace Cake.VisualStudio.Editor
 
         public static string GetLeadingWhitespace(this string lineText)
         {
+            if (lineText == null) return null;
             var firstOffset = lineText.GetFirstNonWhitespaceOffset();
 
             return firstOffset.HasValue
@@ -146,6 +152,7 @@ namespace Cake.VisualStudio.Editor
 
         public static int GetColumnFromLineOffset(this string line, int endPosition, int tabSize)
         {
+            if (line == null) return 0;
             return ConvertTabToSpace(line, tabSize, 0, endPosition);
         }
 
@@ -174,6 +181,7 @@ namespace Cake.VisualStudio.Editor
         /// </summary>
         public static bool StartsWith(this ITextSnapshotLine line, int index, string value, bool ignoreCase)
         {
+            if (line == null) return false;
             var snapshot = line.Snapshot;
             if (index + value.Length > snapshot.Length)
             {
