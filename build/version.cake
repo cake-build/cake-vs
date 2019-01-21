@@ -85,11 +85,6 @@ public class BuildVersion
     public static void UpdateManifestVersion(ICakeContext context, FilePath path) {
         var versionInfo = context.GitVersion();
         var targetVersion = versionInfo.MajorMinorPatch + "." + versionInfo.CommitsSinceVersionSourcePadded;
-        context.TransformConfig(
-		    path.FullPath,
-            new TransformationCollection {
-                { "PackageManifest/Metadata/Identity/@Version", targetVersion }
-            }
-	    );
+		context.XmlPoke(path, "PackageManifest/Metadata/Identity/@Version", targetVersion);
     }
 }
