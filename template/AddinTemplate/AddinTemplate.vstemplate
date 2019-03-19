@@ -5,6 +5,11 @@
     <Description>Basic project template for creating a new Cake addin</Description>
     <Icon>AddinTemplate.ico</Icon>
     <ProjectType>CSharp</ProjectType>
+    <LanguageTag>csharp</LanguageTag>
+    <PlatformTag>linux</PlatformTag>
+    <PlatformTag>windows</PlatformTag>
+    <PlatformTag>macos</PlatformTag>
+    <ProjectTypeTag>Cake</ProjectTypeTag>
     <RequiredFrameworkVersion>4.5</RequiredFrameworkVersion>
     <SortOrder>1000</SortOrder>
     <TemplateID>10dcbe21-0d84-4a5b-88a3-220e234a7211</TemplateID>
