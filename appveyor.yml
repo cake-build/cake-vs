@@ -7,7 +7,7 @@ init:
 
 # Build script
 build_script:
-  - ps: .\build.ps1 -Target "AppVeyor"
+  - ps: .\build.ps1 -Target "AppVeyor" --settings_skipverification=true
 
 # Tests
 test: off
