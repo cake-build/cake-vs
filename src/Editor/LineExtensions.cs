@@ -1,16 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media.TextFormatting;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Text.Editor.OptionsExtensionMethods;
 
 namespace Cake.VisualStudio.Editor
 {
+    /// <summary>
+    /// Extensions for handling text lines (especially when working with indents)
+    /// </summary>
+    /// <remarks>
+    /// This class includes a lot of null-checking in every extension.
+    /// This is necessary as there is a hard-to-repro bug with crashes on opening an empty Cake files.
+    /// Please do not change these checks without extensive testing.
+    /// </remarks>
     internal static class ITextSnapshotLineExtensions
     {
         /// <summary>
