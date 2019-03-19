@@ -45,6 +45,6 @@ namespace Cake.VisualStudio.Configuration
         internal const string BeforeBuild = "BeforeBuild";
         internal const string AfterBuild = "AfterBuild";
         internal const string Clean = "Clean";
-        internal const string Open = "ProjectOpen";
+        internal const string Open = "ProjectOpened";
     }
 }
