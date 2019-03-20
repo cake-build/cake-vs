@@ -6,6 +6,8 @@
     <Icon>ItemTemplate.ico</Icon>
     <TemplateID>7d181506-47e9-4f9d-8ac3-5ac65f6b8354</TemplateID>
     <ProjectType>CSharp</ProjectType>
+    <LanguageTag>csharp</LanguageTag>
+    <ProjectTypeTag>Cake</ProjectTypeTag>
     <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
     <DefaultName>build.cake</DefaultName>
   </TemplateData>

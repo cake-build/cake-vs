@@ -38,12 +38,7 @@ namespace Cake.VisualStudio.Menus
         /// <param name="package">Owner _package, not null.</param>
         private InstallBootstrapperCommand(Package package)
         {
-            if (package == null)
-            {
-                throw new ArgumentNullException("package");
-            }
-
-            _package = package;
+            _package = package ?? throw new ArgumentNullException("package");
 
             var commandService = ServiceProvider.GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
             if (commandService != null)

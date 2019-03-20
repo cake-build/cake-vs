@@ -7,6 +7,11 @@
     <Description>Basic project template, including samples, for creating unit tests for a Cake addin</Description>
     <Icon>CakeTestTemplate.ico</Icon>
     <ProjectType>CSharp</ProjectType>
+    <LanguageTag>csharp</LanguageTag>
+    <PlatformTag>linux</PlatformTag>
+    <PlatformTag>windows</PlatformTag>
+    <PlatformTag>macos</PlatformTag>
+    <ProjectTypeTag>Cake</ProjectTypeTag>
     <RequiredFrameworkVersion>4.5</RequiredFrameworkVersion>
     <SortOrder>1000</SortOrder>
     <TemplateID>8e115642-736f-4d2d-975e-551dbfc1a088</TemplateID>
