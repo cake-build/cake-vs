@@ -87,6 +87,7 @@
     <Compile Include="Configuration\BindingParser.cs" />
     <Compile Include="Configuration\ConfigurationExtensions.cs" />
     <Compile Include="Configuration\ConfigurationParser.cs" />
+    <Compile Include="Configuration\ToolLocator.cs" />
     <Compile Include="ContentType\CakeContentTypeDefinition.cs" />
     <Compile Include="Editor\IndentationResult.cs" />
     <Compile Include="Editor\LineExtensions.cs" />
