@@ -4,6 +4,7 @@
 
 using System.ComponentModel.Composition;
 using Cake.VisualStudio.Helpers;
+using Microsoft.VisualStudio.LanguageServer.Client;
 using Microsoft.VisualStudio.Utilities;
 
 namespace Cake.VisualStudio.ContentType
@@ -14,6 +15,7 @@ namespace Cake.VisualStudio.ContentType
         [Name(Constants.CakeContentType)]
         [BaseDefinition(Constants.BaseContentType)]
         [BaseDefinition(Constants.RoslynContentType)]
+        [BaseDefinition(CodeRemoteContentDefinition.CodeRemoteContentTypeName)]
         public ContentTypeDefinition ICakeContentTypeDefinitionContentType { get; set; }
 
         [Export(typeof(FileExtensionToContentTypeDefinition))]
