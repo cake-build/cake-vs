@@ -6,12 +6,18 @@ var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 
 //////////////////////////////////////////////////////////////////////
+// MODULES
+//////////////////////////////////////////////////////////////////////
+
+#module nuget:?package=Cake.DotNetTool.Module&version=0.4.0
+
+//////////////////////////////////////////////////////////////////////
 // TOOLS / ADDINS
 //////////////////////////////////////////////////////////////////////
 
-#addin "nuget:https://www.nuget.org/api/v2?package=MagicChunks&version=1.2.0.58"
-#tool "nuget:?package=gitreleasemanager&version=0.6.0"
-#tool "nuget:?package=GitVersion.CommandLine&version=3.4.1"
+#addin "nuget:?package=MagicChunks&version=2.0.0.119"
+#tool "dotnet:?package=GitReleaseManager.Tool&version=0.11.0"
+#tool "dotnet:?package=GitVersion.Tool&version=5.5.1"
 
 //////////////////////////////////////////////////////////////////////
 // EXTERNAL SCRIPTS
@@ -88,7 +94,7 @@ Task("Clean")
 Task("Create-Release-Notes")
     .Does(() =>
 {
-    GitReleaseManagerCreate(parameters.GitHub.UserName, parameters.GitHub.Password, "cake-build", "cake-vs", new GitReleaseManagerCreateSettings {
+    GitReleaseManagerCreate(parameters.GitHub.Token, "cake-build", "cake-vs", new GitReleaseManagerCreateSettings {
         Milestone         = parameters.Version.Milestone,
         Name              = parameters.Version.Milestone,
         Prerelease        = true,
@@ -145,8 +151,8 @@ Task("Publish-GitHub-Release")
     var buildResultDir = Directory(artifacts);
     var packageFile = File("Cake.VisualStudio.vsix");
 
-    GitReleaseManagerAddAssets(parameters.GitHub.UserName, parameters.GitHub.Password, "cake-build", "cake-vs", parameters.Version.Milestone, buildResultDir + packageFile);
-    GitReleaseManagerClose(parameters.GitHub.UserName, parameters.GitHub.Password, "cake-build", "cake-vs", parameters.Version.Milestone);
+    GitReleaseManagerAddAssets(parameters.GitHub.Token, "cake-build", "cake-vs", parameters.Version.Milestone, buildResultDir + packageFile);
+    GitReleaseManagerClose(parameters.GitHub.Token, "cake-build", "cake-vs", parameters.Version.Milestone);
 })
 .OnError(exception =>
 {
@@ -182,3 +188,4 @@ Task("AppVeyor")
     .IsDependentOn("Publish-Extension");
 
 RunTarget(target);
+
