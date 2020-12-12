@@ -120,9 +120,40 @@ Task("Restore")
     NuGetRestore(solutionPath);
 });
 
+Task("Download-Nupkgs")
+    .Does(() => 
+{
+    if (!DirectoryExists("./nupkgs"))
+    {
+        Information("Creating nupkgs directory...");
+        CreateDirectory("./nupkgs");
+    }
+
+    var downloads = new Dictionary<string, string>();
+    downloads.Add("https://www.nuget.org/api/v2/package/Cake.Core/0.38.5", "./nupkgs/cake.core.0.38.5.nupkg");
+    downloads.Add("https://www.nuget.org/api/v2/package/Cake.Testing/0.38.5", "./nupkgs/cake.testing.0.38.5.nupkg");
+    downloads.Add("https://www.nuget.org/api/v2/package/xunit/2.4.1", "./nupkgs/xunit.2.4.1.nupkg");
+    downloads.Add("https://www.nuget.org/api/v2/package/xunit.abstractions/2.0.3", "./nupkgs/xunit.abstractions.2.0.3.nupkg");
+    downloads.Add("https://www.nuget.org/api/v2/package/xunit.assert/2.4.1", "./nupkgs/xunit.assert.2.4.1.nupkg");
+    downloads.Add("https://www.nuget.org/api/v2/package/xunit.core/2.4.1", "./nupkgs/xunit.core.2.4.1.nupkg");
+    downloads.Add("https://www.nuget.org/api/v2/package/xunit.extensibility.core/2.4.1", "./nupkgs/xunit.extensibility.core.2.4.1.nupkg");
+    downloads.Add("https://www.nuget.org/api/v2/package/xunit.extensibility.execution/2.4.1", "./nupkgs/xunit.extensibility.execution.2.4.1.nupkg");
+    downloads.Add("https://www.nuget.org/api/v2/package/xunit.runner.visualstudio/2.4.3", "./nupkgs/xunit.runner.visualstudio.2.4.3.nupkg");
+
+    foreach (var download in downloads)
+    {
+        if (!FileExists(download.Value))
+        {
+            Information("Downloading {0}", download.Key);
+            DownloadFile(download.Key, download.Value);
+        }
+    }
+});
+
 Task("Build")
     .IsDependentOn("Clean")
     .IsDependentOn("Restore")
+    .IsDependentOn("Download-Nupkgs")
     .IsDependentOn("Update-Manifest-Version")
     .Does(() =>
 {
@@ -131,7 +162,6 @@ Task("Build")
         settings.SetPlatformTarget(PlatformTarget.MSIL)
             .SetMSBuildPlatform(MSBuildPlatform.x86)
             .UseToolVersion(MSBuildToolVersion.VS2019)
-            .WithProperty("TreatWarningsAsErrors","true")
             .SetVerbosity(Verbosity.Quiet)
             .WithTarget("Build")
             .SetConfiguration(configuration));
