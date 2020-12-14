@@ -31,7 +31,6 @@ namespace Cake.VisualStudio
         public const int cmdDebug = 0x0101;
         public const int cmdVerbose = 0x0102;
         public const int cmdDryRun = 0x0103;
-        public const int cmdExperimental = 0x0104;
         public const int IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS = 0x2002;
         public const int SubMenuGroup = 0x1020;
         public const int CakeSubMenu = 0x1018;
