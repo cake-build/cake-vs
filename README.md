@@ -1,7 +1,7 @@
 # Cake for Visual Studio
 
 Adds support for the [Cake](https://cakebuild.net/)
-build tool in Visual Studio 2015. Includes support for the Task Runner Explorer,
+build tool in Visual Studio 2017 and 2019. Includes support for the Task Runner Explorer,
 new item and project templates and bootstrapping important Cake files
 
 Originally based off Mads Kristensen's [Brunch Task Runner](https://github.com/madskristensen/BrunchTaskRunner) extension.
@@ -69,12 +69,6 @@ The extension includes an item template for build scripts and project templates 
 
 Check out the [Cake contribution guidelines](https://cakebuild.net/docs/contributing/contribution-guidelines)
 if you want to contribute to this project.
-
-For cloning and building this project yourself, make sure
-to install the
-[Extensibility Tools 2015](https://visualstudiogallery.msdn.microsoft.com/ab39a092-1343-46e2-b0f1-6a3f91155aa6)
-extension for Visual Studio which enables some features
-used by this project.
 
 ## License
 
