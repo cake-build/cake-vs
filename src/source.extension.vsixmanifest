@@ -1,50 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
-  <Metadata>
-    <Identity Id="3cf9b016-d63f-44ee-849d-6f3efc996134" Version="0.1.1.0" Language="en-US" Publisher="Cake Build" />
-    <DisplayName>Cake for Visual Studio</DisplayName>
-    <Description xml:space="preserve">Adds support for the Cake build tool in Visual Studio 2015 and 2017. Includes support for the Task Runner Explorer, new templates and bootstrapping important Cake files.</Description>
-    <MoreInfo>https://github.com/cake-build/cake-vs</MoreInfo>
-    <License>Resources\LICENSE</License>
-    <Icon>Resources\icon.png</Icon>
-    <PreviewImage>Resources\preview.png</PreviewImage>
-    <Tags>cake, build</Tags>
-  </Metadata>
-  <Installation>
-    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0,17.0)" />
-    <InstallationTarget Id="Microsoft.VisualStudio.Professional" Version="[14.0,17.0)" />
-    <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[14.0,17.0)" />
-  </Installation>
-  <Prerequisites>
-    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,)" DisplayName="Visual Studio core editor" />
-    <Prerequisite Id="Microsoft.Net.Component.4.5.TargetingPack" Version="[15.0,)" DisplayName=".NET Framework 4.5 targeting pack" />
-    <Prerequisite Id="Microsoft.VisualStudio.Component.Roslyn.LanguageServices" Version="[15.0,)" DisplayName="C# and Visual Basic" />
-    <Prerequisite Id="Microsoft.VisualStudio.Component.Roslyn.Compiler" Version="[15.0,)" DisplayName="C# and Visual Basic Roslyn compilers" />
-    <Prerequisite Id="Microsoft.VisualStudio.Component.NuGet" Version="[15.0,)" DisplayName="NuGet package manager" />
-  </Prerequisites>
-  <Dependencies>
-    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
-  </Dependencies>
-  <Assets>
-    <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />
-    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
-    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="Snippets\snippets.pkgdef" />
-    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="ContentType\icons.pkgdef" />
-    <Asset Type="cake.core.0.38.5.nupkg" d:Source="File" Path="Packages\cake.core.0.38.5.nupkg" d:VsixSubPath="Packages" />
-    <Asset Type="cake.testing.0.38.5.nupkg" d:Source="File" Path="Packages\cake.testing.0.38.5.nupkg" d:VsixSubPath="Packages" />
-    <Asset Type="xunit.2.4.1.nupkg" d:Source="File" Path="Packages\xunit.2.4.1.nupkg" d:VsixSubPath="Packages" />
-    <Asset Type="xunit.abstractions.2.0.3.nupkg" d:Source="File" Path="Packages\xunit.abstractions.2.0.3.nupkg" d:VsixSubPath="Packages" />
-    <Asset Type="xunit.assert.2.4.1.nupkg" d:Source="File" Path="Packages\xunit.assert.2.4.1.nupkg" d:VsixSubPath="Packages" />
-    <Asset Type="xunit.core.2.4.1.nupkg" d:Source="File" Path="Packages\xunit.core.2.4.1.nupkg" d:VsixSubPath="Packages" />
-    <Asset Type="xunit.extensibility.core.2.4.1.nupkg" d:Source="File" Path="Packages\xunit.extensibility.core.2.4.1.nupkg" d:VsixSubPath="Packages" />
-    <Asset Type="xunit.extensibility.execution.2.4.1.nupkg" d:Source="File" Path="Packages\xunit.extensibility.execution.2.4.1.nupkg" d:VsixSubPath="Packages" />
-    <Asset Type="xunit.runner.visualstudio.2.4.3.nupkg" d:Source="File" Path="Packages\xunit.runner.visualstudio.2.4.3.nupkg" d:VsixSubPath="Packages" />
-    <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="AddinTemplate" d:TargetPath="|AddinTemplate;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
-    <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="Project" d:ProjectName="ItemTemplate" d:TargetPath="|ItemTemplate;TemplateProjectOutputGroup|" Path="ItemTemplates" d:VsixSubPath="ItemTemplates" />
-    <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="ModuleTemplate" d:TargetPath="|ModuleTemplate;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
-    <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="AddinTestTemplate" d:TargetPath="|AddinTestTemplate;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
-    <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="AddinTestBasicTemplate" d:TargetPath="|AddinTestBasicTemplate;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
-    <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="Project" d:ProjectName="SolutionItemTemplate" d:TargetPath="|SolutionItemTemplate;TemplateProjectOutputGroup|" Path="ItemTemplates" d:VsixSubPath="ItemTemplates" />
-    <!-- <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" AssemblyName="|%CurrentProject%;AssemblyName|" /> -->
-  </Assets>
+    <Metadata>
+        <Identity Id="3cf9b016-d63f-44ee-849d-6f3efc996134" Version="0.1.1.0" Language="en-US" Publisher="Cake Build" />
+        <DisplayName>Cake for Visual Studio</DisplayName>
+        <Description xml:space="preserve">Adds support for the Cake build tool in Visual Studio 2015 and 2017. Includes support for the Task Runner Explorer, new templates and bootstrapping important Cake files.</Description>
+        <MoreInfo>https://github.com/cake-build/cake-vs</MoreInfo>
+        <License>Resources\LICENSE</License>
+        <Icon>Resources\icon.png</Icon>
+        <PreviewImage>Resources\preview.png</PreviewImage>
+        <Tags>cake, build</Tags>
+    </Metadata>
+    <Installation>
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0,17.0)" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Professional" Version="[15.0,17.0)" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[15.0,17.0)" />
+    </Installation>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,)" DisplayName="Visual Studio core editor" />
+        <Prerequisite Id="Microsoft.Net.Component.4.5.TargetingPack" Version="[15.0,)" DisplayName=".NET Framework 4.5 targeting pack" />
+        <Prerequisite Id="Microsoft.VisualStudio.Component.Roslyn.LanguageServices" Version="[15.0,)" DisplayName="C# and Visual Basic" />
+        <Prerequisite Id="Microsoft.VisualStudio.Component.Roslyn.Compiler" Version="[15.0,)" DisplayName="C# and Visual Basic Roslyn compilers" />
+        <Prerequisite Id="Microsoft.VisualStudio.Component.NuGet" Version="[15.0,)" DisplayName="NuGet package manager" />
+    </Prerequisites>
+    <Dependencies>
+        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
+    </Dependencies>
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="Snippets\snippets.pkgdef" />
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="ContentType\icons.pkgdef" />
+        <Asset Type="cake.core.0.38.5.nupkg" d:Source="File" Path="Packages\cake.core.0.38.5.nupkg" d:VsixSubPath="Packages" />
+        <Asset Type="cake.testing.0.38.5.nupkg" d:Source="File" Path="Packages\cake.testing.0.38.5.nupkg" d:VsixSubPath="Packages" />
+        <Asset Type="xunit.2.4.1.nupkg" d:Source="File" Path="Packages\xunit.2.4.1.nupkg" d:VsixSubPath="Packages" />
+        <Asset Type="xunit.abstractions.2.0.3.nupkg" d:Source="File" Path="Packages\xunit.abstractions.2.0.3.nupkg" d:VsixSubPath="Packages" />
+        <Asset Type="xunit.assert.2.4.1.nupkg" d:Source="File" Path="Packages\xunit.assert.2.4.1.nupkg" d:VsixSubPath="Packages" />
+        <Asset Type="xunit.core.2.4.1.nupkg" d:Source="File" Path="Packages\xunit.core.2.4.1.nupkg" d:VsixSubPath="Packages" />
+        <Asset Type="xunit.extensibility.core.2.4.1.nupkg" d:Source="File" Path="Packages\xunit.extensibility.core.2.4.1.nupkg" d:VsixSubPath="Packages" />
+        <Asset Type="xunit.extensibility.execution.2.4.1.nupkg" d:Source="File" Path="Packages\xunit.extensibility.execution.2.4.1.nupkg" d:VsixSubPath="Packages" />
+        <Asset Type="xunit.runner.visualstudio.2.4.3.nupkg" d:Source="File" Path="Packages\xunit.runner.visualstudio.2.4.3.nupkg" d:VsixSubPath="Packages" />
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="AddinTemplate" d:TargetPath="|AddinTemplate;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="Project" d:ProjectName="ItemTemplate" d:TargetPath="|ItemTemplate;TemplateProjectOutputGroup|" Path="ItemTemplates" d:VsixSubPath="ItemTemplates" />
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="ModuleTemplate" d:TargetPath="|ModuleTemplate;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="AddinTestTemplate" d:TargetPath="|AddinTestTemplate;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="AddinTestBasicTemplate" d:TargetPath="|AddinTestBasicTemplate;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="Project" d:ProjectName="SolutionItemTemplate" d:TargetPath="|SolutionItemTemplate;TemplateProjectOutputGroup|" Path="ItemTemplates" d:VsixSubPath="ItemTemplates" />
+        <!-- <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" AssemblyName="|%CurrentProject%;AssemblyName|" /> -->
+    </Assets>
 </PackageManifest>
