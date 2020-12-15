@@ -40,14 +40,14 @@
         </Strings>
       </Button>
       <Button guid="guidCakePackageCmdSet1" id="cmdidInstallBootstrapperCommand" priority="0x0100" type="Button">
-        <Parent guid="guidCakePackageCmdSet1" id="SubMenuGroup" />
+        <Parent guid="guidCakePackageCmdSet1" id="InstallSubMenuGroup" />
         <Icon guid="menuIcon" id="menuPsIcon" />
         <Strings>
           <ButtonText>Install PowerShell bootstrapper</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidCakePackageCmdSet1" id="cmdidInstallShellBootstrapperCommand" priority="0x0100" type="Button">
-        <Parent guid="guidCakePackageCmdSet1" id="SubMenuGroup" />
+        <Parent guid="guidCakePackageCmdSet1" id="InstallSubMenuGroup" />
         <Icon guid="menuIcon" id="menuBashIcon" />
         <Strings>
           <ButtonText>Install Bash bootstrapper</ButtonText>
@@ -69,10 +69,19 @@
           <CommandName>Cake Build</CommandName>
         </Strings>
       </Menu>
+      <Menu guid="guidCakePackageCmdSet1" id="CakeInstallSubMenu" priority="0x0200" type="Menu">
+        <Parent guid="guidCakePackageCmdSet1" id="SubMenuGroup" />
+        <Strings>
+          <ButtonText>Install bootstrappers</ButtonText>
+        </Strings>
+      </Menu>
     </Menus>
     <Groups>
       <Group guid="guidCakePackageCmdSet1" id="SubMenuGroup" priority="0x0600">
         <Parent guid="guidCakePackageCmdSet1" id="CakeSubMenu" />
+      </Group>
+      <Group guid="guidCakePackageCmdSet1" id="InstallSubMenuGroup" priority="0x0600">
+                <Parent guid="guidCakePackageCmdSet1" id="CakeInstallSubMenu" />
       </Group>
       <Group guid="guidCakePackageCmdSet1" id="TopMenuGroup" priority="0x0600">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_BUILD" />
@@ -104,6 +113,8 @@
       <IDSymbol value="4129" name="cmdidInstallBootstrapperCommand" />
       <IDSymbol value="4132" name="cmdidInstallShellBootstrapperCommand" />
       <IDSymbol value="4133" name="cmdidInstallConfigFileCommand" />
+      <IDSymbol value="4138" name="InstallSubMenuGroup" />
+      <IDSymbol value="4139" name="CakeInstallSubMenu" />
     </GuidSymbol>
     <GuidSymbol name="menuIcon" value="{323AFEB5-C72F-40A7-B345-BB57CE3BBC46}">
       <IDSymbol name="menuCakeIcon" value="1"/>
