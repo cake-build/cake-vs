@@ -27,7 +27,7 @@ namespace Cake.VisualStudio.TaskRunner
                 var taskNames = matches.Cast<Match>().Select(m => m.Groups[1].Value);
                 foreach (var name in taskNames)
                 {
-                    list.Add(name, $"-Target=\"{name}\"");
+                    list.Add(name, $"--target=\"{name}\"");
                 }
             }
             catch (Exception ex)
