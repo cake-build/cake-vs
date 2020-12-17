@@ -14,12 +14,12 @@ namespace Cake.VisualStudio.Menus
     /// <summary>
     /// Command handler
     /// </summary>
-    internal sealed class InstallShellBootstrapperCommand
+    internal sealed class InstallDotNetCoreBashBootstrapperCommand
     {
         /// <summary>
         /// Command ID.
         /// </summary>
-        public const int CommandId = PackageIds.cmdidInstallShellBootstrapperCommand;
+        public const int CommandId = PackageIds.cmdidInstallDotNetCoreBashBootstrapperCommand;
 
         /// <summary>
         /// Command menu group (command set GUID).
@@ -32,11 +32,11 @@ namespace Cake.VisualStudio.Menus
         private readonly Package _package;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InstallShellBootstrapperCommand"/> class.
+        /// Initializes a new instance of the <see cref="InstallDotNetCoreBashBootstrapperCommand"/> class.
         /// Adds our command handlers for menu (commands must exist in the command table file)
         /// </summary>
         /// <param name="package">Owner _package, not null.</param>
-        private InstallShellBootstrapperCommand(Package package)
+        private InstallDotNetCoreBashBootstrapperCommand(Package package)
         {
             _package = package ?? throw new ArgumentNullException("package");
 
@@ -52,7 +52,7 @@ namespace Cake.VisualStudio.Menus
         /// <summary>
         /// Gets the instance of the command.
         /// </summary>
-        public static InstallShellBootstrapperCommand Instance
+        public static InstallDotNetCoreBashBootstrapperCommand Instance
         {
             get;
             private set;
@@ -75,7 +75,7 @@ namespace Cake.VisualStudio.Menus
         /// <param name="package">Owner _package, not null.</param>
         public static void Initialize(Package package)
         {
-            Instance = new InstallShellBootstrapperCommand(package);
+            Instance = new InstallDotNetCoreBashBootstrapperCommand(package);
         }
 
         /// <summary>
@@ -100,10 +100,10 @@ namespace Cake.VisualStudio.Menus
             }
             else
             {
-                if (MenuHelpers.DownloadFileToProject(Constants.BashUri, "build.sh"))
+                if (MenuHelpers.DownloadFileToProject(Constants.DotNetCoreBashUri, "build.sh"))
                 {
-                    VsShellUtilities.LogMessage(Constants.PackageName, "Bootstrapper installed into solution", __ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION);
-                    ServiceProvider.ShowMessageBox("Cake Bootstrapper script successfully downloaded.");
+                    VsShellUtilities.LogMessage(Constants.PackageName, ".NET Core Bash bootstrapper installed into solution", __ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION);
+                    ServiceProvider.ShowMessageBox(".NET Core Bash bootstrapper script successfully downloaded.");
                 }
             }
 

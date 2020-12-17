@@ -46,8 +46,12 @@ namespace Cake.VisualStudio
                 ErrorHandler.ThrowOnFailure(shellService.AdviseShellPropertyChanges(this, out _cookie));
             }
 
-            Menus.InstallBootstrapperCommand.Initialize(this);
-            Menus.InstallShellBootstrapperCommand.Initialize(this);
+            Menus.InstallDotNetToolPowerShellBootstrapperCommand.Initialize(this);
+            Menus.InstallDotNetToolBashBootstrapperCommand.Initialize(this);
+            Menus.InstallDotNetFrameworkPowerShellBootstrapperCommand.Initialize(this);
+            Menus.InstallDotNetFrameworkBashBootstrapperCommand.Initialize(this);
+            Menus.InstallDotNetCorePowerShellBootstrapperCommand.Initialize(this);
+            Menus.InstallDotNetCoreBashBootstrapperCommand.Initialize(this);
             Menus.InstallConfigFileCommand.Initialize(this);
             //return base.InitializeAsync(cancellationToken, progress);
         }

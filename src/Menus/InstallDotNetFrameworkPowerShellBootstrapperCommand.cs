@@ -14,12 +14,12 @@ namespace Cake.VisualStudio.Menus
     /// <summary>
     /// Command handler
     /// </summary>
-    internal sealed class InstallBootstrapperCommand
+    internal sealed class InstallDotNetFrameworkPowerShellBootstrapperCommand
     {
         /// <summary>
         /// Command ID.
         /// </summary>
-        public const int CommandId = PackageIds.cmdidInstallBootstrapperCommand;
+        public const int CommandId = PackageIds.cmdidInstallDotNetFrameworkPowerShellBootstrapperCommand;
 
         /// <summary>
         /// Command menu group (command set GUID).
@@ -32,11 +32,11 @@ namespace Cake.VisualStudio.Menus
         private readonly Package _package;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InstallBootstrapperCommand"/> class.
+        /// Initializes a new instance of the <see cref="InstallDotNetFrameworkPowerShellBootstrapperCommand"/> class.
         /// Adds our command handlers for menu (commands must exist in the command table file)
         /// </summary>
         /// <param name="package">Owner _package, not null.</param>
-        private InstallBootstrapperCommand(Package package)
+        private InstallDotNetFrameworkPowerShellBootstrapperCommand(Package package)
         {
             _package = package ?? throw new ArgumentNullException("package");
 
@@ -52,7 +52,7 @@ namespace Cake.VisualStudio.Menus
         /// <summary>
         /// Gets the instance of the command.
         /// </summary>
-        public static InstallBootstrapperCommand Instance
+        public static InstallDotNetFrameworkPowerShellBootstrapperCommand Instance
         {
             get;
             private set;
@@ -75,7 +75,7 @@ namespace Cake.VisualStudio.Menus
         /// <param name="package">Owner _package, not null.</param>
         public static void Initialize(Package package)
         {
-            Instance = new InstallBootstrapperCommand(package);
+            Instance = new InstallDotNetFrameworkPowerShellBootstrapperCommand(package);
         }
 
         /// <summary>
@@ -100,10 +100,10 @@ namespace Cake.VisualStudio.Menus
             }
             else
             {
-                if (MenuHelpers.DownloadFileToProject(Constants.PowerShellUri, "build.ps1"))
+                if (MenuHelpers.DownloadFileToProject(Constants.DotNetFrameworkPowerShellUri, "build.ps1"))
                 {
-                    VsShellUtilities.LogMessage(Constants.PackageName, "PowerShell bootstrapper installed into solution", __ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION);
-                    ServiceProvider.ShowMessageBox("PowerShell bootstrapper script successfully downloaded.");
+                    VsShellUtilities.LogMessage(Constants.PackageName, ".NET Framework PowerShell bootstrapper installed into solution", __ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION);
+                    ServiceProvider.ShowMessageBox(".NET Framework PowerShell bootstrapper script successfully downloaded.");
                 }
             }
 

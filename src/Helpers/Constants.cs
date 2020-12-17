@@ -13,8 +13,12 @@ namespace Cake.VisualStudio.Helpers
         public const string BaseContentType = "code";
         public const string RoslynContentType = "Roslyn Languages";
         public const string ClassifierName = "CakeClassifier";
-        public const string PowerShellUri = "https://cakebuild.net/download/bootstrapper/powershell";
-        public const string BashUri = "https://cakebuild.net/download/bootstrapper/bash";
+        public const string DotNetFrameworkPowerShellUri = "https://cakebuild.net/download/bootstrapper/dotnet-framework/powershell";
+        public const string DotNetFrameworkBashUri = "https://cakebuild.net/download/bootstrapper/dotnet-framework/bash";
+        public const string DotNetToolPowerShellUri = "https://cakebuild.net/download/bootstrapper/dotnet-tool/powershell";
+        public const string DotNetToolBashUri = "https://cakebuild.net/download/bootstrapper/dotnet-tool/bash";
+        public const string DotNetCorePowerShellUri = "https://cakebuild.net/download/bootstrapper/dotnet-core/powershell";
+        public const string DotNetCoreBashUri = "https://cakebuild.net/download/bootstrapper/dotnet-core/bash";
         public const string ConfigTemplatePath = "https://cakebuild.net/download/configuration";
         public const string ConfigFileName = "cake.config";
         public const string ScriptFileName = "build.cake";

@@ -39,8 +39,12 @@ namespace Cake.VisualStudio
         public const int SubMenuGroup = 0x1020;
         public const int CakeSubMenu = 0x1018;
         public const int TopMenuGroup = 0x1019;
-        public const int cmdidInstallBootstrapperCommand = 0x1021;
-        public const int cmdidInstallShellBootstrapperCommand = 0x1024;
+        public const int cmdidInstallDotNetToolPowerShellBootstrapperCommand = 0x1021;
+        public const int cmdidInstallDotNetToolBashBootstrapperCommand = 0x1024;
+        public const int cmdidInstallDotNetFrameworkPowerShellBootstrapperCommand = 0x102C;
+        public const int cmdidInstallDotNetFrameworkBashBootstrapperCommand = 0x102D;
+        public const int cmdidInstallDotNetCorePowerShellBootstrapperCommand = 0x102E;
+        public const int cmdidInstallDotNetCoreBashBootstrapperCommand = 0x102F;
         public const int cmdidInstallConfigFileCommand = 0x1025;
         public const int InstallSubMenuGroup = 0x102A;
         public const int CakeInstallSubMenu = 0x102B;
