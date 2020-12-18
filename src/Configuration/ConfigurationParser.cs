@@ -62,6 +62,11 @@ namespace Cake.VisualStudio.Configuration
         /// </remarks>
         internal string GetToolsPath(string key = "Tools")
         {
+            if (!File.Exists(FilePath))
+            {
+                return null;
+            }
+
             var parser = new FileIniDataParser(Parser);
             var data = parser.ReadFile(FilePath);
             if (data.Sections.ContainsSection("Paths"))
