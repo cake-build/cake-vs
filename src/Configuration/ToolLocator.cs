@@ -16,9 +16,9 @@ namespace Cake.VisualStudio.Configuration
         private readonly List<string> _executableNames;
         private List<string> _knownPaths { get; set; } = new List<string>();
 
-        public ToolLocator(string executableName)
+        public ToolLocator(List<string> executableNames)
         {
-            _executable = executableName;
+            _executableNames = executableNames;
         }
 
         public ToolLocator AddEnvironmentVariables(string variable = "CAKE_PATHS_TOOLS")
@@ -56,13 +56,24 @@ namespace Cake.VisualStudio.Configuration
         {
             foreach (var path in _knownPaths.Select(p => p.TrimPrefix("./")))
             {
-                var fullPath = Path.Combine(workingDirectory, path, _executable);
-                if (File.Exists(fullPath)) return fullPath;
+                foreach(var executableName in _executableNames)
+                {
+                    var fullPath = Path.Combine(workingDirectory, path, executableName);
+                    if (File.Exists(fullPath))
+                    {
+                        return fullPath;
+                    }
+                }
             }
-            if (PathHelpers.ExistsOnPath(_executable))
+
+            foreach(var executableName in _executableNames)
             {
-                return _executable; // assume PATH
+                if (PathHelpers.ExistsOnPath(executableName))
+                {
+                    return executableName; // assume PATH
+                }
             }
+
             return null;
         }
     }

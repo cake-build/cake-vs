@@ -70,7 +70,15 @@ namespace Cake.VisualStudio.TaskRunner
         {
             var cwd = Path.GetDirectoryName(configPath);
             _executablePath = GetCakePath(cwd);
-            return string.IsNullOrWhiteSpace(_executablePath) ? NotFoundNode(configPath) : LoadHierarchy(configPath);
+
+            if (string.IsNullOrWhiteSpace(_executablePath))
+            {
+                return NotFoundNode(configPath);
+            }
+            else
+            {
+                return LoadHierarchy(configPath);
+            }
         }
 
         private ITaskRunnerNode NotFoundNode(string configPath)
@@ -128,7 +136,7 @@ namespace Cake.VisualStudio.TaskRunner
 
         private static string GetCakePath(string cwd)
         {
-            var locator = new ToolLocator("cake.exe")
+            var locator = new ToolLocator(new List<string> { "dotnet-cake.exe", "dotnet-cake", "cake.exe" })
                 .AddConfigPath(() => new ConfigurationParser(ConfigurationParser.GetConfigFilePath(cwd)))
                 .AddEnvironmentVariables()
                 .AddKnownPaths("tools/Cake", "Cake", ".");
