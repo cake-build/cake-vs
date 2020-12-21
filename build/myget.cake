@@ -1,7 +1,6 @@
-#addin "System.Net.Http"
 using System.Net.Http;
 
-public class MyGetClient : HttpClient 
+public class MyGetClient : HttpClient
 {
 
     public string ApiKey { get; set; }
@@ -24,7 +23,7 @@ public class MyGetClient : HttpClient
         };
     }
 
-    public static MyGetClient GetClient(MyGetFeed feed) 
+    public static MyGetClient GetClient(MyGetFeed feed)
     {
         return MyGetClient.GetClient(feed.Url, feed.Key);
     }
@@ -45,12 +44,12 @@ public class MyGetClient : HttpClient
     }
 }
 
-public class MyGetFeed 
+public class MyGetFeed
 {
     public string Url { get; private set; }
     public string Key { get; private set; }
 
-    public MyGetFeed(string feedUrl, string apiKey) 
+    public MyGetFeed(string feedUrl, string apiKey)
     {
         Url = feedUrl;
         Key = apiKey;

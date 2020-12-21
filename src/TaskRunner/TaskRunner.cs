@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Cake.VisualStudio.Configuration;
 using Cake.VisualStudio.Helpers;
 using Microsoft.VisualStudio.TaskRunnerExplorer;
 
@@ -36,10 +37,9 @@ namespace Cake.VisualStudio.TaskRunner
             _options = new List<ITaskRunnerOption>
             {
                 new TaskRunnerOption("Verbose", PackageIds.cmdVerbose, PackageGuids.guidCakePackageCmdSet, false,
-                    "-Verbosity=\"Diagnostic\""),
-                new TaskRunnerOption("Debug", PackageIds.cmdDebug, PackageGuids.guidCakePackageCmdSet, false, "-debug"),
-                new TaskRunnerOption("Dry Run", PackageIds.cmdDryRun, PackageGuids.guidCakePackageCmdSet, false, "-dryrun"),
-                new TaskRunnerOption("Experimental", PackageIds.cmdExperimental, PackageGuids.guidCakePackageCmdSet, false, "-experimental")
+                    "--verbosity=\"Diagnostic\""),
+                new TaskRunnerOption("Debug", PackageIds.cmdDebug, PackageGuids.guidCakePackageCmdSet, false, "--debug"),
+                new TaskRunnerOption("Dry Run", PackageIds.cmdDryRun, PackageGuids.guidCakePackageCmdSet, false, "--dryrun")
             };
         }
 
@@ -70,7 +70,15 @@ namespace Cake.VisualStudio.TaskRunner
         {
             var cwd = Path.GetDirectoryName(configPath);
             _executablePath = GetCakePath(cwd);
-            return string.IsNullOrWhiteSpace(_executablePath) ? NotFoundNode(configPath) : LoadHierarchy(configPath);
+
+            if (string.IsNullOrWhiteSpace(_executablePath))
+            {
+                return NotFoundNode(configPath);
+            }
+            else
+            {
+                return LoadHierarchy(configPath);
+            }
         }
 
         private ITaskRunnerNode NotFoundNode(string configPath)
@@ -82,19 +90,6 @@ namespace Cake.VisualStudio.TaskRunner
                 Description = message,
                 Command = new TaskRunnerCommand(Path.GetDirectoryName(configPath), "echo", message),
             };
-            /*
-             * return new TaskRunnerNode("Cake")
-            {
-                Children =
-                {
-                    new TaskRunnerNode("Cake.exe not found", true)
-                    {
-                        Description = message,
-                        Command = new TaskRunnerCommand(Path.GetDirectoryName(configPath), "echo", message),
-                    }
-                }
-            };
-            */
         }
 
         private ITaskRunnerNode LoadHierarchy(string configPath)
@@ -141,17 +136,16 @@ namespace Cake.VisualStudio.TaskRunner
 
         private static string GetCakePath(string cwd)
         {
-            var knownPaths = new[] {"tools/Cake/Cake.exe", "Cake/Cake.exe", "Cake.exe"};
-            foreach (var path in knownPaths)
-            {
-                var fullPath = Path.Combine(cwd, path);
-                if (File.Exists(fullPath)) return fullPath;
-            }
-            if (PathHelpers.ExistsOnPath("cake.exe") || PathHelpers.ExistsOnPath("cake"))
-            {
-                return "cake"; // assume PATH
-            }
-            return null;
+            var locator = new ToolLocator(new List<string> { "dotnet-cake.exe", "dotnet-cake", "cake.exe" })
+                .AddConfigPath(() => new ConfigurationParser(ConfigurationParser.GetConfigFilePath(cwd)))
+                .AddEnvironmentVariables()
+                .AddKnownPaths("tools/Cake", "Cake", ".");
+            var path = locator.Locate(cwd);
+            return string.IsNullOrWhiteSpace(path)
+                ? PathHelpers.ExistsOnPath("cake.exe")
+                    ? "cake"
+                    : null
+                : path;
         }
 
         private static string GetExecutableFolder()

@@ -14,12 +14,12 @@ namespace Cake.VisualStudio.Menus
     /// <summary>
     /// Command handler
     /// </summary>
-    internal sealed class InstallConfigFileCommand
+    internal sealed class InstallDotNetToolPowerShellBootstrapperCommand
     {
         /// <summary>
         /// Command ID.
         /// </summary>
-        public const int CommandId = PackageIds.cmdidInstallConfigFileCommand;
+        public const int CommandId = PackageIds.cmdidInstallDotNetToolPowerShellBootstrapperCommand;
 
         /// <summary>
         /// Command menu group (command set GUID).
@@ -32,11 +32,11 @@ namespace Cake.VisualStudio.Menus
         private readonly Package _package;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InstallConfigFileCommand"/> class.
+        /// Initializes a new instance of the <see cref="InstallDotNetToolPowerShellBootstrapperCommand"/> class.
         /// Adds our command handlers for menu (commands must exist in the command table file)
         /// </summary>
         /// <param name="package">Owner _package, not null.</param>
-        private InstallConfigFileCommand(Package package)
+        private InstallDotNetToolPowerShellBootstrapperCommand(Package package)
         {
             _package = package ?? throw new ArgumentNullException("package");
 
@@ -52,7 +52,7 @@ namespace Cake.VisualStudio.Menus
         /// <summary>
         /// Gets the instance of the command.
         /// </summary>
-        public static InstallConfigFileCommand Instance
+        public static InstallDotNetToolPowerShellBootstrapperCommand Instance
         {
             get;
             private set;
@@ -75,7 +75,7 @@ namespace Cake.VisualStudio.Menus
         /// <param name="package">Owner _package, not null.</param>
         public static void Initialize(Package package)
         {
-            Instance = new InstallConfigFileCommand(package);
+            Instance = new InstallDotNetToolPowerShellBootstrapperCommand(package);
         }
 
         /// <summary>
@@ -100,14 +100,14 @@ namespace Cake.VisualStudio.Menus
             }
             else
             {
-                if (MenuHelpers.DownloadFileToProject(Constants.ConfigTemplatePath, Constants.ConfigFileName,
-                    MenuHelpers.ProjectInstallCommand))
+                if (MenuHelpers.DownloadFileToProject(Constants.DotNetToolPowerShellUri, "build.ps1"))
                 {
-                    VsShellUtilities.LogMessage(Constants.PackageName, "Cake configuration file installed into solution",
-                        __ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION);
-                    ServiceProvider.ShowMessageBox("Cake configuration file successfully downloaded.");
+                    VsShellUtilities.LogMessage(Constants.PackageName, ".NET Tool PowerShell bootstrapper installed into solution", __ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION);
+                    ServiceProvider.ShowMessageBox(".NET Tool PowerShell bootstrapper script successfully downloaded.");
                 }
             }
+
+            // Show a message box to prove we were here
         }
     }
 }

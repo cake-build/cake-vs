@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddinTestTemplate", "templa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddinTestBasicTemplate", "template\AddinTestBasicTemplate\AddinTestBasicTemplate.csproj", "{F21E9BF8-745B-4B29-B113-0E55AE840D24}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolutionItemTemplate", "template\SolutionItemTemplate\SolutionItemTemplate.csproj", "{5D45E667-D12D-44F8-8A87-5503BF5DE274}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,10 @@ Global
 		{F21E9BF8-745B-4B29-B113-0E55AE840D24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F21E9BF8-745B-4B29-B113-0E55AE840D24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F21E9BF8-745B-4B29-B113-0E55AE840D24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D45E667-D12D-44F8-8A87-5503BF5DE274}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D45E667-D12D-44F8-8A87-5503BF5DE274}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D45E667-D12D-44F8-8A87-5503BF5DE274}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D45E667-D12D-44F8-8A87-5503BF5DE274}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,5 +72,9 @@ Global
 		{C27AB61E-D245-4A8C-ABD1-53313E388509} = {7067556F-B744-4F73-B509-C8CC9F559AB9}
 		{AB983284-D1F6-4853-9462-402F2985A141} = {7067556F-B744-4F73-B509-C8CC9F559AB9}
 		{F21E9BF8-745B-4B29-B113-0E55AE840D24} = {7067556F-B744-4F73-B509-C8CC9F559AB9}
+		{5D45E667-D12D-44F8-8A87-5503BF5DE274} = {7067556F-B744-4F73-B509-C8CC9F559AB9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {15DFF96E-5E40-427D-B045-2B82B3A4FD92}
 	EndGlobalSection
 EndGlobal

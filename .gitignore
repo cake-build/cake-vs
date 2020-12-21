@@ -30,3 +30,4 @@ _NCrunch_WebCompiler
 [Tt]ools/**/*
 dist/**
 !src/Packages/**
+nupkgs/*

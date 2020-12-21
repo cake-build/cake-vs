@@ -39,28 +39,46 @@
           <ButtonText>Dry Run</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidCakePackageCmdSet" id="cmdExperimental" priority="0x0400" type="Button">
-        <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
-        <Icon guid="ImageCatalogGuid" id="PropertySnippet" />
-        <CommandFlag>IconIsMoniker</CommandFlag>
-        <CommandFlag>DefaultInvisible</CommandFlag>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Experimental</ButtonText>
-        </Strings>
-      </Button>
-      <Button guid="guidCakePackageCmdSet1" id="cmdidInstallBootstrapperCommand" priority="0x0100" type="Button">
-        <Parent guid="guidCakePackageCmdSet1" id="SubMenuGroup" />
+      <Button guid="guidCakePackageCmdSet1" id="cmdidInstallDotNetToolPowerShellBootstrapperCommand" priority="0x0100" type="Button">
+        <Parent guid="guidCakePackageCmdSet1" id="InstallSubMenuGroup" />
         <Icon guid="menuIcon" id="menuPsIcon" />
         <Strings>
-          <ButtonText>Install PowerShell bootstrapper</ButtonText>
+          <ButtonText>.NET Tool runner PowerShell</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidCakePackageCmdSet1" id="cmdidInstallShellBootstrapperCommand" priority="0x0100" type="Button">
-        <Parent guid="guidCakePackageCmdSet1" id="SubMenuGroup" />
+      <Button guid="guidCakePackageCmdSet1" id="cmdidInstallDotNetToolBashBootstrapperCommand" priority="0x0100" type="Button">
+        <Parent guid="guidCakePackageCmdSet1" id="InstallSubMenuGroup" />
         <Icon guid="menuIcon" id="menuBashIcon" />
         <Strings>
-          <ButtonText>Install Bash bootstrapper</ButtonText>
+          <ButtonText>.NET Tool runner Bash</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidCakePackageCmdSet1" id="cmdidInstallDotNetFrameworkPowerShellBootstrapperCommand" priority="0x0100" type="Button">
+        <Parent guid="guidCakePackageCmdSet1" id="InstallSubMenuGroup" />
+        <Icon guid="menuIcon" id="menuPsIcon" />
+        <Strings>
+          <ButtonText>.NET Framework runner PowerShell</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidCakePackageCmdSet1" id="cmdidInstallDotNetFrameworkBashBootstrapperCommand" priority="0x0100" type="Button">
+        <Parent guid="guidCakePackageCmdSet1" id="InstallSubMenuGroup" />
+        <Icon guid="menuIcon" id="menuBashIcon" />
+        <Strings>
+          <ButtonText>.NET Framework runner Bash</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidCakePackageCmdSet1" id="cmdidInstallDotNetCorePowerShellBootstrapperCommand" priority="0x0100" type="Button">
+        <Parent guid="guidCakePackageCmdSet1" id="InstallSubMenuGroup" />
+        <Icon guid="menuIcon" id="menuPsIcon" />
+        <Strings>
+          <ButtonText>.NET Core runner PowerShell</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidCakePackageCmdSet1" id="cmdidInstallDotNetCoreBashBootstrapperCommand" priority="0x0100" type="Button">
+        <Parent guid="guidCakePackageCmdSet1" id="InstallSubMenuGroup" />
+        <Icon guid="menuIcon" id="menuBashIcon" />
+        <Strings>
+          <ButtonText>.NET Core runner Bash</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidCakePackageCmdSet1" id="cmdidInstallConfigFileCommand" priority="0x0100" type="Button">
@@ -79,10 +97,19 @@
           <CommandName>Cake Build</CommandName>
         </Strings>
       </Menu>
+      <Menu guid="guidCakePackageCmdSet1" id="CakeInstallSubMenu" priority="0x0200" type="Menu">
+        <Parent guid="guidCakePackageCmdSet1" id="SubMenuGroup" />
+        <Strings>
+          <ButtonText>Install a bootstrapper</ButtonText>
+        </Strings>
+      </Menu>
     </Menus>
     <Groups>
       <Group guid="guidCakePackageCmdSet1" id="SubMenuGroup" priority="0x0600">
         <Parent guid="guidCakePackageCmdSet1" id="CakeSubMenu" />
+      </Group>
+      <Group guid="guidCakePackageCmdSet1" id="InstallSubMenuGroup" priority="0x0600">
+                <Parent guid="guidCakePackageCmdSet1" id="CakeInstallSubMenu" />
       </Group>
       <Group guid="guidCakePackageCmdSet1" id="TopMenuGroup" priority="0x0600">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_BUILD" />
@@ -101,7 +128,6 @@
       <IDSymbol name="cmdDebug" value="0x0101" />
       <IDSymbol name="cmdVerbose" value="0x0102" />
       <IDSymbol name="cmdDryRun" value="0x0103" />
-      <IDSymbol name="cmdExperimental" value="0x0104" />
     </GuidSymbol>
 
     <GuidSymbol name="guidTaskRunnerExplorerCmdSet" value="{9E78B319-2142-4381-873C-6EC83F092915}">
@@ -112,9 +138,15 @@
       <IDSymbol value="4128" name="SubMenuGroup" />
       <IDSymbol value="4120" name="CakeSubMenu" />
       <IDSymbol value="4121" name="TopMenuGroup" />
-      <IDSymbol value="4129" name="cmdidInstallBootstrapperCommand" />
-      <IDSymbol value="4132" name="cmdidInstallShellBootstrapperCommand" />
+      <IDSymbol value="4129" name="cmdidInstallDotNetToolPowerShellBootstrapperCommand" />
+      <IDSymbol value="4132" name="cmdidInstallDotNetToolBashBootstrapperCommand" />
+      <IDSymbol value="4140" name="cmdidInstallDotNetFrameworkPowerShellBootstrapperCommand" />
+      <IDSymbol value="4141" name="cmdidInstallDotNetFrameworkBashBootstrapperCommand" />
+      <IDSymbol value="4142" name="cmdidInstallDotNetCorePowerShellBootstrapperCommand" />
+      <IDSymbol value="4143" name="cmdidInstallDotNetCoreBashBootstrapperCommand" />
       <IDSymbol value="4133" name="cmdidInstallConfigFileCommand" />
+      <IDSymbol value="4138" name="InstallSubMenuGroup" />
+      <IDSymbol value="4139" name="CakeInstallSubMenu" />
     </GuidSymbol>
     <GuidSymbol name="menuIcon" value="{323AFEB5-C72F-40A7-B345-BB57CE3BBC46}">
       <IDSymbol name="menuCakeIcon" value="1"/>

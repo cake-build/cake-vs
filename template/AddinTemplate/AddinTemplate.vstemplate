@@ -5,6 +5,11 @@
     <Description>Basic project template for creating a new Cake addin</Description>
     <Icon>AddinTemplate.ico</Icon>
     <ProjectType>CSharp</ProjectType>
+    <LanguageTag>csharp</LanguageTag>
+    <PlatformTag>linux</PlatformTag>
+    <PlatformTag>windows</PlatformTag>
+    <PlatformTag>macos</PlatformTag>
+    <ProjectTypeTag>Cake</ProjectTypeTag>
     <RequiredFrameworkVersion>4.5</RequiredFrameworkVersion>
     <SortOrder>1000</SortOrder>
     <TemplateID>10dcbe21-0d84-4a5b-88a3-220e234a7211</TemplateID>
@@ -25,7 +30,7 @@
   </WizardExtension>
   <WizardData>
     <packages repository="extension" repositoryId="3cf9b016-d63f-44ee-849d-6f3efc996134">
-      <package id="Cake.Core" version="0.21.1" />
+      <package id="Cake.Core" version="0.38.5" />
     </packages>
   </WizardData>
 </VSTemplate>

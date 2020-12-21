@@ -43,7 +43,7 @@ public class BuildParameters
         {
             return IsRunningOnAppVeyor && IsMasterCakeVsRepo;
         }
-    } 
+    }
 
     public void SetBuildVersion(BuildVersion version)
     {
@@ -77,8 +77,7 @@ public class BuildParameters
                 !string.IsNullOrWhiteSpace(buildSystem.AppVeyor.Environment.Repository.Tag.Name)
             ),
             GitHub = new BuildCredentials (
-                userName: context.EnvironmentVariable("CAKEVS_GITHUB_USERNAME"),
-                password: context.EnvironmentVariable("CAKEVS_GITHUB_PASSWORD")
+                token: context.EnvironmentVariable("CAKEVS_GITHUB_PAT")
             ),
             MyGet = new MyGetFeed (
                 feedUrl: context.EnvironmentVariable("MYGET_VSIX_API_URL"),
@@ -101,12 +100,10 @@ public class BuildParameters
 
 public class BuildCredentials
 {
-    public string UserName { get; private set; }
-    public string Password { get; private set; }
+    public string Token { get; private set; }
 
-    public BuildCredentials(string userName, string password)
+    public BuildCredentials(string token)
     {
-        UserName = userName;
-        Password = password;
+        Token = token;
     }
 }
