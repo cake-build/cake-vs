@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26127.3
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{04D0CE67-A915-44BB-BC3C-8E7885CF9E97}"
 	ProjectSection(SolutionItems) = preProject
@@ -10,11 +10,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{7067556F-B744-4F73-B509-C8CC9F559AB9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.VisualStudio", "src\Cake.VisualStudio.csproj", "{94660BCF-169A-42E1-BD84-345449743069}"
-	ProjectSection(ProjectDependencies) = postProject
-		{FCE573DD-E74E-4AB1-9D17-56FC8869797F} = {FCE573DD-E74E-4AB1-9D17-56FC8869797F}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddinTemplate", "template\AddinTemplate\AddinTemplate.csproj", "{FCE573DD-E74E-4AB1-9D17-56FC8869797F}"
 EndProject
@@ -28,16 +23,23 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddinTestBasicTemplate", "t
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolutionItemTemplate", "template\SolutionItemTemplate\SolutionItemTemplate.csproj", "{5D45E667-D12D-44F8-8A87-5503BF5DE274}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Cake.VisualStudio.Shared", "src\Cake.VisualStudio.Shared\Cake.VisualStudio.Shared.shproj", "{3D9AB2DB-3DD8-4E2B-8DBC-BF29EDAF1A1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.VisualStudio", "src\Cake.VisualStudio\Cake.VisualStudio.csproj", "{94660BCF-169A-42E1-BD84-345449743069}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.VisualStudio.2022", "src\Cake.VisualStudio.2022\Cake.VisualStudio.2022.csproj", "{F8EB885A-FCA3-410A-B895-9CE327D5D482}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		src\Cake.VisualStudio.Shared\Cake.VisualStudio.Shared.projitems*{3d9ab2db-3dd8-4e2b-8dbc-bf29edaf1a1b}*SharedItemsImports = 13
+		src\Cake.VisualStudio.Shared\Cake.VisualStudio.Shared.projitems*{94660bcf-169a-42e1-bd84-345449743069}*SharedItemsImports = 4
+		src\Cake.VisualStudio.Shared\Cake.VisualStudio.Shared.projitems*{f8eb885a-fca3-410a-b895-9ce327d5d482}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{94660BCF-169A-42E1-BD84-345449743069}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{94660BCF-169A-42E1-BD84-345449743069}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{94660BCF-169A-42E1-BD84-345449743069}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{94660BCF-169A-42E1-BD84-345449743069}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FCE573DD-E74E-4AB1-9D17-56FC8869797F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FCE573DD-E74E-4AB1-9D17-56FC8869797F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCE573DD-E74E-4AB1-9D17-56FC8869797F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -62,6 +64,14 @@ Global
 		{5D45E667-D12D-44F8-8A87-5503BF5DE274}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D45E667-D12D-44F8-8A87-5503BF5DE274}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D45E667-D12D-44F8-8A87-5503BF5DE274}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94660BCF-169A-42E1-BD84-345449743069}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94660BCF-169A-42E1-BD84-345449743069}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94660BCF-169A-42E1-BD84-345449743069}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94660BCF-169A-42E1-BD84-345449743069}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8EB885A-FCA3-410A-B895-9CE327D5D482}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8EB885A-FCA3-410A-B895-9CE327D5D482}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8EB885A-FCA3-410A-B895-9CE327D5D482}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8EB885A-FCA3-410A-B895-9CE327D5D482}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

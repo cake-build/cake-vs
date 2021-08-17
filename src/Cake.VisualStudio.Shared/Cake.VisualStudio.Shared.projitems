@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>3d9ab2db-3dd8-4e2b-8dbc-bf29edaf1a1b</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Cake.VisualStudio.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Adornments\AdornmentLayer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Adornments\AdornmentProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Adornments\LogoAdornment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CakePackage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Classifier\CakeClassificationDefinition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Classifier\CakeClassifier.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Classifier\CakeClassifierFormat.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Classifier\CakeClassifierProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Classifier\ClassifierNames.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Classifier\Languages\BaseLanguage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Classifier\Languages\CakeLanguage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Configuration\BindingParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Configuration\ConfigurationExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Configuration\ConfigurationParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Configuration\ToolLocator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ContentType\CakeContentTypeDefinition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ContentType\CakeLanguageService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Editor\CakeDropHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Editor\CakeScriptDropHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Editor\CakeScriptDropHandlerProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Editor\IndentationResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Editor\LineExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Editor\SmartIndent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Editor\SmartIndentProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Logger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\PathHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ProjectHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Menus\InstallConfigFileCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Menus\InstallDotNetCoreBashBootstrapperCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Menus\InstallDotNetCorePowerShellBootstrapperCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Menus\InstallDotNetFrameworkBashBootstrapperCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Menus\InstallDotNetFrameworkPowerShellBootstrapperCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Menus\InstallDotNetToolBashBootstrapperCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Menus\InstallDotNetToolPowerShellBootstrapperCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Menus\MenuHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TaskRunner\ScriptContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TaskRunner\TaskParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TaskRunner\TaskRunner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TaskRunner\TaskRunnerConfig.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TaskRunner\TaskRunnerOption.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Menus\resources\" />
+  </ItemGroup>
+</Project>
