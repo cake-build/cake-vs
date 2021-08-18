@@ -11,8 +11,8 @@ namespace Cake.VisualStudio
         public const string Name = "Cake for Visual Studio 2022";
         public const string Description = @"Adds support for the Cake build tool in Visual Studio 2022. Includes support for the Task Runner Explorer, new templates and bootstrapping important Cake files.";
         public const string Language = "en-US";
-        public const string Version = "1.0";
-        public const string Author = "Gary Ewan Park";
+        public const string Version = "0.1.1.0";
+        public const string Author = "Cake Build";
         public const string Tags = "cake, build";
     }
 }

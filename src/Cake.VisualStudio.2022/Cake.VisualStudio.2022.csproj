@@ -115,6 +115,7 @@
     </Content>
     <Content Include="..\metadata\Snippets\snippets.pkgdef">
       <Link>Snippets\snippets.pkgdef</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <VSCTCompile Include="..\metadata\VsCommandTable.vsct">
       <Link>VsCommandTable.vsct</Link>
@@ -136,12 +137,12 @@
       <Link>Snippets\Cake\cake-task.snippet</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\metadata\Snippets\CSharp\method-alias.snippet">
-      <Link>Snippets\CSharp\method-alias.snippet</Link>
+    <Content Include="..\metadata\Snippets\Cake-Addin\method-alias.snippet">
+      <Link>Snippets\Cake-Addin\method-alias.snippet</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\metadata\Snippets\CSharp\property-alias.snippet">
-      <Link>Snippets\CSharp\property-alias.snippet</Link>
+    <Content Include="..\metadata\Snippets\Cake-Addin\property-alias.snippet">
+      <Link>Snippets\Cake-Addin\property-alias.snippet</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="..\..\nupkgs\cake.core.0.38.5.nupkg">

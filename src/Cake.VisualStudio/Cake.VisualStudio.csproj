@@ -138,12 +138,12 @@
       <Link>Snippets\Cake\cake-task.snippet</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\metadata\Snippets\CSharp\method-alias.snippet">
-      <Link>Snippets\CSharp\method-alias.snippet</Link>
+    <Content Include="..\metadata\Snippets\Cake-Addin\method-alias.snippet">
+      <Link>Snippets\Cake-Addin\method-alias.snippet</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\metadata\Snippets\CSharp\property-alias.snippet">
-      <Link>Snippets\CSharp\property-alias.snippet</Link>
+    <Content Include="..\metadata\Snippets\Cake-Addin\property-alias.snippet">
+      <Link>Snippets\Cake-Addin\property-alias.snippet</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <None Include="app.config" />
@@ -289,6 +289,11 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.SDK.Analyzers">
       <Version>15.8.36</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VSSDK.BuildTools">
+      <Version>15.9.3039</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="TemplateBuilder">
       <Version>1.1.6.1</Version>
