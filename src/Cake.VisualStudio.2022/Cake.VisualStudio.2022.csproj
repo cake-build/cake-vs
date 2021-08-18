@@ -116,11 +116,12 @@
     <Content Include="..\metadata\Snippets\snippets.pkgdef">
       <Link>Snippets\snippets.pkgdef</Link>
     </Content>
-    <Content Include="..\metadata\VsCommandTable.vsct">
+    <VSCTCompile Include="..\metadata\VsCommandTable.vsct">
       <Link>VsCommandTable.vsct</Link>
+      <ResourceName>Menus.ctmenu</ResourceName>
       <Generator>VsctGenerator</Generator>
       <LastGenOutput>VsCommandTable.cs</LastGenOutput>
-    </Content>
+    </VSCTCompile>
     <Content Include="source.extension.ico">
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Content>
