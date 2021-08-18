@@ -21,8 +21,19 @@ namespace Cake.VisualStudio
     [ProvideAutoLoad(UIContextGuids80.SolutionExists, PackageAutoLoadFlags.BackgroundLoad)]
     [Guid(PackageGuids.guidCakePackageString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [ProvideLanguageService(typeof(CakeLanguageService), Helpers.Constants.CakeContentType, 100)]
+    [ProvideLanguageService(typeof(CakeLanguageService), Helpers.Constants.CakeContentType, Helpers.Constants.LanguageResourceId)]
     [ProvideLanguageExtension(typeof(CakeLanguageService), ".cake")]
+    [ProvideLanguageCodeExpansion(
+        typeof(CakeLanguageService),
+        Helpers.Constants.CakeContentType,
+        Helpers.Constants.LanguageResourceId,
+        "Cake", //the language ID used in the .snippet files
+        null, // omit the xml definition, use only searchPaths.
+        ShowRoots = false, // show the root of the searchPaths in Snippets explorer
+        SearchPaths =
+            @"$PackageFolder$\Snippets\Cake;" +
+            @"\%MyDocs%\Code Snippets\Cake\My Code Snippets",
+        ForceCreateDirs = @"\%MyDocs%\Code Snippets\Cake\My Code Snippets")]
     public sealed partial class CakePackage : AsyncPackage, IVsShellPropertyEvents
     {
         private static DTE2 _dte;

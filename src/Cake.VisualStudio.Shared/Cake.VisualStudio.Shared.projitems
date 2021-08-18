@@ -29,6 +29,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Editor\CakeDropHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Editor\CakeScriptDropHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Editor\CakeScriptDropHandlerProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Editor\CakeScriptSnippetsHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Editor\CakeScriptSnippetsProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Editor\IndentationResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Editor\LineExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Editor\SmartIndent.cs" />
