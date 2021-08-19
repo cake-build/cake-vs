@@ -17,7 +17,7 @@ using IServiceProvider = Microsoft.VisualStudio.OLE.Interop.IServiceProvider;
 namespace Cake.VisualStudio
 {
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [InstalledProductRegistration("#110", "#112", Vsix.Version, IconResourceID = 400)]
+    [InstalledProductRegistration(Vsix.Name, Vsix.Description, Vsix.Version)]
     [ProvideAutoLoad(UIContextGuids80.SolutionExists, PackageAutoLoadFlags.BackgroundLoad)]
     [Guid(PackageGuids.guidCakePackageString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
