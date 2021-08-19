@@ -94,10 +94,9 @@
       <Link>Resources\cake-icon.ico</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\metadata\Resources\CakeFile.png">
+    <Resource Include="..\metadata\Resources\CakeFile.png">
       <Link>Resources\CakeFile.png</Link>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
+    </Resource>
     <Content Include="..\metadata\Resources\icon.png">
       <Link>Resources\icon.png</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
@@ -126,9 +125,10 @@
     <Content Include="source.extension.ico">
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Content>
-    <None Include="..\metadata\FileIcons.imagemanifest">
+    <Content Include="..\metadata\FileIcons.imagemanifest">
       <Link>FileIcons.imagemanifest</Link>
-    </None>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="..\metadata\Snippets\Cake\argument.snippet">
       <Link>Snippets\Cake\argument.snippet</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
