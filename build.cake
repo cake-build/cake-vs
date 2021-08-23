@@ -108,7 +108,12 @@ Task("Update-Manifest-Version")
 {
     BuildVersion.UpdateManifestVersion(
         context: Context,
-        path: "./src/source.extension.vsixmanifest"
+        path: "./src/Cake.VisualStudio/source.extension.vsixmanifest"
+    );
+
+    BuildVersion.UpdateManifestVersion(
+        context: Context,
+        path: "./src/Cake.VisualStudio.2022/source.extension.vsixmanifest"
     );
 });
 
