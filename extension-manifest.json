@@ -1,0 +1,20 @@
+{
+    "$schema": "http://json.schemastore.org/vsix-publish",
+    "categories": [
+        "build"
+    ],
+    "identity": {
+        "internalName": "CakeforVisualStudio",
+        "tags": [
+            "Build",
+            "C#",
+            "Cake"
+        ]
+    },
+    "overview": "./README.md",
+    "priceCategory": "free",
+    "publisher": "vs-publisher-1392591",
+    "private": false,
+    "qna": false,
+    "repo": "https://github.com/cake-build/cake-vs"
+}

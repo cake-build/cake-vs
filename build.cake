@@ -108,7 +108,12 @@ Task("Update-Manifest-Version")
 {
     BuildVersion.UpdateManifestVersion(
         context: Context,
-        path: "./src/source.extension.vsixmanifest"
+        path: "./src/Cake.VisualStudio/source.extension.vsixmanifest"
+    );
+
+    BuildVersion.UpdateManifestVersion(
+        context: Context,
+        path: "./src/Cake.VisualStudio.2022/source.extension.vsixmanifest"
     );
 });
 
@@ -171,7 +176,8 @@ Task("Post-Build")
     .IsDependentOn("Build")
     .Does(() =>
 {
-    CopyFileToDirectory("./src/bin/" + configuration + "/Cake.VisualStudio.vsix", artifacts);
+    CopyFile("./src/Cake.VisualStudio/bin/" + configuration + "/Cake.VisualStudio.vsix", artifacts + "/Cake.VisualStudio.2019.vsix");
+    CopyFile("./src/Cake.VisualStudio.2022/bin/" + configuration + "/Cake.VisualStudio.vsix", artifacts + "/Cake.VisualStudio.2022.vsix");
 });
 
 Task("Publish-GitHub-Release")
@@ -179,9 +185,11 @@ Task("Publish-GitHub-Release")
     .Does(() =>
 {
     var buildResultDir = Directory(artifacts);
-    var packageFile = File("Cake.VisualStudio.vsix");
+    var packageFile2019 = File("Cake.VisualStudio.2019.vsix");
+    var packageFile2022 = File("Cake.VisualStudio.2022.vsix");
 
-    GitReleaseManagerAddAssets(parameters.GitHub.Token, "cake-build", "cake-vs", parameters.Version.Milestone, buildResultDir + packageFile);
+    GitReleaseManagerAddAssets(parameters.GitHub.Token, "cake-build", "cake-vs", parameters.Version.Milestone, buildResultDir + packageFile2019);
+    GitReleaseManagerAddAssets(parameters.GitHub.Token, "cake-build", "cake-vs", parameters.Version.Milestone, buildResultDir + packageFile2022);
     GitReleaseManagerClose(parameters.GitHub.Token, "cake-build", "cake-vs", parameters.Version.Milestone);
 })
 .OnError(exception =>
@@ -195,7 +203,8 @@ Task("Upload-Artifact")
     .WithCriteria(() => parameters.ShouldPublishToAppVeyor)
     .Does(() =>
 {
-    AppVeyor.UploadArtifact(artifacts + "Cake.VisualStudio.vsix");
+    AppVeyor.UploadArtifact(artifacts + "Cake.VisualStudio.2019.vsix");
+    AppVeyor.UploadArtifact(artifacts + "Cake.VisualStudio.2022.vsix");
 });
 
 Task("Publish-Extension")
@@ -203,11 +212,12 @@ Task("Publish-Extension")
     .WithCriteria(() => parameters.ShouldPublishToMyGet)
     .Does(() =>
 {
-    var vsixPath = artifacts + "Cake.VisualStudio.vsix";
     var client = MyGetClient.GetClient(parameters.MyGet.Url, parameters.MyGet.Key, s => Context.Verbose(s));
-    Information("Uploading VSIX to {0}...", parameters.MyGet.Url);
-    var response = client.UploadVsix(GetFile(artifacts + "Cake.VisualStudio.vsix"));
-    Information("VSIX Upload {0}", response.IsSuccessStatusCode ? "succeeded." : "failed with reason '" + response.ReasonPhrase + "'.");
+    Information("Uploading VSIXs to {0}...", parameters.MyGet.Url);
+    var response = client.UploadVsix(GetFile(artifacts + "Cake.VisualStudio.2019.vsix"));
+    Information("VSIX Upload (2019) {0}", response.IsSuccessStatusCode ? "succeeded." : "failed with reason '" + response.ReasonPhrase + "'.");
+    response = client.UploadVsix(GetFile(artifacts + "Cake.VisualStudio.2022.vsix"));
+    Information("VSIX Upload (2019) {0}", response.IsSuccessStatusCode ? "succeeded." : "failed with reason '" + response.ReasonPhrase + "'.");
 });
 
 Task("Default")

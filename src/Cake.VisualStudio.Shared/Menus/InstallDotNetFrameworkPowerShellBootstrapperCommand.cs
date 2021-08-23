@@ -87,6 +87,7 @@ namespace Cake.VisualStudio.Menus
         /// <param name="e">Event args.</param>
         private void MenuItemCallback(object sender, EventArgs e)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             var dte = CakePackage.Dte;
 
             if (dte == null)

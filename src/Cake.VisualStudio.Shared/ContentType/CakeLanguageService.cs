@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 
 namespace Cake.VisualStudio.ContentType
 {
-    [Guid("60914246-A28E-488D-AEB7-34CCDD35FC56")]
+    [Guid(Constants.LanguageGuidStr)]
     class CakeLanguageService : LanguageService
     {
         private LanguagePreferences preferences = null;

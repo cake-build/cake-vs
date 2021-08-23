@@ -2,6 +2,8 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System;
+
 namespace Cake.VisualStudio.Helpers
 {
     public static class Constants
@@ -22,5 +24,8 @@ namespace Cake.VisualStudio.Helpers
         public const string ConfigTemplatePath = "https://cakebuild.net/download/configuration";
         public const string ConfigFileName = "cake.config";
         public const string ScriptFileName = "build.cake";
+        public const int LanguageResourceId = 100;
+        public const string LanguageGuidStr = "60914246-A28E-488D-AEB7-34CCDD35FC56";
+        public static Guid LanguageGuid = Guid.Parse(LanguageGuidStr);
     }
 }
