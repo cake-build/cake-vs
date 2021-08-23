@@ -28,22 +28,22 @@ a `build.cake` file.
 Open Task Runner Explorer by right-clicking the Cake script and select **Task Runner Explorer** from
 the context menu:
 
-![Open Task Runner Explorer](art/open-trx.png)
+![Open Task Runner Explorer](https://cdn.jsdelivr.net/gh/cake-build/cake-vs@340ef57f9bfadc30641c0a2572e46fd35375ee89/art/open-trx.png)
 
 Individual tasks will be listed in the task list on the left.
 
-![Task List](art/task-list.png)
+![Task List](https://cdn.jsdelivr.net/gh/cake-build/cake-vs@340ef57f9bfadc30641c0a2572e46fd35375ee89/art/task-list.png)
 
 Each task can be executed by double-clicking the task.
 
-![Console output](art/console.png)
+![Console output](https://cdn.jsdelivr.net/gh/cake-build/cake-vs@340ef57f9bfadc30641c0a2572e46fd35375ee89/art/console.png)
 
 ### Bindings
 
 Task bindings make it possible to associate individual tasks
 with Visual Studio events such as _Project Open_ etc.
 
-![Bindings](art/bindings.png)
+![Bindings](https://cdn.jsdelivr.net/gh/cake-build/cake-vs@340ef57f9bfadc30641c0a2572e46fd35375ee89/art/bindings.png)
 
 These bindings are stored in your `cake.config` file.
 
@@ -57,13 +57,13 @@ However, at this time, it will not automatically download Cake for you.
 
 Choose Cake Build from the Build menu to quickly install the default bootstrapper scripts or Cake configuration files into your solution.
 
-![Template installers](art/installers.png)
+![Template installers](https://cdn.jsdelivr.net/gh/cake-build/cake-vs@340ef57f9bfadc30641c0a2572e46fd35375ee89/art/installers.png)
 
 ## Templates
 
 The extension includes an item template for build scripts and project templates for Cake modules, addins, and unit tests.
 
-![Project Template](art/templates.png)
+![Project Template](https://cdn.jsdelivr.net/gh/cake-build/cake-vs@340ef57f9bfadc30641c0a2572e46fd35375ee89/art/templates.png)
 
 ## Contribute
 
