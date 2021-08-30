@@ -7,7 +7,7 @@ namespace Cake.VisualStudio
 {
     internal sealed partial class Vsix
     {
-        public const string Id = "3cf9b016-d63f-44ee-849d-6f3efc996134";
+        public const string Id = "ad71f4ec-6358-47a3-8a27-d9dc61d0606b";
         public const string Name = "Cake for Visual Studio 2022";
         public const string Description = @"Adds support for the Cake build tool in Visual Studio 2022. Includes support for the Task Runner Explorer, new templates and bootstrapping important Cake files.";
         public const string Language = "en-US";
