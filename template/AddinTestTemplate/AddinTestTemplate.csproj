@@ -64,7 +64,6 @@
     <None Include="CakeFixture.cs" />
     <None Include="CakeTool.cs" />
     <None Include="CakeToolSettings.cs" />
-    <None Include="packages.config" />
     <None Include="ProjectTemplate.csproj" />
   </ItemGroup>
   <ItemGroup>

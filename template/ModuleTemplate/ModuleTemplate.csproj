@@ -75,7 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="AssemblyInfo.cs" />
-    <None Include="packages.config" />
     <None Include="SampleLogModule.cs" />
     <None Include="ReverseLog.cs" />
     <None Include="ProjectTemplate.csproj" />
