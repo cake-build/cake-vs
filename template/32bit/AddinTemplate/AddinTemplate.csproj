@@ -26,11 +26,11 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{85BCBED7-39BD-4670-85F7-EE36D0DA31C0}</ProjectGuid>
+    <ProjectGuid>{CBBA06CF-8804-41C1-962E-A74B1EBB5542}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ModuleTemplate</RootNamespace>
-    <AssemblyName>ModuleTemplate</AssemblyName>
+    <RootNamespace>AddinTemplate</RootNamespace>
+    <AssemblyName>AddinTemplate</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <GeneratePkgDefFile>false</GeneratePkgDefFile>
@@ -75,13 +75,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="AssemblyInfo.cs" />
-    <None Include="SampleLogModule.cs" />
-    <None Include="ReverseLog.cs" />
+    <None Include="Aliases.cs" />
     <None Include="ProjectTemplate.csproj" />
-    <None Include="ModuleTemplate.ico" />
+    <None Include="AddinTemplate.ico" />
   </ItemGroup>
   <ItemGroup>
-    <VSTemplate Include="ModuleTemplate.vstemplate">
+    <VSTemplate Include="AddinTemplate.vstemplate">
+      <SubType>Designer</SubType>
       <OutputSubPath>Cake</OutputSubPath>
     </VSTemplate>
   </ItemGroup>
