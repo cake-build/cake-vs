@@ -228,21 +228,21 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\..\template\AddinTemplate\AddinTemplate.csproj">
+    <ProjectReference Include="..\..\template\32bit\AddinTemplate\AddinTemplate.csproj">
       <Project>{FCE573DD-E74E-4AB1-9D17-56FC8869797F}</Project>
       <Name>AddinTemplate</Name>
       <VSIXSubPath>ProjectTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
     </ProjectReference>
-    <ProjectReference Include="..\..\template\AddinTestBasicTemplate\AddinTestBasicTemplate.csproj">
+    <ProjectReference Include="..\..\template\32bit\AddinTestBasicTemplate\AddinTestBasicTemplate.csproj">
       <Project>{F21E9BF8-745B-4B29-B113-0E55AE840D24}</Project>
       <Name>AddinTestBasicTemplate</Name>
       <VSIXSubPath>ProjectTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
     </ProjectReference>
-    <ProjectReference Include="..\..\template\AddinTestTemplate\AddinTestTemplate.csproj">
+    <ProjectReference Include="..\..\template\32bit\AddinTestTemplate\AddinTestTemplate.csproj">
       <Project>{AB983284-D1F6-4853-9462-402F2985A141}</Project>
       <Name>AddinTestTemplate</Name>
       <VSIXSubPath>ProjectTemplates</VSIXSubPath>
@@ -256,7 +256,7 @@
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
     </ProjectReference>
-    <ProjectReference Include="..\..\template\ModuleTemplate\ModuleTemplate.csproj">
+    <ProjectReference Include="..\..\template\32bit\ModuleTemplate\ModuleTemplate.csproj">
       <Project>{85BCBED7-39BD-4670-85F7-EE36D0DA31C0}</Project>
       <Name>ModuleTemplate</Name>
       <VSIXSubPath>ProjectTemplates</VSIXSubPath>

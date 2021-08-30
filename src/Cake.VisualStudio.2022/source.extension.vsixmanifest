@@ -29,12 +29,12 @@
         <Asset Type="xunit.extensibility.core.2.4.1.nupkg" d:Source="File" Path="Packages\xunit.extensibility.core.2.4.1.nupkg" d:VsixSubPath="Packages" />
         <Asset Type="xunit.extensibility.execution.2.4.1.nupkg" d:Source="File" Path="Packages\xunit.extensibility.execution.2.4.1.nupkg" d:VsixSubPath="Packages" />
         <Asset Type="xunit.runner.visualstudio.2.4.3.nupkg" d:Source="File" Path="Packages\xunit.runner.visualstudio.2.4.3.nupkg" d:VsixSubPath="Packages" />
-        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="AddinTemplate" d:TargetPath="|AddinTemplate;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
         <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="Project" d:ProjectName="ItemTemplate" d:TargetPath="|ItemTemplate;TemplateProjectOutputGroup|" Path="ItemTemplates" d:VsixSubPath="ItemTemplates" />
-        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="ModuleTemplate" d:TargetPath="|ModuleTemplate;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
-        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="AddinTestTemplate" d:TargetPath="|AddinTestTemplate;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
-        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="AddinTestBasicTemplate" d:TargetPath="|AddinTestBasicTemplate;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="ModuleTemplate64" d:TargetPath="|ModuleTemplate64;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="AddinTestTemplate64" d:TargetPath="|AddinTestTemplate64;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="AddinTestBasicTemplate64" d:TargetPath="|AddinTestBasicTemplate64;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
         <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="Project" d:ProjectName="SolutionItemTemplate" d:TargetPath="|SolutionItemTemplate;TemplateProjectOutputGroup|" Path="ItemTemplates" d:VsixSubPath="ItemTemplates" />
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="AddinTemplate64" d:TargetPath="|AddinTemplate64;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
     </Assets>
     <Prerequisites>
         <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,18.0)" DisplayName="Visual Studio core editor" />

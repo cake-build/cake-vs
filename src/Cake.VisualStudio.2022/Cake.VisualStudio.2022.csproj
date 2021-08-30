@@ -226,23 +226,30 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\..\template\AddinTemplate\AddinTemplate.csproj">
-      <Project>{FCE573DD-E74E-4AB1-9D17-56FC8869797F}</Project>
-      <Name>AddinTemplate</Name>
+    <ProjectReference Include="..\..\template\64bit\AddinTemplate\AddinTemplate64.csproj">
+      <Project>{fce573dd-e74e-4ab1-9d17-56fc8869797f}</Project>
+      <Name>AddinTemplate64</Name>
       <VSIXSubPath>ProjectTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
     </ProjectReference>
-    <ProjectReference Include="..\..\template\AddinTestBasicTemplate\AddinTestBasicTemplate.csproj">
-      <Project>{F21E9BF8-745B-4B29-B113-0E55AE840D24}</Project>
-      <Name>AddinTestBasicTemplate</Name>
+    <ProjectReference Include="..\..\template\64bit\AddinTestBasicTemplate\AddinTestBasicTemplate64.csproj">
+      <Project>{f21e9bf8-745b-4b29-b113-0e55ae840d24}</Project>
+      <Name>AddinTestBasicTemplate64</Name>
       <VSIXSubPath>ProjectTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
     </ProjectReference>
-    <ProjectReference Include="..\..\template\AddinTestTemplate\AddinTestTemplate.csproj">
-      <Project>{AB983284-D1F6-4853-9462-402F2985A141}</Project>
-      <Name>AddinTestTemplate</Name>
+    <ProjectReference Include="..\..\template\64bit\AddinTestTemplate\AddinTestTemplate64.csproj">
+      <Project>{ab983284-d1f6-4853-9462-402f2985a141}</Project>
+      <Name>AddinTestTemplate64</Name>
+      <VSIXSubPath>ProjectTemplates</VSIXSubPath>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
+    <ProjectReference Include="..\..\template\64bit\ModuleTemplate\ModuleTemplate64.csproj">
+      <Project>{85bcbed7-39bd-4670-85f7-ee36d0da31c0}</Project>
+      <Name>ModuleTemplate64</Name>
       <VSIXSubPath>ProjectTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
@@ -251,13 +258,6 @@
       <Project>{c27ab61e-d245-4a8c-abd1-53313e388509}</Project>
       <Name>ItemTemplate</Name>
       <VSIXSubPath>ItemTemplates</VSIXSubPath>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
-    </ProjectReference>
-    <ProjectReference Include="..\..\template\ModuleTemplate\ModuleTemplate.csproj">
-      <Project>{85BCBED7-39BD-4670-85F7-EE36D0DA31C0}</Project>
-      <Name>ModuleTemplate</Name>
-      <VSIXSubPath>ProjectTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
     </ProjectReference>
